@@ -6,7 +6,7 @@ export function Projects() {
     return (
         <section>
             <h2 className="text-2xl font-bold mb-8">Side projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {featuredProjects.map((proj, idx) => (
                     <div key={idx} className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
                         <div className="flex items-start justify-between mb-3">
