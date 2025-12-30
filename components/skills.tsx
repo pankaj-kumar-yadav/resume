@@ -1,4 +1,5 @@
 import { RESUME_DATA } from "@/lib/constants"
+import { Badge } from "./ui/badge"
 
 export function Skills() {
     return (
@@ -6,9 +7,9 @@ export function Skills() {
             <h2 className="text-2xl font-bold mb-6">Skills</h2>
             <div className="flex flex-wrap gap-2">
                 {RESUME_DATA.skills.map((skill) => (
-                    <span key={skill} className="px-3 py-1.5 rounded-full bg-gray-900 text-white text-sm font-medium">
+                    <Badge key={skill} className="text-sm font-mono font-bold bg-accent-foreground/80">
                         {skill}
-                    </span>
+                    </Badge>
                 ))}
             </div>
         </section>

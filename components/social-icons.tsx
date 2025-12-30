@@ -21,6 +21,7 @@ export function SocialIcons({ size = 16, className = "" }: SocialIconsProps) {
     > = {
         github: Github,
         linkedin: Linkedin,
+        website: Globe,
         mail: Mail,
         phone: Phone,
         globe: Globe,

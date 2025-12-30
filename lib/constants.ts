@@ -12,6 +12,11 @@ export const RESUME_DATA = {
 
     socials: [
         {
+            label: "Website",
+            href: "https://pankaj-kumar-yadav.vercel.app",
+            icon: "website",
+        },
+        {
             label: "Email",
             href: "mailto:pankaj981966@gmail.com",
             icon: "mail",

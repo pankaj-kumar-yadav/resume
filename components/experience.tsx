@@ -3,7 +3,7 @@ import { RESUME_DATA } from "@/lib/constants"
 export function Experience() {
     return (
         <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
+            <h2 className="text-2xl font-bold mb-6">Work Experience</h2>
             <div className="space-y-10">
                 {RESUME_DATA.experience.map((exp, idx) => (
                     <div key={idx}>
@@ -12,7 +12,10 @@ export function Experience() {
                                 <h3 className="text-lg font-bold">{exp.company}</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {exp.technologies.map((tech) => (
-                                        <span key={tech} className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-700 font-medium">
+                                        <span
+                                            key={tech}
+                                            className="text-xs px-2 py-0.5 rounded bg-gray-100 text-foreground/90 font-mono font-semibold"
+                                        >
                                             {tech}
                                         </span>
                                     ))}
@@ -21,16 +24,16 @@ export function Experience() {
                             <time className="text-sm text-gray-600 whitespace-nowrap">{exp.duration}</time>
                         </div>
 
-                        <h4 className="font-bold text-gray-900 mb-2">{exp.role}</h4>
+                        <h4 className="font-bold text-lg text-gray-900 my-4">{exp.role}</h4>
 
-                        <p className="text-gray-700 text-sm mb-3 leading-relaxed">{exp.description}</p>
+                        <p className="text-pretty font-mono text-foreground/80 text-base mb-3 leading-relaxed">{exp.description}</p>
 
                         {exp.achievements && (
-                            <ul className="space-y-1 text-sm text-gray-600">
+                            <ul className="space-y-1 text-base text-foreground/80">
                                 {exp.achievements.map((achievement, i) => (
                                     <li key={i} className="flex gap-2">
-                                        <span className="text-gray-400">•</span>
-                                        <span>{achievement}</span>
+                                        <span>•</span>
+                                        <span className="text-pretty font-mono">{achievement}</span>
                                     </li>
                                 ))}
                             </ul>
