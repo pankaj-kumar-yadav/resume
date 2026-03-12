@@ -2,7 +2,7 @@ export const RESUME_DATA = {
     name: "Pankaj Kumar Yadav",
     title: "Junior Software Engineer",
     subtitle: "Focused on building scalable, production-grade web applications.",
-    location: "Kalyan, Mumbai, India",
+    location: "Mumbai, India",
     email: "pankaj981966@gmail.com",
     phone: "+91 99679 17443",
     about:
@@ -63,10 +63,10 @@ export const RESUME_DATA = {
             description:
                 "Worked on multiple consumer and B2B platforms, delivering scalable frontend features and complete product workflows.",
             achievements: [
-                "Built a mom-focused community platform (Omooma) with social feeds, menstrual & ovulation tracking, blog management, and Stripe-based premium subscriptions",
-                "Developed a K–12 worksheet commerce system with single/bundle purchases, JWT-based authentication, and Razorpay integration",
-                "Designed and delivered a full LMS with RBAC, SCORM & multimedia courses, paid enrollment, assessments, and automated certification",
                 "Implemented an ESG compliance platform with analytics dashboards, NSE BRSR & GRI-aligned KPIs, and automated annual BRSR report generation",
+                "Designed and delivered a full LMS with RBAC, SCORM & multimedia courses, paid enrollment, assessments, and automated certification",
+                "Developed a K–12 worksheet commerce system with single/bundle purchases, JWT-based authentication, and Razorpay integration",
+                "Built a mom-focused community platform (Omooma) with social feeds, menstrual & ovulation tracking, blog management, and Stripe-based premium subscriptions",
             ],
         },
     ],

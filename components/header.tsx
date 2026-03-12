@@ -10,8 +10,8 @@ export function Header() {
                 {/* Left side - Name, title, and socials */}
                 <div className="flex-1">
                     <h1 className="text-3xl sm:text-4xl font-bold mb-2" id="resume-name">{RESUME_DATA.name}</h1>
-                    <p className="text-pretty font-mono text-base sm:text-lg text-foreground/70 print:text-[12px] mb-1">{RESUME_DATA.title}</p>
-                    <p className="text-pretty font-mono text-sm sm:text-base mb-1 flex items-center gap-2 text-foreground/90">
+                    <p className="text-pretty text-base sm:text-lg text-foreground/70 print:text-[12px] mb-1">{RESUME_DATA.title}</p>
+                    <p className="text-pretty text-sm sm:text-base mb-1 flex items-center gap-2 text-foreground/90">
                         <span><MapPin size={16} /></span>
                         {RESUME_DATA.location}
                     </p>
