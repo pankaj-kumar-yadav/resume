@@ -1,24 +1,29 @@
+"use client"
+
 import { SocialIcons } from "@/components/social-icons"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { RESUME_DATA } from "@/lib/constants"
 import { MapPin } from "lucide-react"
 import Image from "next/image"
 
 export function Header() {
     return (
-        <header className="mb-8 border-b border-gray-200 pb-8">
+        <header className="mb-12 border-b border-gray-200 pb-10">
             <div className="flex flex-col sm:flex-row gap-8 sm:gap-12">
                 {/* Left side - Name, title, and socials */}
                 <div className="flex-1">
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-2" id="resume-name">{RESUME_DATA.name}</h1>
-                    <p className="text-pretty text-base sm:text-lg text-foreground/70 print:text-[12px] mb-1">{RESUME_DATA.title}</p>
-                    <p className="text-pretty text-sm sm:text-base mb-1 flex items-center gap-2 text-foreground/90">
+                    <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground mb-3" id="resume-name">{RESUME_DATA.name}</h1>
+                    <p className="text-pretty text-lg sm:text-xl font-semibold text-foreground/85 mb-1.5">{RESUME_DATA.title}</p>
+                    <p className="text-pretty text-sm sm:text-base text-foreground/65 mb-1.5">{RESUME_DATA.subtitle}</p>
+                    <p className="text-pretty text-sm sm:text-base mb-1 flex items-center gap-2 text-foreground/80">
                         <span><MapPin size={16} /></span>
                         {RESUME_DATA.location}
                     </p>
 
                     {/* Social icons */}
-                    <div className="mt-4 flex gap-3">
+                    <div className="mt-4 flex items-center gap-3">
                         <SocialIcons size={16} />
+                        <ThemeToggle />
                     </div>
                 </div>
 

@@ -1,5 +1,6 @@
 import { RESUME_DATA } from "@/lib/constants"
 import { PHProvider } from "@/lib/posthog-provider"
+import { ThemeProvider } from "@/components/theme-provider"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import type React from "react"
@@ -57,11 +58,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} **:antialiased bg-white text-black dark:bg-black dark:text-white`}
+        className={`${inter.className} antialiased bg-white text-black dark:bg-black dark:text-white leading-relaxed`}
       >
-        <PHProvider>
-          {children}
-        </PHProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <PHProvider>
+            {children}
+          </PHProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

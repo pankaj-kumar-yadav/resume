@@ -5,22 +5,22 @@ export function Projects() {
 
     return (
         <section>
-            <h2 className="text-2xl font-bold mb-6">Side projects</h2>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-5">Side Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {featuredProjects.map((proj, idx) => (
-                    <div key={idx} className="border border-gray-200 rounded-lg p-6">
+                    <div key={idx} className="border border-gray-200 rounded-xl p-6">
                         <div className="flex items-start justify-between mb-3">
                             <div className="flex gap-1">
-                                <h3 className="text-lg font-bold mb-0.5">{proj.name}</h3>
+                                <h3 className="text-lg font-bold tracking-tight mb-0.5">{proj.name}</h3>
                                 <span className="text-2xl text-lime-500">•</span>
                             </div>
                         </div>
 
-                        <p className="text-sm text-foreground/80 mb-4 leading-relaxed">{proj.description}</p>
+                        <p className="text-sm text-foreground/75 mb-4 leading-6">{proj.description}</p>
 
-                        <div className="mb-4 flex flex-wrap gap-1">
+                        <div className="mb-4 flex flex-wrap gap-1.5">
                             {proj.technologies.map((tech) => (
-                                <span key={tech} className="text-xs px-2 py-1 rounded bg-gray-100 text-foreground/90 font-mono font-semibold">
+                                <span key={tech} className="text-xs px-2 py-1 rounded-md bg-gray-100 text-foreground/80 font-mono font-semibold">
                                     {tech}
                                 </span>
                             ))}
@@ -41,7 +41,7 @@ export function Projects() {
                                 href={proj.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm font-medium text-gray-900 hover:underline"
+                                className="text-sm font-semibold text-foreground hover:underline"
                             >
                                 GitHub →
                             </a>
