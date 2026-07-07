@@ -10,10 +10,10 @@ const inter = Inter({ display: "swap" })
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA?.name} Resume`,
-  description: RESUME_DATA?.about,
+  description: RESUME_DATA.about.join(" "),
   openGraph: {
     title: `${RESUME_DATA.name} - Resume`,
-    description: RESUME_DATA.about,
+    description: RESUME_DATA.about.join(" "),
     type: "profile",
     locale: "en_US",
     // images: [
@@ -28,25 +28,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${RESUME_DATA.name} - Resume`,
-    description: RESUME_DATA.about,
+    description: RESUME_DATA.about.join(" "),
     // images: ["https://cv.jarocki.me/opengraph-image"],
   },
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: RESUME_DATA.profileImage,
+    apple: RESUME_DATA.profileImage,
   },
 }
 
@@ -58,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased bg-white text-black dark:bg-black dark:text-white leading-relaxed`}
+        className={`${inter.className} antialiased leading-relaxed`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <PHProvider>
