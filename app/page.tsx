@@ -1,21 +1,5 @@
-"use client";
-
-import { Header } from "@/components/header"
-import { About } from "@/components/about"
-import { Experience } from "@/components/experience"
-import { Skills } from "@/components/skills"
-import { Projects } from "@/components/projects"
+import { redirect } from "next/navigation"
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12 py-10 sm:py-14">
-        <Header />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-      </div>
-    </main>
-  )
+    redirect("/about")
 }
