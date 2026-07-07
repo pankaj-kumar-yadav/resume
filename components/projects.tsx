@@ -1,52 +1,95 @@
+import { ExternalLink, Github } from "lucide-react"
+import { SectionHeading } from "@/components/section-heading"
+import { TechTag } from "@/components/tech-tag"
 import { RESUME_DATA } from "@/lib/constants"
 
 export function Projects() {
     const featuredProjects = RESUME_DATA.projects.filter((p) => p.featured)
 
     return (
-        <section>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-5">Side Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <section
+            id="projects"
+            className="section-enter"
+            style={{ animationDelay: "200ms" }}
+        >
+            <SectionHeading>Projects</SectionHeading>
+            <div className="divide-y divide-border">
                 {featuredProjects.map((proj, idx) => (
-                    <div key={idx} className="border border-gray-200 rounded-xl p-6">
-                        <div className="flex items-start justify-between mb-3">
-                            <div className="flex gap-1">
-                                <h3 className="text-lg font-bold tracking-tight mb-0.5">{proj.name}</h3>
-                                <span className="text-2xl text-lime-500">•</span>
-                            </div>
+                    <article
+                        key={idx}
+                        className="section-enter py-6 first:pt-0 last:pb-0 print:py-3 print:break-inside-avoid"
+                        style={{ animationDelay: `${230 + idx * 30}ms` }}
+                    >
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between print:gap-1">
+                            <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
+                                {proj.name}
+                            </h3>
+                            {(proj.live || proj.github) && (
+                                <div className="flex items-center gap-3 shrink-0 print:gap-1.5">
+                                    {proj.live && (
+                                        <a
+                                            href={proj.live}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`View ${proj.name} live`}
+                                            className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                            style={{ transitionTimingFunction: "var(--ease-out)" }}
+                                        >
+                                            <ExternalLink size={13} className="shrink-0 print:hidden" aria-hidden />
+                                            <span className="print:hidden">Live</span>
+                                            <span className="hidden print:inline">{proj.live.replace("https://", "")}</span>
+                                        </a>
+                                    )}
+                                    {proj.github && (
+                                        <a
+                                            href={proj.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`View ${proj.name} on GitHub`}
+                                            className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                            style={{ transitionTimingFunction: "var(--ease-out)" }}
+                                        >
+                                            <Github size={13} className="shrink-0 print:hidden" aria-hidden />
+                                            <span className="print:hidden">GitHub</span>
+                                            <span className="hidden print:inline">{proj.github.replace("https://", "")}</span>
+                                        </a>
+                                    )}
+                                </div>
+                            )}
                         </div>
 
-                        <p className="text-sm text-foreground/75 mb-4 leading-6">{proj.description}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/75 print:mt-1 print:text-[10.5pt] print:leading-snug">
+                            {proj.description}
+                        </p>
 
-                        <div className="mb-4 flex flex-wrap gap-1.5">
+                        {"achievements" in proj && proj.achievements && (
+                            <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-foreground/75 print:space-y-0.5 print:text-[10.5pt] print:leading-snug">
+                                {proj.achievements.map((achievement, i) => (
+                                    <li key={i} className="flex gap-2">
+                                        <span className="text-muted-foreground shrink-0">–</span>
+                                        <span className="text-pretty">
+                                            {achievement.includes(":") ? (
+                                                <>
+                                                    <span className="font-medium text-foreground">
+                                                        {achievement.split(":")[0]}:
+                                                    </span>
+                                                    {achievement.slice(achievement.indexOf(":") + 1)}
+                                                </>
+                                            ) : (
+                                                achievement
+                                            )}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                        <div className="mt-3 flex flex-wrap gap-1.5">
                             {proj.technologies.map((tech) => (
-                                <span key={tech} className="text-xs px-2 py-1 rounded-md bg-gray-100 text-foreground/80 font-mono font-semibold">
-                                    {tech}
-                                </span>
+                                <TechTag key={tech}>{tech}</TechTag>
                             ))}
                         </div>
-
-                        {/* {proj.additionalTech && (
-                            <div className="mb-4 flex flex-wrap gap-1">
-                                {proj.additionalTech.map((tech) => (
-                                    <span key={tech} className="text-xs px-2 py-1 rounded bg-gray-50 text-gray-600">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        )} */}
-
-                        {proj.github && (
-                            <a
-                                href={proj.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm font-semibold text-foreground hover:underline"
-                            >
-                                GitHub →
-                            </a>
-                        )}
-                    </div>
+                    </article>
                 ))}
             </div>
         </section>

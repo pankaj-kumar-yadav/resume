@@ -26,12 +26,12 @@ export function SocialIcons({ size = 16, className = "" }: SocialIconsProps) {
         phone: Phone,
         globe: Globe,
         twitter: Twitter,
-        x: Twitter, // reuse Twitter icon for X
+        x: Twitter,
     }
 
     return (
         <div
-            className={`flex gap-x-2 pt-1 print:hidden ${className}`}
+            className={`flex gap-1.5 print:hidden ${className}`}
             role="list"
             aria-label="Contact links"
         >
@@ -46,14 +46,9 @@ export function SocialIcons({ size = 16, className = "" }: SocialIconsProps) {
                         aria-label={social.label}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="
-              inline-flex items-center justify-center
-              size-8 rounded-md border border-input
-              bg-background hover:bg-accent
-              text-foreground transition-colors
-            "
+                        className="pressable hover-accent inline-flex items-center justify-center size-7 rounded-md border border-input bg-background text-foreground"
                     >
-                        <Icon size={size} className="stroke-current text-gray-700" />
+                        <Icon size={size} className="stroke-current text-foreground/70" />
                     </a>
                 )
             })}
