@@ -75,7 +75,7 @@ export function SectionNav() {
     }
 
     const tabClassName =
-        "pressable hover-accent shrink-0 rounded-md px-3 py-2 text-sm font-medium"
+        "pressable hover-accent shrink-0 rounded-md px-2 py-1.5 text-xs font-medium sm:px-3 sm:py-2 sm:text-sm"
 
     return (
         <nav
@@ -85,7 +85,7 @@ export function SectionNav() {
             <div className="flex items-center gap-3">
                 <div
                     ref={containerRef}
-                    className="section-nav-tabs relative flex min-w-0 flex-1 gap-1"
+                    className="section-nav-tabs relative min-w-0 flex-1"
                 >
                     <div className="flex gap-1">
                         {SECTIONS.map(({ id, label, href }, index) => {
@@ -125,9 +125,7 @@ export function SectionNav() {
                         ))}
                     </div>
                 </div>
-                <div className="shrink-0">
-                    <ThemeToggle />
-                </div>
+                <ThemeToggle />
             </div>
         </nav>
     )
