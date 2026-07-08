@@ -2,10 +2,13 @@ import type { IconType } from "react-icons"
 import {
     SiAxios,
     SiChakraui,
+    SiClaude,
     SiCss,
+    SiCursor,
     SiExpress,
     SiGit,
     SiGithub,
+    SiGithubcopilot,
     SiHtml5,
     SiJavascript,
     SiMongodb,
@@ -20,7 +23,9 @@ import {
     SiTailwindcss,
     SiTypescript,
     SiVite,
+    SiWindsurf,
 } from "react-icons/si"
+import { TbBrandOpenai } from "react-icons/tb"
 
 type TechIconEntry = {
     icon: IconType
@@ -52,6 +57,11 @@ const TECH_ICONS: Record<string, TechIconEntry> = {
     Axios: { icon: SiAxios, color: "#5A29E4" },
     Stripe: { icon: SiStripe, color: "#635BFF" },
     Razorpay: { icon: SiRazorpay, color: "#0C2451" },
+    Cursor: { icon: SiCursor },
+    Claude: { icon: SiClaude, color: "#D97757" },
+    "GitHub Copilot": { icon: SiGithubcopilot },
+    Windsurf: { icon: SiWindsurf, color: "#0FBF9F" },
+    ChatGPT: { icon: TbBrandOpenai, color: "#10A37F" },
 }
 
 export function getTechIcon(name: string): TechIconEntry | undefined {

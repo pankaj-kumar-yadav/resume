@@ -210,6 +210,40 @@
     transition-duration: 100ms;
   }
 
+  .social-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--foreground);
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transition:
+      clip-path 200ms var(--ease-out),
+      opacity 150ms var(--ease-out);
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .social-link:hover::before {
+      opacity: 0.04;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .copy-toast {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+    transition:
+      opacity 200ms var(--ease-out),
+      transform 200ms var(--ease-out);
+  }
+
+  .copy-toast-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .project-link:hover {
       text-decoration: underline;
@@ -229,6 +263,18 @@
 
   .section-nav-clip {
     transition: clip-path 200ms var(--ease-out);
+  }
+
+  .skills-row {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: section-fade-in 200ms var(--ease-out) forwards;
+  }
+
+  .social-row {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: section-fade-in 200ms var(--ease-out) forwards;
   }
 }
 
@@ -271,6 +317,34 @@
   .section-nav-clip {
     transition: none;
   }
+
+  .skills-row {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .social-row {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .copy-toast {
+    transition: none;
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  .copy-toast-visible {
+    opacity: 1;
+  }
+
+  .link-preview-content * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 /* Print styles */
@@ -312,6 +386,22 @@
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+  }
+
+  .skills-row {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .social-row {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .copy-toast {
+    display: none !important;
   }
 
   main {

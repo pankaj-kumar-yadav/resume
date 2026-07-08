@@ -1,8 +1,4 @@
-"use client"
-
 import Image from "next/image"
-import { SocialIcons } from "@/components/social-icons"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { RESUME_DATA } from "@/lib/constants"
 import { MapPin } from "lucide-react"
 
@@ -51,11 +47,6 @@ export function Header() {
                         className="object-cover object-[center_20%]"
                     />
                 </div>
-            </div>
-
-            <div className="flex items-center gap-1.5 print:hidden">
-                <SocialIcons size={15} />
-                <ThemeToggle />
             </div>
         </header>
     )

@@ -83,23 +83,37 @@ export const RESUME_DATA = {
     ],
 
     skills: [
-        "JavaScript",
-        "TypeScript",
-        "React.js",
-        "Next.js",
-        "HTML",
-        "CSS",
-        "Tailwind CSS",
-        "Shadcn UI",
-        "Material UI",
-        "Chakra UI",
-        "Zustand",
-        "Redux",
-        "Easy-Peasy",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Git & GitHub",
+        {
+            category: "Languages",
+            items: ["JavaScript", "TypeScript", "HTML", "CSS"],
+        },
+        {
+            category: "Frameworks & libraries",
+            items: [
+                "React.js",
+                "Next.js",
+                "Tailwind CSS",
+                "Shadcn UI",
+                "Material UI",
+                "Chakra UI",
+                "Zustand",
+                "Redux",
+                "Easy-Peasy",
+                "Express",
+            ],
+        },
+        {
+            category: "Technology",
+            items: ["Node.js", "MongoDB"],
+        },
+        {
+            category: "Developer Tools",
+            items: ["Git", "GitHub"],
+        },
+        {
+            category: "AI Tools",
+            items: ["Cursor", "Claude", "GitHub Copilot", "Windsurf", "ChatGPT"],
+        },
     ],
 
     projects: [

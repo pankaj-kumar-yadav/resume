@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef } from "react"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 import { getSectionFromPath, SECTIONS, type SectionId } from "@/lib/sections"
 
@@ -81,46 +82,51 @@ export function SectionNav() {
             aria-label="Resume sections"
             className="sticky top-0 z-10 -mx-5 bg-background/90 px-5 py-2 backdrop-blur-sm sm:-mx-8 sm:px-8 print:hidden"
         >
-            <div
-                ref={containerRef}
-                className="section-nav-tabs relative flex gap-1"
-            >
-                <div className="flex gap-1">
-                    {SECTIONS.map(({ id, label, href }, index) => {
-                        const isActive = activeId === id
+            <div className="flex items-center gap-3">
+                <div
+                    ref={containerRef}
+                    className="section-nav-tabs relative flex min-w-0 flex-1 gap-1"
+                >
+                    <div className="flex gap-1">
+                        {SECTIONS.map(({ id, label, href }, index) => {
+                            const isActive = activeId === id
 
-                        return (
-                            <Link
+                            return (
+                                <Link
+                                    key={id}
+                                    ref={(el) => {
+                                        if (el) tabRefs.current.set(id, el)
+                                    }}
+                                    href={href}
+                                    prefetch
+                                    scroll={false}
+                                    aria-current={isActive ? "page" : undefined}
+                                    onKeyDown={(e) => handleKeyDown(e, index)}
+                                    className={cn(tabClassName, "text-muted-foreground")}
+                                >
+                                    {label}
+                                </Link>
+                            )
+                        })}
+                    </div>
+                    <div
+                        ref={clipRef}
+                        className="section-nav-clip pointer-events-none absolute inset-0 flex gap-1"
+                        style={{ clipPath: "inset(0 100% 0 0)" }}
+                        aria-hidden="true"
+                    >
+                        {SECTIONS.map(({ id, label }) => (
+                            <span
                                 key={id}
-                                ref={(el) => {
-                                    if (el) tabRefs.current.set(id, el)
-                                }}
-                                href={href}
-                                prefetch
-                                scroll={false}
-                                aria-current={isActive ? "page" : undefined}
-                                onKeyDown={(e) => handleKeyDown(e, index)}
-                                className={cn(tabClassName, "text-muted-foreground")}
+                                className={cn(tabClassName, "text-foreground")}
                             >
                                 {label}
-                            </Link>
-                        )
-                    })}
+                            </span>
+                        ))}
+                    </div>
                 </div>
-                <div
-                    ref={clipRef}
-                    className="section-nav-clip pointer-events-none absolute inset-0 flex gap-1"
-                    style={{ clipPath: "inset(0 100% 0 0)" }}
-                    aria-hidden="true"
-                >
-                    {SECTIONS.map(({ id, label }) => (
-                        <span
-                            key={id}
-                            className={cn(tabClassName, "text-foreground")}
-                        >
-                            {label}
-                        </span>
-                    ))}
+                <div className="shrink-0">
+                    <ThemeToggle />
                 </div>
             </div>
         </nav>
