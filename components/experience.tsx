@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/section-heading"
+import { LinkableText } from "@/components/linkable-text"
 import { TechTag } from "@/components/tech-tag"
 import { RESUME_DATA } from "@/lib/constants"
 
@@ -45,12 +46,23 @@ export function Experience() {
                                             {achievement.includes(":") ? (
                                                 <>
                                                     <span className="font-medium text-foreground">
-                                                        {achievement.split(":")[0]}:
+                                                        <LinkableText
+                                                            text={`${achievement.split(":")[0]}:`}
+                                                            links={exp.links}
+                                                        />
                                                     </span>
-                                                    {achievement.slice(achievement.indexOf(":") + 1)}
+                                                    <LinkableText
+                                                        text={achievement.slice(
+                                                            achievement.indexOf(":") + 1
+                                                        )}
+                                                        links={exp.links}
+                                                    />
                                                 </>
                                             ) : (
-                                                achievement
+                                                <LinkableText
+                                                    text={achievement}
+                                                    links={exp.links}
+                                                />
                                             )}
                                         </span>
                                     </li>

@@ -54,6 +54,20 @@ export const RESUME_DATA = {
             role: "Junior Software Engineer",
             type: "Remote",
             duration: "Mar 2024 – Present",
+            links: [
+                {
+                    label: "LMS Platform",
+                    url: "https://lms.learnxg.com/",
+                },
+                {
+                    label: "EXG (ESG Platform)",
+                    url: "https://www.exgglobal.com/",
+                },
+                {
+                    label: "BotJunior (K–5 EdTech Commerce)",
+                    url: "https://www.botjunior.com/",
+                },
+            ],
             technologies: [
                 "Next.js",
                 "React",
@@ -71,9 +85,9 @@ export const RESUME_DATA = {
                 "Delivered production-grade web and mobile solutions across LMS, ESG reporting, enterprise workflow, EdTech commerce, and social-health platforms.",
             achievements: [
                 "LMS Platform: Engineered a full-featured learning management system with SCORM support, RBAC, progress tracking, assessments, and certificate generation, enabling organizations to deliver and manage end-to-end online learning workflows securely.",
-                "ESG Platform (EXG): Developed enterprise BRSR/GRI reporting modules featuring schema-driven forms, approval workflows, KPI dashboards, and high-performance TanStack Table integrations, simplifying regulatory reporting and large-scale data management.",
+                "EXG (ESG Platform): Developed enterprise BRSR/GRI reporting modules featuring schema-driven forms, approval workflows, KPI dashboards, and high-performance TanStack Table integrations, simplifying regulatory reporting and large-scale data management.",
                 "Continuum / BSafe (React Native): Modernized enterprise permit-to-work workflows across General, Solar, Shutdown, LOTO, Heavy Equipment, and Substation modules by delivering reusable components, role-based approvals, notifications, dashboards, and PDF generation, improving maintainability and feature consistency.",
-                "K–5 Commerce Platform: Delivered JWT-based authentication and Razorpay payment integration supporting single and bundled purchases, dynamic pricing, and secure access control, enabling a complete digital commerce workflow.",
+                "BotJunior (K–5 EdTech Commerce): Delivered JWT-based authentication and Razorpay payment integration supporting single and bundled purchases, dynamic pricing, and secure access control, enabling a complete digital commerce workflow.",
                 "Omooma: Developed social networking and health-tracking features while integrating Stripe subscriptions and secure billing, supporting premium membership and role-based access management.",
                 "Architected reusable frontend infrastructure including schema-driven forms, URL-synchronized tables, shared API layers, and reusable UI components, reducing code duplication and accelerating feature delivery across projects.",
                 "Established centralized API communication, automated authentication lifecycle management, and secure routing patterns, improving application reliability and developer productivity across multiple production systems.",

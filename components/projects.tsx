@@ -1,6 +1,7 @@
 import { ExternalLink, Github } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import { TechTag } from "@/components/tech-tag"
+import { LinkPreview } from "@/components/ui/link-preview"
 import { RESUME_DATA } from "@/lib/constants"
 
 export function Projects() {
@@ -27,32 +28,36 @@ export function Projects() {
                             {(proj.live || proj.github) && (
                                 <div className="flex items-center gap-3 shrink-0 print:gap-1.5">
                                     {proj.live && (
-                                        <a
-                                            href={proj.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label={`View ${proj.name} live`}
-                                            className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
-                                            style={{ transitionTimingFunction: "var(--ease-out)" }}
-                                        >
-                                            <ExternalLink size={13} className="shrink-0 print:hidden" aria-hidden />
-                                            <span className="print:hidden">Live</span>
-                                            <span className="hidden print:inline">{proj.live.replace("https://", "")}</span>
-                                        </a>
+                                        <LinkPreview url={proj.live}>
+                                            <a
+                                                href={proj.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label={`View ${proj.name} live`}
+                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                                style={{ transitionTimingFunction: "var(--ease-out)" }}
+                                            >
+                                                <ExternalLink size={13} className="shrink-0 print:hidden" aria-hidden />
+                                                <span className="print:hidden">Live</span>
+                                                <span className="hidden print:inline">{proj.live.replace("https://", "")}</span>
+                                            </a>
+                                        </LinkPreview>
                                     )}
                                     {proj.github && (
-                                        <a
-                                            href={proj.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label={`View ${proj.name} on GitHub`}
-                                            className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
-                                            style={{ transitionTimingFunction: "var(--ease-out)" }}
-                                        >
-                                            <Github size={13} className="shrink-0 print:hidden" aria-hidden />
-                                            <span className="print:hidden">GitHub</span>
-                                            <span className="hidden print:inline">{proj.github.replace("https://", "")}</span>
-                                        </a>
+                                        <LinkPreview url={proj.github}>
+                                            <a
+                                                href={proj.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label={`View ${proj.name} on GitHub`}
+                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                                style={{ transitionTimingFunction: "var(--ease-out)" }}
+                                            >
+                                                <Github size={13} className="shrink-0 print:hidden" aria-hidden />
+                                                <span className="print:hidden">GitHub</span>
+                                                <span className="hidden print:inline">{proj.github.replace("https://", "")}</span>
+                                            </a>
+                                        </LinkPreview>
                                     )}
                                 </div>
                             )}

@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased leading-relaxed`}
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false} disableTransitionOnChange>
           <PHProvider>
             {children}
           </PHProvider>
