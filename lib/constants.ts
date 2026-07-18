@@ -64,6 +64,10 @@ export const RESUME_DATA = {
                     url: "https://www.exgglobal.com/",
                 },
                 {
+                    label: "Techap Solutions Website",
+                    url: "https://techapsol.com/",
+                },
+                {
                     label: "BotJunior (K–5 EdTech Commerce)",
                     url: "https://www.botjunior.com/",
                 },
@@ -86,6 +90,7 @@ export const RESUME_DATA = {
             achievements: [
                 "LMS Platform: Engineered a full-featured learning management system with SCORM support, RBAC, progress tracking, assessments, and certificate generation, enabling organizations to deliver and manage end-to-end online learning workflows securely.",
                 "EXG (ESG Platform): Developed enterprise BRSR/GRI reporting modules featuring schema-driven forms, approval workflows, KPI dashboards, and high-performance TanStack Table integrations, simplifying regulatory reporting and large-scale data management.",
+                "Techap Solutions Website: Engineered the end-to-end company website spanning services, solutions, project portfolio, testimonials, FAQ, and inquiry workflows, establishing Techap’s primary digital presence for enterprise client acquisition.",
                 "Continuum / BSafe (React Native): Modernized enterprise permit-to-work workflows across General, Solar, Shutdown, LOTO, Heavy Equipment, and Substation modules by delivering reusable components, role-based approvals, notifications, dashboards, and PDF generation, improving maintainability and feature consistency.",
                 "BotJunior (K–5 EdTech Commerce): Delivered JWT-based authentication and Razorpay payment integration supporting single and bundled purchases, dynamic pricing, and secure access control, enabling a complete digital commerce workflow.",
                 "Omooma: Developed social networking and health-tracking features while integrating Stripe subscriptions and secure billing, supporting premium membership and role-based access management.",
