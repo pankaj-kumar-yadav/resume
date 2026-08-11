@@ -1,19 +1,19 @@
 "use client"
 
 import { useTheme } from "next-themes"
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 
 const buttonClassName =
   "pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground/70 [&_svg]:size-4"
 
+function subscribe() {
+  return () => {}
+}
+
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = useSyncExternalStore(subscribe, () => true, () => false)
 
   if (!mounted) {
     return (

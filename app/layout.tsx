@@ -1,12 +1,30 @@
 import { RESUME_DATA } from "@/lib/constants"
+import { FONT_FOUC_SCRIPT } from "@/lib/fonts"
 import { PHProvider } from "@/lib/posthog-provider"
+import { FontProvider } from "@/components/font-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Geist, Inter, Schibsted_Grotesk } from "next/font/google"
 import type React from "react"
 import "./globals.css"
 
-const inter = Inter({ display: "swap" })
+const schibsted = Schibsted_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-schibsted",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+const geist = Geist({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist",
+})
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA?.name} Resume`,
@@ -43,14 +61,21 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} antialiased leading-relaxed`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${schibsted.variable} ${inter.variable} ${geist.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: FONT_FOUC_SCRIPT }} />
+      </head>
+      <body className="antialiased leading-relaxed">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false} disableTransitionOnChange>
-          <PHProvider>
-            {children}
-          </PHProvider>
+          <FontProvider>
+            <PHProvider>
+              {children}
+            </PHProvider>
+          </FontProvider>
         </ThemeProvider>
       </body>
     </html>

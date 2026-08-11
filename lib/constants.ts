@@ -2,7 +2,7 @@ export const RESUME_PDF_URL =
     "https://s09ykw6qje.ufs.sh/f/ml9JKQ59IhvzxOuXixw8i3EfyeKtgjGuJrMLRq5sYawPFThN"
 
 export const RESUME_DATA = {
-    name: "Pankaj Kumar Yadav",
+    name: "Pankajkumar Yadav",
     title: "Software Engineer",
     subtitle: "Build scalable, production-grade web and mobile applications.",
     location: "Mumbai, India",

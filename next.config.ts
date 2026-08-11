@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: "**.ufs.sh",
         pathname: "/f/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
     ],
   },
 };

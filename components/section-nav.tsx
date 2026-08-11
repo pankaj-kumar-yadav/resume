@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef } from "react"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 import { getSectionFromPath, SECTIONS, type SectionId } from "@/lib/sections"
 
@@ -125,7 +124,6 @@ export function SectionNav() {
                         ))}
                     </div>
                 </div>
-                <ThemeToggle />
             </div>
         </nav>
     )

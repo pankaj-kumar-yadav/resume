@@ -1,0 +1,13 @@
+---
+description: Never commit superpowers specs/plans unless explicitly asked
+alwaysApply: true
+---
+
+# Docs: specs and plans stay uncommitted
+
+`docs/superpowers/` is gitignored on purpose.
+
+- **Do not commit** design specs (`docs/superpowers/specs/`) or implementation plans (`docs/superpowers/plans/`) unless the user explicitly asks to commit them.
+- **Do not** `git add -f` those paths to bypass `.gitignore` unless the user explicitly requests it.
+- Writing specs/plans to disk is fine; leave them untracked.
+- Implementation code commits are separate: only commit application code when the user asks (or when they explicitly ask you to execute a plan that includes commit steps for code).

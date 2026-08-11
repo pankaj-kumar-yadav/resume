@@ -122,6 +122,22 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html {
+    font-family: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  html[data-font="schibsted"] {
+    font-family: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  html[data-font="inter"] {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  html[data-font="geist"] {
+    font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  }
 }
 
 @layer utilities {
@@ -338,12 +354,6 @@
 
   .copy-toast-visible {
     opacity: 1;
-  }
-
-  .link-preview-content * {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
   }
 }
 
