@@ -50,6 +50,45 @@ const SOCIAL_TAB_ITEMS = [
     ...RESUME_DATA.socials.filter((social) => social.icon === "website"),
 ]
 
+type SocialListItem =
+    | { kind: "social"; social: (typeof RESUME_DATA.socials)[number] }
+    | { kind: "location" }
+
+function buildSocialListItems(): SocialListItem[] {
+    const items: SocialListItem[] = []
+    for (const social of SOCIAL_TAB_ITEMS) {
+        items.push({ kind: "social", social })
+        if (social.icon === "phone") {
+            items.push({ kind: "location" })
+        }
+    }
+    return items
+}
+
+const SOCIAL_LIST_ITEMS = buildSocialListItems()
+
+function LocationRow() {
+    const Icon = SOCIAL_ICON_MAP.location
+    return (
+        <div className={rowClassName}>
+            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
+                <Icon
+                    size={15}
+                    className="stroke-current text-foreground/70"
+                />
+            </span>
+            <span className={contentClassName}>
+                <dt className="text-sm font-medium text-foreground/75 print:text-xs">
+                    Location
+                </dt>
+                <dd className="m-0 truncate text-sm text-foreground print:text-xs">
+                    {RESUME_DATA.location}
+                </dd>
+            </span>
+        </div>
+    )
+}
+
 function ExternalSocialLink({
     social,
     Icon,
@@ -144,7 +183,22 @@ export function Social() {
                     links to preview.
                 </p>
                 <dl className="space-y-2 print:space-y-1.5">
-                    {SOCIAL_TAB_ITEMS.map((social, idx) => {
+                    {SOCIAL_LIST_ITEMS.map((item, idx) => {
+                        if (item.kind === "location") {
+                            return (
+                                <div
+                                    key="location"
+                                    className="social-row print:break-inside-avoid"
+                                    style={{
+                                        animationDelay: `${270 + idx * 50}ms`,
+                                    }}
+                                >
+                                    <LocationRow />
+                                </div>
+                            )
+                        }
+
+                        const social = item.social
                         const Icon = SOCIAL_ICON_MAP[social.icon]
                         if (!Icon) return null
 

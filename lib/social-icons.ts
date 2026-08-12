@@ -4,6 +4,7 @@ import {
     Globe,
     Linkedin,
     Mail,
+    MapPin,
     Phone,
     Twitter,
 } from "lucide-react"
@@ -17,6 +18,7 @@ export const SOCIAL_ICON_MAP: Record<
     website: Globe,
     mail: Mail,
     phone: Phone,
+    location: MapPin,
     globe: Globe,
     twitter: Twitter,
     x: Twitter,

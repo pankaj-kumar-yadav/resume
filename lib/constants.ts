@@ -9,6 +9,7 @@ export const RESUME_DATA = {
     email: "pankaj981966@gmail.com",
     phone: "+91 99679 17443",
     about: [
+        "Software Engineer based in Mumbai, India, building scalable, production-grade web and mobile applications.",
         "Build scalable web and mobile applications with Next.js, React, and TypeScript—from authentication and payments to data-heavy dashboards and role-based workflows.",
         "Ship production software across LMS, ESG reporting, enterprise workflows, EdTech commerce, and social-health platforms, with a focus on reusable architecture, secure integrations, and maintainable interfaces.",
     ],

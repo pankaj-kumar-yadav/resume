@@ -10,7 +10,7 @@ function truncate(text: string, max = DESCRIPTION_MAX): string {
     return `${normalized.slice(0, max - 1).trimEnd()}…`
 }
 
-function aboutDescription(): string {
+function homeDescription(): string {
     return truncate(RESUME_DATA.about.join(" "))
 }
 
@@ -45,7 +45,7 @@ function socialDescription(): string {
 }
 
 const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
-    about: aboutDescription,
+    home: homeDescription,
     experience: experienceDescription,
     projects: projectsDescription,
     skills: skillsDescription,
@@ -54,7 +54,7 @@ const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
 
 export function getSectionMetadata(sectionId: SectionId): Metadata {
     const section = SECTIONS.find((entry) => entry.id === sectionId)
-    const label = section?.label ?? "About"
+    const label = section?.label ?? "Home"
     const title = `${label} | ${RESUME_DATA.name}`
     const description = DESCRIPTION_BY_SECTION[sectionId]()
 
