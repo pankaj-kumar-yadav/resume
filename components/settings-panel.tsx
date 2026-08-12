@@ -46,7 +46,7 @@ export function SettingsPanel() {
   return (
     <div
       ref={rootRef}
-      className="absolute right-0 top-0 z-20 print:hidden lg:fixed lg:right-8 lg:top-8"
+      className="fixed right-5 top-6 z-20 print:hidden sm:right-8 sm:top-10"
     >
       <button
         type="button"

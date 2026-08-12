@@ -29,11 +29,6 @@ function projectsDescription(): string {
     )
 }
 
-function skillsDescription(): string {
-    const skills = RESUME_DATA.skills.flatMap((group) => group.items).join(", ")
-    return truncate(`${RESUME_DATA.name} — skills: ${skills}.`)
-}
-
 function socialDescription(): string {
     const labels = RESUME_DATA.socials
         .filter((social) => social.label !== "Email" && social.label !== "Phone")
@@ -48,7 +43,6 @@ const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
     home: homeDescription,
     experience: experienceDescription,
     projects: projectsDescription,
-    skills: skillsDescription,
     social: socialDescription,
 }
 
