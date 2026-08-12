@@ -1,6 +1,7 @@
 import type React from "react"
 import {
     Github,
+    Gitlab,
     Globe,
     Linkedin,
     Mail,
@@ -14,6 +15,7 @@ export const SOCIAL_ICON_MAP: Record<
     React.ComponentType<{ size?: number; className?: string }>
 > = {
     github: Github,
+    gitlab: Gitlab,
     linkedin: Linkedin,
     website: Globe,
     mail: Mail,

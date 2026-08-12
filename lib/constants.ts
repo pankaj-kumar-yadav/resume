@@ -38,6 +38,11 @@ export const RESUME_DATA = {
             icon: "github",
         },
         {
+            label: "GitLab",
+            href: "https://gitlab.com/pankaj981966",
+            icon: "gitlab",
+        },
+        {
             label: "LinkedIn",
             href: "https://linkedin.com/in/pankajkumaryadav67",
             icon: "linkedin",

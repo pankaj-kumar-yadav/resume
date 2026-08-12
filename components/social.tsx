@@ -34,6 +34,7 @@ function isExternalLink(icon: string): boolean {
     return (
         icon === "website" ||
         icon === "github" ||
+        icon === "gitlab" ||
         icon === "linkedin" ||
         icon === "twitter"
     )
