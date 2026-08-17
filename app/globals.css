@@ -294,12 +294,6 @@
     transition: clip-path 200ms var(--ease-out);
   }
 
-  .skills-row {
-    opacity: 0;
-    transform: translateY(6px);
-    animation: section-fade-in 200ms var(--ease-out) forwards;
-  }
-
   .social-row {
     opacity: 0;
     transform: translateY(6px);
@@ -351,12 +345,6 @@
 
   .section-nav-clip {
     transition: none;
-  }
-
-  .skills-row {
-    animation: none;
-    opacity: 1;
-    transform: none;
   }
 
   .social-row {
@@ -412,12 +400,6 @@
   }
 
   .section-enter {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-
-  .skills-row {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

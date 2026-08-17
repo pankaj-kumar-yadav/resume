@@ -171,11 +171,7 @@ export function Social() {
 
     return (
         <>
-            <section
-                id="social"
-                className="section-enter"
-                style={{ animationDelay: "250ms" }}
-            >
+            <section id="social">
                 <SectionHeading hideOnScreen>Social</SectionHeading>
                 <p className="mb-5 text-sm text-muted-foreground print:mb-2 print:text-xs">
                     Open to opportunities. Click any value to copy. Hover links
@@ -192,7 +188,7 @@ export function Social() {
                                     key="location"
                                     className="social-row print:break-inside-avoid"
                                     style={{
-                                        animationDelay: `${270 + idx * 50}ms`,
+                                        animationDelay: `${idx * 50}ms`,
                                     }}
                                 >
                                     <CopyableRow
@@ -223,7 +219,7 @@ export function Social() {
                             <div
                                 key={social.label}
                                 className="social-row print:break-inside-avoid"
-                                style={{ animationDelay: `${270 + idx * 50}ms` }}
+                                style={{ animationDelay: `${idx * 50}ms` }}
                             >
                                 <CopyableRow
                                     label={social.label}

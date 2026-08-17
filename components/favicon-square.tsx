@@ -26,6 +26,9 @@ export function FaviconSquare({
 }) {
     const dimensions = SIZES[size]
     const [loaded, setLoaded] = useState(false)
+    const src = icon ?? getFaviconUrl(href)
+    const isSvg = /\.svg(?:$|\?)/i.test(src)
+    const imageClassName = cn(dimensions.imageClass, "favicon-square-image")
 
     return (
         <span
@@ -36,13 +39,14 @@ export function FaviconSquare({
             )}
         >
             <Image
-                src={icon ?? getFaviconUrl(href)}
+                src={src}
                 alt=""
                 width={dimensions.image}
                 height={dimensions.image}
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-                className={cn(dimensions.imageClass, "favicon-square-image")}
+                unoptimized={isSvg}
+                placeholder={isSvg ? "empty" : "blur"}
+                blurDataURL={isSvg ? undefined : BLUR_DATA_URL}
+                className={imageClassName}
                 data-loaded={loaded || undefined}
                 onLoad={() => setLoaded(true)}
                 onError={(event) => {

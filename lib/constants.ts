@@ -211,7 +211,8 @@ export const INSPIRATION_LINKS = [
     },
     {
         label: "Checklist Design",
-        href: "https://checklist.design",
+        href: "https://www.checklist.design",
         description: "UX checklists for common design patterns",
+        icon: "https://www.checklist.design/favicon.svg",
     },
 ] as const;

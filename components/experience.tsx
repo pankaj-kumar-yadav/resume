@@ -15,11 +15,7 @@ function getAchievementProjectLink(
 
 export function Experience() {
     return (
-        <section
-            id="experience"
-            className="section-enter"
-            style={{ animationDelay: "100ms" }}
-        >
+        <section id="experience">
             <SectionHeading hideOnScreen>Experience</SectionHeading>
             <div className="space-y-10 print:space-y-5">
                 {RESUME_DATA.experience.map((exp, idx) => (

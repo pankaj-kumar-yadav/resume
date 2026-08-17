@@ -6,18 +6,13 @@ const SKILL_GROUPS = RESUME_DATA.skills.filter((group) => group.items.length > 0
 
 export function Skills() {
     return (
-        <section
-            id="skills"
-            className="section-enter"
-            style={{ animationDelay: "150ms" }}
-        >
+        <section id="skills">
             <SectionHeading>Skills</SectionHeading>
             <dl className="space-y-4 print:space-y-2.5">
-                {SKILL_GROUPS.map((group, idx) => (
+                {SKILL_GROUPS.map((group) => (
                     <div
                         key={group.category}
-                        className="skills-row grid grid-cols-1 gap-2 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-x-6 print:break-inside-avoid"
-                        style={{ animationDelay: `${170 + idx * 35}ms` }}
+                        className="grid grid-cols-1 gap-2 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-x-6 print:break-inside-avoid"
                     >
                         <dt className="text-sm font-medium text-foreground/75 print:text-xs">
                             {group.category}

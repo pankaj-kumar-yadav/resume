@@ -14,10 +14,12 @@ function InspirationRow({
     label,
     href,
     description,
+    icon,
 }: {
     label: string
     href: string
     description: string
+    icon?: string
 }) {
     const linkButton = (
         <a
@@ -33,7 +35,7 @@ function InspirationRow({
 
     return (
         <div className={cn(rowClassName, "pr-1")}>
-            <FaviconSquare href={href} />
+            <FaviconSquare href={href} icon={icon} />
             <div className="flex min-w-0 flex-1 items-center gap-2">
                 <LinkPreview url={href}>
                     <a
@@ -59,11 +61,7 @@ function InspirationRow({
 
 export function Inspiration() {
     return (
-        <section
-            id="inspiration"
-            className="section-enter"
-            style={{ animationDelay: "250ms" }}
-        >
+        <section id="inspiration">
             <SectionHeading hideOnScreen>Inspiration</SectionHeading>
             <p className="mb-5 text-sm text-muted-foreground print:mb-2 print:text-xs">
                 A list of websites I admire, tools I use, and everything else
@@ -75,12 +73,13 @@ export function Inspiration() {
                     <div
                         key={item.href}
                         className="social-row print:break-inside-avoid"
-                        style={{ animationDelay: `${270 + idx * 50}ms` }}
+                        style={{ animationDelay: `${idx * 50}ms` }}
                     >
                         <InspirationRow
                             label={item.label}
                             href={item.href}
                             description={item.description}
+                            icon={"icon" in item ? item.icon : undefined}
                         />
                     </div>
                 ))}

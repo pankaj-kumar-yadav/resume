@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.botjunior.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.checklist.design",
+        pathname: "/favicon.svg",
+      },
     ],
   },
 };

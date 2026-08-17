@@ -8,18 +8,13 @@ export function Projects() {
     const featuredProjects = RESUME_DATA.projects.filter((p) => p.featured)
 
     return (
-        <section
-            id="projects"
-            className="section-enter"
-            style={{ animationDelay: "200ms" }}
-        >
+        <section id="projects">
             <SectionHeading hideOnScreen>Projects</SectionHeading>
             <div className="divide-y divide-border">
                 {featuredProjects.map((proj, idx) => (
                     <article
                         key={idx}
-                        className="section-enter py-6 first:pt-0 last:pb-0 print:py-3 print:break-inside-avoid"
-                        style={{ animationDelay: `${230 + idx * 30}ms` }}
+                        className="py-6 first:pt-0 last:pb-0 print:py-3 print:break-inside-avoid"
                     >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between print:gap-1">
                             <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">

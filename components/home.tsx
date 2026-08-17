@@ -3,11 +3,7 @@ import { RESUME_DATA, RESUME_PDF_URL } from "@/lib/constants"
 
 export function Home() {
     return (
-        <section
-            id="home"
-            className="section-enter"
-            style={{ animationDelay: "50ms" }}
-        >
+        <section id="home">
             <SectionHeading hideOnScreen>Home</SectionHeading>
             <div className="space-y-3 text-pretty text-sm sm:text-[15px] leading-relaxed text-foreground/80">
                 {RESUME_DATA.about.map((paragraph) => (
