@@ -8,7 +8,7 @@ export function Home() {
             className="section-enter"
             style={{ animationDelay: "50ms" }}
         >
-            <SectionHeading>Home</SectionHeading>
+            <SectionHeading hideOnScreen>Home</SectionHeading>
             <div className="space-y-3 text-pretty text-sm sm:text-[15px] leading-relaxed text-foreground/80">
                 {RESUME_DATA.about.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>

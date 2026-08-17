@@ -4,7 +4,7 @@ import { RESUME_DATA } from "@/lib/constants"
 export function Header() {
     return (
         <header
-            className="section-enter flex flex-col gap-6 pb-2"
+            className="section-enter mb-2"
             style={{ animationDelay: "0ms" }}
         >
             <div className="flex items-center gap-3">

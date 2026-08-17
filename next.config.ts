@@ -12,6 +12,19 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "api.microlink.io",
       },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+        pathname: "/s2/favicons",
+      },
+      {
+        protocol: "https",
+        hostname: "lms.learnxg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.botjunior.com",
+      },
     ],
   },
 };

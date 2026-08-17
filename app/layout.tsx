@@ -49,10 +49,6 @@ export const metadata: Metadata = {
     description: RESUME_DATA.about.join(" "),
     // images: ["https://cv.jarocki.me/opengraph-image"],
   },
-  icons: {
-    icon: RESUME_DATA.profileImage,
-    apple: RESUME_DATA.profileImage,
-  },
 }
 
 export default function RootLayout({

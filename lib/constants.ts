@@ -57,13 +57,15 @@ export const RESUME_DATA = {
     experience: [
         {
             company: "Techap Solutions",
+            website: "https://techapsol.com/",
             role: "Junior Software Engineer",
             type: "Remote",
             duration: "Mar 2024 – Present",
             links: [
                 {
                     label: "LMS Platform",
-                    url: "https://lms.learnxg.com/",
+                    url: "https://lms.learnxg.com/en",
+                    icon: "https://lms.learnxg.com/icon1.png",
                 },
                 {
                     label: "EXG (ESG Platform)",
@@ -76,6 +78,7 @@ export const RESUME_DATA = {
                 {
                     label: "BotJunior (K–5 EdTech Commerce)",
                     url: "https://www.botjunior.com/",
+                    icon: "https://www.botjunior.com/img/logos/botjunior_favicon.png",
                 },
             ],
             technologies: [

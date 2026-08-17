@@ -13,7 +13,7 @@ export function Projects() {
             className="section-enter"
             style={{ animationDelay: "200ms" }}
         >
-            <SectionHeading>Projects</SectionHeading>
+            <SectionHeading hideOnScreen>Projects</SectionHeading>
             <div className="divide-y divide-border">
                 {featuredProjects.map((proj, idx) => (
                     <article

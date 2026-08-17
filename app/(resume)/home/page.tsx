@@ -6,9 +6,9 @@ export const metadata = getSectionMetadata("home")
 
 export default function HomePage() {
     return (
-        <>
+        <div className="flex flex-col gap-10 print:gap-5">
             <Home />
             <Skills />
-        </>
+        </div>
     )
 }

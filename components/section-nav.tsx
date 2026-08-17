@@ -74,58 +74,56 @@ export function SectionNav() {
     }
 
     const tabClassName =
-        "pressable hover-accent shrink-0 rounded-md px-2 py-1.5 text-xs font-medium sm:px-3 sm:py-2 sm:text-sm"
+        "pressable hover-accent shrink-0 rounded-md px-2 py-1 text-xs font-medium sm:px-2.5 sm:py-1.5 sm:text-sm first:pl-0"
 
     return (
         <nav
             aria-label="Resume sections"
-            className="sticky top-0 z-10 -mx-5 bg-background/90 px-5 py-2 backdrop-blur-sm sm:-mx-8 sm:px-8 print:hidden"
+            className="sticky top-0 z-10 -mx-5 bg-background/90 px-5 py-1.5 backdrop-blur-sm sm:-mx-8 sm:px-8 print:hidden"
         >
-            <div className="flex items-center gap-3">
-                <div
-                    ref={containerRef}
-                    className="section-nav-tabs relative min-w-0 flex-1"
-                >
-                    <div className="flex gap-1">
-                        {SECTIONS.map(({ id, label, href }, index) => {
-                            const isActive = activeId === id
+            <div
+                ref={containerRef}
+                className="section-nav-tabs relative min-w-0"
+            >
+                <div className="flex gap-1">
+                    {SECTIONS.map(({ id, label, href }, index) => {
+                        const isActive = activeId === id
 
-                            return (
-                                <Link
-                                    key={id}
-                                    ref={(el) => {
-                                        if (el) tabRefs.current.set(id, el)
-                                    }}
-                                    href={href}
-                                    prefetch
-                                    scroll={false}
-                                    aria-current={isActive ? "page" : undefined}
-                                    onKeyDown={(e) => handleKeyDown(e, index)}
-                                    className={cn(tabClassName, "text-muted-foreground")}
-                                >
-                                    {label}
-                                </Link>
-                            )
-                        })}
-                    </div>
-                    <div
-                        ref={clipRef}
-                        className="section-nav-clip pointer-events-none absolute inset-0 flex gap-1"
-                        style={{ clipPath: "inset(0 100% 0 0)" }}
-                        aria-hidden="true"
-                    >
-                        {SECTIONS.map(({ id, label }) => (
-                            <span
+                        return (
+                            <Link
                                 key={id}
-                                className={cn(
-                                    tabClassName,
-                                    "text-foreground underline decoration-solid decoration-2 underline-offset-8"
-                                )}
+                                ref={(el) => {
+                                    if (el) tabRefs.current.set(id, el)
+                                }}
+                                href={href}
+                                prefetch
+                                scroll={false}
+                                aria-current={isActive ? "page" : undefined}
+                                onKeyDown={(e) => handleKeyDown(e, index)}
+                                className={cn(tabClassName, "text-muted-foreground")}
                             >
                                 {label}
-                            </span>
-                        ))}
-                    </div>
+                            </Link>
+                        )
+                    })}
+                </div>
+                <div
+                    ref={clipRef}
+                    className="section-nav-clip pointer-events-none absolute inset-0 flex gap-1"
+                    style={{ clipPath: "inset(0 100% 0 0)" }}
+                    aria-hidden="true"
+                >
+                    {SECTIONS.map(({ id, label }) => (
+                        <span
+                            key={id}
+                            className={cn(
+                                tabClassName,
+                                "text-foreground underline decoration-solid decoration-2 underline-offset-4"
+                            )}
+                        >
+                            {label}
+                        </span>
+                    ))}
                 </div>
             </div>
         </nav>

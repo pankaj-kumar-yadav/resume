@@ -176,7 +176,7 @@ export function Social() {
                 className="section-enter"
                 style={{ animationDelay: "250ms" }}
             >
-                <SectionHeading>Social</SectionHeading>
+                <SectionHeading hideOnScreen>Social</SectionHeading>
                 <p className="mb-5 text-sm text-muted-foreground print:mb-2 print:text-xs">
                     Open to opportunities. Click any value to copy. Hover links
                     to preview.
