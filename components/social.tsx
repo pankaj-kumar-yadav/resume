@@ -19,7 +19,7 @@ function getDisplayValue(
 ): string {
     if (social.icon === "mail") return RESUME_DATA.email
     if (social.icon === "phone") return RESUME_DATA.phone
-    return social.href.replace(/^https?:\/\//, "")
+    return social.href.replace(/^https?:\/\/(www\.)?/, "")
 }
 
 function getCopyValue(
@@ -35,6 +35,9 @@ function isExternalLink(icon: string): boolean {
         icon === "website" ||
         icon === "github" ||
         icon === "gitlab" ||
+        icon === "leetcode" ||
+        icon === "geeksforgeeks" ||
+        icon === "hackerrank" ||
         icon === "linkedin" ||
         icon === "twitter"
     )

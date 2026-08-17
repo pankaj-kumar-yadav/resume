@@ -1,5 +1,5 @@
 export const RESUME_PDF_URL =
-    "https://s09ykw6qje.ufs.sh/f/ml9JKQ59IhvzxOuXixw8i3EfyeKtgjGuJrMLRq5sYawPFThN"
+    "https://drive.google.com/file/d/1nUHlDCzBWuf2vXBwHiEPEgVyasK8mEje/view?usp=sharing"
 
 export const RESUME_DATA = {
     name: "Pankajkumar Yadav",
@@ -41,6 +41,21 @@ export const RESUME_DATA = {
             label: "GitLab",
             href: "https://gitlab.com/pankaj981966",
             icon: "gitlab",
+        },
+        {
+            label: "LeetCode",
+            href: "https://leetcode.com/u/pankaj9967/",
+            icon: "leetcode",
+        },
+        {
+            label: "GeeksforGeeks",
+            href: "https://www.geeksforgeeks.org/profile/pankaj981966",
+            icon: "geeksforgeeks",
+        },
+        {
+            label: "HackerRank",
+            href: "https://www.hackerrank.com/profile/Pankaj981966",
+            icon: "hackerrank",
         },
         {
             label: "LinkedIn",

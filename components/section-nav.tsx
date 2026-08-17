@@ -74,7 +74,7 @@ export function SectionNav() {
     }
 
     const tabClassName =
-        "pressable hover-accent shrink-0 rounded-md px-2 py-1 text-xs font-medium sm:px-2.5 sm:py-1.5 sm:text-sm first:pl-0"
+        "pressable hover-accent shrink-0 rounded-md px-2 py-1 text-xs font-medium sm:px-2.5 sm:py-1.5 sm:text-sm"
 
     return (
         <nav
