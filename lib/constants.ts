@@ -128,6 +128,9 @@ export const RESUME_DATA = {
                 "Redux",
                 "Easy-Peasy",
                 "Express",
+                "React Hook Form",
+                "Axios",
+                "Zod",
             ],
         },
         {
@@ -136,7 +139,7 @@ export const RESUME_DATA = {
         },
         {
             category: "Developer Tools",
-            items: ["Git", "GitHub"],
+            items: ["Git", "GitHub", "VS Code"],
         },
         {
             category: "AI Tools",
