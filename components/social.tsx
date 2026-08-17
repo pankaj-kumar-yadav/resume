@@ -11,8 +11,8 @@ import { RESUME_DATA } from "@/lib/constants"
 import { SOCIAL_ICON_MAP } from "@/lib/social-icons"
 import { cn } from "@/lib/utils"
 
-const COPYABLE_ICONS = new Set(["mail", "phone"])
 const TOAST_DURATION_MS = 2000
+const LOCATION_MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(RESUME_DATA.location)}`
 
 function getDisplayValue(
     social: (typeof RESUME_DATA.socials)[number]
@@ -68,68 +68,68 @@ function buildSocialListItems(): SocialListItem[] {
 
 const SOCIAL_LIST_ITEMS = buildSocialListItems()
 
-function LocationRow() {
-    const Icon = SOCIAL_ICON_MAP.location
+function CopyableRow({
+    label,
+    displayValue,
+    href,
+    Icon,
+    onCopy,
+    external = false,
+    previewUrl,
+}: {
+    label: string
+    displayValue: string
+    href: string
+    Icon: ComponentType<{ size?: number; className?: string }>
+    onCopy: () => void
+    external?: boolean
+    previewUrl?: string
+}) {
+    const linkButton = (
+        <a
+            href={href}
+            aria-label={`Open ${label.toLowerCase()}`}
+            {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
+        >
+            <ArrowUpRight size={13} aria-hidden />
+        </a>
+    )
+
     return (
-        <div className={rowClassName}>
+        <div className={cn(rowClassName, "pr-1")}>
             <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
-                <Icon
-                    size={15}
-                    className="stroke-current text-foreground/70"
-                />
+                <Icon size={15} className="stroke-current text-foreground/70" />
             </span>
             <span className={contentClassName}>
                 <dt className="text-sm font-medium text-foreground/75 print:text-xs">
-                    Location
+                    {label}
                 </dt>
-                <dd className="m-0 truncate text-sm text-foreground print:text-xs">
-                    {RESUME_DATA.location}
+                <dd className="m-0 flex min-w-0 items-center gap-1.5">
+                    <button
+                        type="button"
+                        onClick={onCopy}
+                        aria-label={`Copy ${label.toLowerCase()} to clipboard`}
+                        className="pressable inline-flex min-w-0 flex-1 items-center gap-1.5 truncate text-left text-sm text-foreground hover:underline hover:underline-offset-[3px] print:text-xs"
+                    >
+                        <span className="truncate">{displayValue}</span>
+                        <Copy
+                            size={12}
+                            className="shrink-0 text-muted-foreground print:hidden"
+                            aria-hidden
+                        />
+                    </button>
+                    {previewUrl ? (
+                        <LinkPreview url={previewUrl}>{linkButton}</LinkPreview>
+                    ) : (
+                        linkButton
+                    )}
                 </dd>
             </span>
         </div>
     )
-}
-
-function ExternalSocialLink({
-    social,
-    Icon,
-    displayValue,
-}: {
-    social: (typeof RESUME_DATA.socials)[number]
-    Icon: ComponentType<{ size?: number; className?: string }>
-    displayValue: string
-}) {
-    const link = (
-        <a
-            href={social.href}
-            aria-label={social.label}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={rowClassName}
-        >
-            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
-                <Icon
-                    size={15}
-                    className="stroke-current text-foreground/70"
-                />
-            </span>
-            <span className={contentClassName}>
-                <dt className="text-sm font-medium text-foreground/75 print:text-xs">
-                    {social.label}
-                </dt>
-                <dd className="m-0 flex min-w-0 items-center gap-1 truncate text-sm text-foreground group-hover:underline group-hover:underline-offset-[3px] print:overflow-visible print:whitespace-normal print:text-xs">
-                    <span className="truncate">{displayValue}</span>
-                    <ArrowUpRight
-                        size={12}
-                        className="shrink-0 text-muted-foreground print:hidden"
-                        aria-hidden
-                    />
-                </dd>
-            </span>
-        </a>
-    )
-
-    return <LinkPreview url={social.href}>{link}</LinkPreview>
 }
 
 export function Social() {
@@ -162,12 +162,10 @@ export function Social() {
         }
     }, [])
 
-    const handleCopy = async (
-        social: (typeof RESUME_DATA.socials)[number]
-    ) => {
-        const copied = await copyToClipboard(getCopyValue(social))
+    const handleCopy = async (label: string, value: string) => {
+        const copied = await copyToClipboard(value)
         if (copied) {
-            showToast(`${social.label} copied`)
+            showToast(`${label} copied`)
         }
     }
 
@@ -180,12 +178,15 @@ export function Social() {
             >
                 <SectionHeading>Social</SectionHeading>
                 <p className="mb-5 text-sm text-muted-foreground print:mb-2 print:text-xs">
-                    Open to opportunities. Click email or phone to copy. Hover
-                    links to preview.
+                    Open to opportunities. Click any value to copy. Hover links
+                    to preview.
                 </p>
                 <dl className="space-y-2 print:space-y-1.5">
                     {SOCIAL_LIST_ITEMS.map((item, idx) => {
                         if (item.kind === "location") {
+                            const LocationIcon = SOCIAL_ICON_MAP.location
+                            if (!LocationIcon) return null
+
                             return (
                                 <div
                                     key="location"
@@ -194,7 +195,19 @@ export function Social() {
                                         animationDelay: `${270 + idx * 50}ms`,
                                     }}
                                 >
-                                    <LocationRow />
+                                    <CopyableRow
+                                        label="Location"
+                                        displayValue={RESUME_DATA.location}
+                                        href={LOCATION_MAPS_HREF}
+                                        Icon={LocationIcon}
+                                        external
+                                        onCopy={() =>
+                                            handleCopy(
+                                                "Location",
+                                                RESUME_DATA.location
+                                            )
+                                        }
+                                    />
                                 </div>
                             )
                         }
@@ -204,7 +217,6 @@ export function Social() {
                         if (!Icon) return null
 
                         const external = isExternalLink(social.icon)
-                        const copyable = COPYABLE_ICONS.has(social.icon)
                         const displayValue = getDisplayValue(social)
 
                         return (
@@ -213,75 +225,20 @@ export function Social() {
                                 className="social-row print:break-inside-avoid"
                                 style={{ animationDelay: `${270 + idx * 50}ms` }}
                             >
-                                {copyable ? (
-                                    <div className={cn(rowClassName, "pr-1")}>
-                                        <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
-                                            <Icon
-                                                size={15}
-                                                className="stroke-current text-foreground/70"
-                                            />
-                                        </span>
-                                        <span className={contentClassName}>
-                                            <dt className="text-sm font-medium text-foreground/75 print:text-xs">
-                                                {social.label}
-                                            </dt>
-                                            <dd className="m-0 flex min-w-0 items-center gap-1.5">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => handleCopy(social)}
-                                                    aria-label={`Copy ${social.label.toLowerCase()} to clipboard`}
-                                                    className="pressable inline-flex min-w-0 flex-1 items-center gap-1.5 truncate text-left text-sm text-foreground hover:underline hover:underline-offset-[3px] print:text-xs"
-                                                >
-                                                    <span className="truncate">
-                                                        {displayValue}
-                                                    </span>
-                                                    <Copy
-                                                        size={12}
-                                                        className="shrink-0 text-muted-foreground print:hidden"
-                                                        aria-hidden
-                                                    />
-                                                </button>
-                                                <a
-                                                    href={social.href}
-                                                    aria-label={`Open ${social.label.toLowerCase()}`}
-                                                    className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
-                                                >
-                                                    <ArrowUpRight
-                                                        size={13}
-                                                        aria-hidden
-                                                    />
-                                                </a>
-                                            </dd>
-                                        </span>
-                                    </div>
-                                ) : external ? (
-                                    <ExternalSocialLink
-                                        social={social}
-                                        Icon={Icon}
-                                        displayValue={displayValue}
-                                    />
-                                ) : (
-                                    <a
-                                        href={social.href}
-                                        aria-label={social.label}
-                                        className={rowClassName}
-                                    >
-                                        <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
-                                            <Icon
-                                                size={15}
-                                                className="stroke-current text-foreground/70"
-                                            />
-                                        </span>
-                                        <span className={contentClassName}>
-                                            <dt className="text-sm font-medium text-foreground/75 print:text-xs">
-                                                {social.label}
-                                            </dt>
-                                            <dd className="m-0 truncate text-sm text-foreground group-hover:underline group-hover:underline-offset-[3px] print:text-xs">
-                                                {displayValue}
-                                            </dd>
-                                        </span>
-                                    </a>
-                                )}
+                                <CopyableRow
+                                    label={social.label}
+                                    displayValue={displayValue}
+                                    href={social.href}
+                                    Icon={Icon}
+                                    external={external}
+                                    previewUrl={external ? social.href : undefined}
+                                    onCopy={() =>
+                                        handleCopy(
+                                            social.label,
+                                            getCopyValue(social)
+                                        )
+                                    }
+                                />
                             </div>
                         )
                     })}

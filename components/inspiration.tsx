@@ -1,0 +1,102 @@
+"use client"
+
+import { ArrowUpRight } from "lucide-react"
+import { SectionHeading } from "@/components/section-heading"
+import { LinkPreview } from "@/components/ui/link-preview"
+import { INSPIRATION_LINKS } from "@/lib/constants"
+import { cn } from "@/lib/utils"
+
+const rowClassName =
+    "social-link pressable hover-accent group relative flex items-center gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:mx-0 print:border-0 print:px-0 print:py-1"
+
+function getFaviconUrl(href: string): string {
+    const domain = new URL(href).hostname
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
+}
+
+function InspirationRow({
+    label,
+    href,
+    description,
+}: {
+    label: string
+    href: string
+    description: string
+}) {
+    const linkButton = (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${label}`}
+            className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
+        >
+            <ArrowUpRight size={13} aria-hidden />
+        </a>
+    )
+
+    return (
+        <div className={cn(rowClassName, "pr-1")}>
+            <span className="inline-flex size-7 shrink-0 items-center justify-center overflow-hidden rounded-md border border-input bg-background print:hidden">
+                <img
+                    src={getFaviconUrl(href)}
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="size-4"
+                />
+            </span>
+            <div className="flex min-w-0 flex-1 items-center gap-2">
+                <LinkPreview url={href}>
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pressable inline-flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2 gap-y-0.5 text-left print:text-xs"
+                    >
+                        <span className="text-sm font-medium text-foreground">
+                            {label}
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                            <span aria-hidden>· </span>
+                            {description}
+                        </span>
+                    </a>
+                </LinkPreview>
+                {linkButton}
+            </div>
+        </div>
+    )
+}
+
+export function Inspiration() {
+    return (
+        <section
+            id="inspiration"
+            className="section-enter"
+            style={{ animationDelay: "250ms" }}
+        >
+            <SectionHeading>Inspiration</SectionHeading>
+            <p className="mb-5 text-sm text-muted-foreground print:mb-2 print:text-xs">
+                A list of websites I admire, tools I use, and everything else
+                that follows. I will keep on updating this list as I find more
+                inspiration.
+            </p>
+            <div className="space-y-2 print:space-y-1.5">
+                {INSPIRATION_LINKS.map((item, idx) => (
+                    <div
+                        key={item.href}
+                        className="social-row print:break-inside-avoid"
+                        style={{ animationDelay: `${270 + idx * 50}ms` }}
+                    >
+                        <InspirationRow
+                            label={item.label}
+                            href={item.href}
+                            description={item.description}
+                        />
+                    </div>
+                ))}
+            </div>
+        </section>
+    )
+}

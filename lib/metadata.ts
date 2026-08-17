@@ -39,10 +39,20 @@ function socialDescription(): string {
     )
 }
 
+function inspirationDescription(): string {
+    const names = ["BEUI", "Interior", "Beautiful UI", "Checklist Design"].join(
+        ", ",
+    )
+    return truncate(
+        `Websites, tools, and resources I admire for design and engineering craft — including ${names}.`,
+    )
+}
+
 const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
     home: homeDescription,
     experience: experienceDescription,
     projects: projectsDescription,
+    inspiration: inspirationDescription,
     social: socialDescription,
 }
 
