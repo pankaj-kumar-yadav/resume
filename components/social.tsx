@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { CopyToast } from "@/components/copy-toast"
 import { IconBox } from "@/components/icon-box"
 import { SectionHeading } from "@/components/section-heading"
+import { SocialGroup } from "@/components/social-group"
 import { LinkPreview } from "@/components/ui/link-preview"
 import { copyToClipboard } from "@/lib/copy-to-clipboard"
 import { RESUME_DATA } from "@/lib/constants"
@@ -16,17 +17,20 @@ import { cn } from "@/lib/utils"
 const TOAST_DURATION_MS = 2000
 const LOCATION_MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(RESUME_DATA.location)}`
 
-function getDisplayValue(
-    social: (typeof RESUME_DATA.socials)[number]
-): string {
+type SocialEntry = (typeof RESUME_DATA.socials)[number]
+type SocialGroupId = SocialEntry["group"]
+
+type SocialListItem =
+    | { kind: "social"; social: SocialEntry }
+    | { kind: "location" }
+
+function getDisplayValue(social: SocialEntry): string {
     if (social.icon === "mail") return RESUME_DATA.email
     if (social.icon === "phone") return RESUME_DATA.phone
     return social.href.replace(/^https?:\/\/(www\.)?/, "")
 }
 
-function getCopyValue(
-    social: (typeof RESUME_DATA.socials)[number]
-): string {
+function getCopyValue(social: SocialEntry): string {
     if (social.icon === "mail") return RESUME_DATA.email
     if (social.icon === "phone") return RESUME_DATA.phone
     return getDisplayValue(social)
@@ -51,27 +55,86 @@ const rowClassName =
 const contentClassName =
     "grid min-w-0 flex-1 grid-cols-1 gap-0.5 sm:grid-cols-[7rem_1fr] sm:items-center sm:gap-4"
 
-const SOCIAL_TAB_ITEMS = [
-    ...RESUME_DATA.socials.filter((social) => social.icon !== "website"),
-    ...RESUME_DATA.socials.filter((social) => social.icon === "website"),
+const SOCIAL_GROUP_DEFS: {
+    id: SocialGroupId
+    headingId: string
+    label: string
+    iconOrder: string[]
+}[] = [
+    {
+        id: "contact",
+        headingId: "social-contact",
+        label: "Contact",
+        iconOrder: ["mail", "phone"],
+    },
+    {
+        id: "work",
+        headingId: "social-work",
+        label: "Work",
+        iconOrder: ["linkedin", "github", "gitlab", "website", "twitter"],
+    },
+    {
+        id: "practice",
+        headingId: "social-practice",
+        label: "Practice",
+        iconOrder: ["leetcode", "geeksforgeeks", "hackerrank"],
+    },
 ]
 
-type SocialListItem =
-    | { kind: "social"; social: (typeof RESUME_DATA.socials)[number] }
-    | { kind: "location" }
-
-function buildSocialListItems(): SocialListItem[] {
+function itemsForGroup(groupId: SocialGroupId, iconOrder: string[]): SocialListItem[] {
+    const inGroup = RESUME_DATA.socials.filter((social) => social.group === groupId)
+    const byIcon = new Map(inGroup.map((social) => [social.icon, social]))
     const items: SocialListItem[] = []
-    for (const social of SOCIAL_TAB_ITEMS) {
+    const used = new Set<string>()
+
+    for (const icon of iconOrder) {
+        const social = byIcon.get(icon)
+        if (!social) continue
+        used.add(icon)
         items.push({ kind: "social", social })
-        if (social.icon === "phone") {
+        if (icon === "phone") {
             items.push({ kind: "location" })
         }
     }
+
+    for (const social of inGroup) {
+        if (used.has(social.icon)) continue
+        items.push({ kind: "social", social })
+    }
+
     return items
 }
 
-const SOCIAL_LIST_ITEMS = buildSocialListItems()
+const SOCIAL_GROUPS = (() => {
+    let stagger = 0
+
+    return SOCIAL_GROUP_DEFS.flatMap((def) => {
+        const items = itemsForGroup(def.id, def.iconOrder)
+        if (items.length === 0) return []
+
+        const headingDelayMs = stagger * 50
+        stagger += 1
+
+        return [
+            {
+                ...def,
+                headingDelayMs,
+                items: items.map((item) => {
+                    const delayMs = stagger * 50
+                    stagger += 1
+                    return {
+                        item,
+                        delayMs,
+                        key:
+                            item.kind === "location"
+                                ? "location"
+                                : item.social.label,
+                    }
+                }),
+            },
+        ]
+    })
+})()
 
 function CopyableRow({
     label,
@@ -142,6 +205,63 @@ function CopyableRow({
     )
 }
 
+function SocialListRow({
+    item,
+    delayMs,
+    onCopy,
+}: {
+    item: SocialListItem
+    delayMs: number
+    onCopy: (label: string, value: string) => void
+}) {
+    if (item.kind === "location") {
+        const LocationIcon = SOCIAL_ICON_MAP.location
+        if (!LocationIcon) return null
+
+        return (
+            <div
+                className="social-row print:break-inside-avoid"
+                style={{ animationDelay: `${delayMs}ms` }}
+            >
+                <CopyableRow
+                    label="Location"
+                    displayValue={RESUME_DATA.location}
+                    href={LOCATION_MAPS_HREF}
+                    Icon={LocationIcon}
+                    iconKey="location"
+                    external
+                    onCopy={() => onCopy("Location", RESUME_DATA.location)}
+                />
+            </div>
+        )
+    }
+
+    const social = item.social
+    const Icon = SOCIAL_ICON_MAP[social.icon]
+    if (!Icon) return null
+
+    const external = isExternalLink(social.icon)
+    const displayValue = getDisplayValue(social)
+
+    return (
+        <div
+            className="social-row print:break-inside-avoid"
+            style={{ animationDelay: `${delayMs}ms` }}
+        >
+            <CopyableRow
+                label={social.label}
+                displayValue={displayValue}
+                href={social.href}
+                Icon={Icon}
+                iconKey={social.icon}
+                external={external}
+                previewUrl={external ? social.href : undefined}
+                onCopy={() => onCopy(social.label, getCopyValue(social))}
+            />
+        </div>
+    )
+}
+
 export function Social() {
     const [toastMessage, setToastMessage] = useState("")
     const [toastVisible, setToastVisible] = useState(false)
@@ -187,70 +307,25 @@ export function Social() {
                     Open to opportunities. Click any value to copy. Hover links
                     to preview.
                 </p>
-                <dl className="space-y-2 print:space-y-1.5">
-                    {SOCIAL_LIST_ITEMS.map((item, idx) => {
-                        if (item.kind === "location") {
-                            const LocationIcon = SOCIAL_ICON_MAP.location
-                            if (!LocationIcon) return null
-
-                            return (
-                                <div
-                                    key="location"
-                                    className="social-row print:break-inside-avoid"
-                                    style={{
-                                        animationDelay: `${idx * 50}ms`,
-                                    }}
-                                >
-                                    <CopyableRow
-                                        label="Location"
-                                        displayValue={RESUME_DATA.location}
-                                        href={LOCATION_MAPS_HREF}
-                                        Icon={LocationIcon}
-                                        iconKey="location"
-                                        external
-                                        onCopy={() =>
-                                            handleCopy(
-                                                "Location",
-                                                RESUME_DATA.location
-                                            )
-                                        }
-                                    />
-                                </div>
-                            )
-                        }
-
-                        const social = item.social
-                        const Icon = SOCIAL_ICON_MAP[social.icon]
-                        if (!Icon) return null
-
-                        const external = isExternalLink(social.icon)
-                        const displayValue = getDisplayValue(social)
-
-                        return (
-                            <div
-                                key={social.label}
-                                className="social-row print:break-inside-avoid"
-                                style={{ animationDelay: `${idx * 50}ms` }}
-                            >
-                                <CopyableRow
-                                    label={social.label}
-                                    displayValue={displayValue}
-                                    href={social.href}
-                                    Icon={Icon}
-                                    iconKey={social.icon}
-                                    external={external}
-                                    previewUrl={external ? social.href : undefined}
-                                    onCopy={() =>
-                                        handleCopy(
-                                            social.label,
-                                            getCopyValue(social)
-                                        )
-                                    }
+                <div className="space-y-6 print:space-y-3">
+                    {SOCIAL_GROUPS.map((group) => (
+                        <SocialGroup
+                            key={group.headingId}
+                            id={group.headingId}
+                            title={group.label}
+                            headingDelayMs={group.headingDelayMs}
+                        >
+                            {group.items.map(({ item, delayMs, key }) => (
+                                <SocialListRow
+                                    key={key}
+                                    item={item}
+                                    delayMs={delayMs}
+                                    onCopy={handleCopy}
                                 />
-                            </div>
-                        )
-                    })}
-                </dl>
+                            ))}
+                        </SocialGroup>
+                    ))}
+                </div>
             </section>
             <CopyToast message={toastMessage} visible={toastVisible} />
         </>
