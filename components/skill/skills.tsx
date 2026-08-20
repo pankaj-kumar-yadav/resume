@@ -1,6 +1,6 @@
-import { SectionHeading } from "@/components/section-heading"
-import { TechTag } from "@/components/tech-tag"
-import { RESUME_DATA } from "@/lib/constants"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { TechTag } from "@/components/skill/tech-tag"
+import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 const SKILL_GROUPS = RESUME_DATA.skills.filter((group) => group.items.length > 0)
 

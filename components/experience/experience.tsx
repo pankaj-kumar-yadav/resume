@@ -1,8 +1,8 @@
-import { FaviconSquircle } from "@/components/favicon-squircle"
-import { SectionHeading } from "@/components/section-heading"
-import { LinkableText } from "@/components/linkable-text"
-import { TechTag } from "@/components/tech-tag"
-import { RESUME_DATA } from "@/lib/constants"
+import { FaviconSquircle } from "@/components/shared/favicon-squircle"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { LinkableText } from "@/components/shared/linkable-text"
+import { TechTag } from "@/components/skill/tech-tag"
+import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 function getAchievementProjectLink(
     achievement: string,

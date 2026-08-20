@@ -1,10 +1,10 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
-import { SectionHeading } from "@/components/section-heading"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { LinkPreview } from "@/components/ui/link-preview"
-import { FaviconSquircle } from "@/components/favicon-squircle"
-import { INSPIRATION_LINKS } from "@/lib/constants"
+import { FaviconSquircle } from "@/components/shared/favicon-squircle"
+import { INSPIRATION_LINKS } from "@/lib/constants/inspiration.constant"
 import { cn } from "@/lib/utils"
 
 const rowClassName =

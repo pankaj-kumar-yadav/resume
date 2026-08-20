@@ -1,5 +1,5 @@
-import { SectionHeading } from "@/components/section-heading"
-import { RESUME_DATA, RESUME_PDF_URL } from "@/lib/constants"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { RESUME_DATA, RESUME_PDF_URL } from "@/lib/constants/resume.constant"
 
 export function Home() {
     return (

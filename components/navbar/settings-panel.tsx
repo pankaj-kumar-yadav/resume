@@ -2,7 +2,7 @@
 
 import { Settings } from "lucide-react"
 import { useEffect, useId, useRef, useState } from "react"
-import { useFont } from "@/components/font-provider"
+import { useFont } from "@/lib/providers/font.providers"
 import { ICON_BOX_BASE, ICON_BOX_TONES } from "@/lib/icon-box"
 import { cn } from "@/lib/utils"
 import type { FontId } from "@/lib/fonts"

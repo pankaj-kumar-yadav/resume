@@ -1,4 +1,4 @@
-import { Social } from "@/components/social"
+import { Social } from "@/components/social/social"
 import { getSectionMetadata } from "@/lib/metadata"
 
 export const metadata = getSectionMetadata("social")

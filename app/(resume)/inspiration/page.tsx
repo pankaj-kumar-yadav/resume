@@ -1,4 +1,4 @@
-import { Inspiration } from "@/components/inspiration"
+import { Inspiration } from "@/components/inspiration/inspiration"
 import { getSectionMetadata } from "@/lib/metadata"
 
 export const metadata = getSectionMetadata("inspiration")

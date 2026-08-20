@@ -1,6 +1,6 @@
-import { Header } from "@/components/header"
-import { SectionNav } from "@/components/section-nav"
-import { SettingsPanel } from "@/components/settings-panel"
+import { Header } from "@/components/navbar/header"
+import { SectionNav } from "@/components/navbar/section-nav"
+import { SettingsPanel } from "@/components/navbar/settings-panel"
 
 export default function ResumeLayout({
     children,

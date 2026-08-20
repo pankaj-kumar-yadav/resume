@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import { RESUME_DATA } from "@/lib/constants"
-import { SECTIONS, type SectionId } from "@/lib/sections"
+import { RESUME_DATA } from "@/lib/constants/resume.constant"
+import { SECTIONS, type SectionId } from "@/lib/constants/sections.constant"
 
 const DESCRIPTION_MAX = 160
 

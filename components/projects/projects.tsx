@@ -1,8 +1,8 @@
 import { ExternalLink, Github } from "lucide-react"
-import { SectionHeading } from "@/components/section-heading"
-import { TechTag } from "@/components/tech-tag"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { TechTag } from "@/components/skill/tech-tag"
 import { LinkPreview } from "@/components/ui/link-preview"
-import { RESUME_DATA } from "@/lib/constants"
+import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 export function Projects() {
     const featuredProjects = RESUME_DATA.projects.filter((p) => p.featured)

@@ -1,5 +1,5 @@
-import { Home } from "@/components/home"
-import { Skills } from "@/components/skills"
+import { Home } from "@/components/home/home"
+import { Skills } from "@/components/skill/skills"
 import { getSectionMetadata } from "@/lib/metadata"
 
 export const metadata = getSectionMetadata("home")

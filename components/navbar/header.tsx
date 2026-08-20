@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { RESUME_DATA } from "@/lib/constants"
+import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 export function Header() {
     return (
