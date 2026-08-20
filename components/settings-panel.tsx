@@ -2,7 +2,6 @@
 
 import { Settings } from "lucide-react"
 import { useEffect, useId, useRef, useState } from "react"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { useFont } from "@/components/font-provider"
 import { ICON_BOX_BASE, ICON_BOX_TONES } from "@/lib/icon-box"
 import { cn } from "@/lib/utils"
@@ -92,12 +91,6 @@ export function SettingsPanel() {
                 </button>
               )
             })}
-          </div>
-
-          <div className="my-2 border-t border-dashed border-zinc-600" />
-
-          <div className="flex items-center justify-end px-1 pb-0.5">
-            <ThemeToggle />
           </div>
         </div>
       ) : null}

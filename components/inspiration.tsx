@@ -37,18 +37,20 @@ function InspirationRow({
         <div className={cn(rowClassName, "pr-1")}>
             <FaviconSquircle href={href} icon={icon} />
             <div className="flex min-w-0 flex-1 items-center gap-2">
-                <LinkPreview url={href}>
+                <LinkPreview url={href} className="min-w-0 flex-1">
                     <a
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="pressable inline-flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2 gap-y-0.5 text-left print:text-xs"
+                        className="pressable flex min-w-0 flex-1 flex-col gap-0.5 text-left print:text-xs sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-2 sm:gap-y-0"
                     >
-                        <span className="text-sm font-medium text-foreground">
+                        <span className="shrink-0 text-sm font-medium text-foreground">
                             {label}
                         </span>
-                        <span className="text-sm text-muted-foreground">
-                            <span aria-hidden>· </span>
+                        <span className="min-w-0 text-sm text-muted-foreground">
+                            <span className="hidden sm:inline" aria-hidden>
+                                ·{" "}
+                            </span>
                             {description}
                         </span>
                     </a>

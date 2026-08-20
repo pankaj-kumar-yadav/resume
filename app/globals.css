@@ -187,43 +187,18 @@
   }
 
   .tech-tag {
-    position: relative;
+    background-color: transparent;
+    border-color: color-mix(in oklab, var(--border) 70%, transparent);
     transition:
-      transform 160ms var(--ease-out),
-      background-color 150ms var(--ease-out),
-      border-color 150ms var(--ease-out);
-  }
-
-  .tech-tag::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: var(--foreground);
-    opacity: 0;
-    clip-path: inset(0 100% 0 0);
-    transition:
-      clip-path 200ms var(--ease-out),
-      opacity 150ms var(--ease-out);
-    pointer-events: none;
+      border-color 150ms var(--ease-out),
+      color 150ms var(--ease-out);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .tech-tag:hover {
-      transform: translateY(-1px);
-      border-color: var(--border);
-      background-color: var(--accent);
+      border-color: color-mix(in oklab, var(--foreground) 28%, transparent);
+      color: var(--foreground);
     }
-
-    .tech-tag:hover::before {
-      opacity: 0.04;
-      clip-path: inset(0 0 0 0);
-    }
-  }
-
-  .tech-tag:active {
-    transform: scale(0.97);
-    transition-duration: 100ms;
   }
 
   .social-link::before {
@@ -316,14 +291,6 @@
     transition: none;
   }
 
-  .tech-tag::before {
-    display: none;
-  }
-
-  .tech-tag:active {
-    transform: none;
-  }
-
   .section-nav-clip {
     transition: none;
   }
@@ -378,6 +345,12 @@
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  .tech-tag {
+    background-color: var(--secondary);
+    border-color: color-mix(in oklab, var(--border) 60%, transparent);
+    color: var(--secondary-foreground);
   }
 
   .section-enter {

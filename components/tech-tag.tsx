@@ -16,9 +16,9 @@ export function TechTag({ children, className, showIcon = true }: TechTagProps) 
 
   return (
     <Badge
-      variant="secondary"
+      variant="outline"
       className={cn(
-        "tech-tag font-mono text-xs rounded-md px-2 py-0.5 font-medium border border-border/60 print:text-[9pt] print:px-1.5 print:py-0",
+        "tech-tag font-mono text-xs rounded-md px-1.5 py-px font-medium text-foreground/80 print:bg-secondary print:text-secondary-foreground print:border-border/60 print:text-[9pt] print:px-1.5 print:py-0",
         className
       )}
     >

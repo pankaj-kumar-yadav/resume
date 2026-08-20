@@ -17,6 +17,7 @@ import {
     SiNodedotjs,
     SiRazorpay,
     SiReact,
+    SiReacthookform,
     SiRedux,
     SiShadcnui,
     SiStripe,
@@ -24,8 +25,9 @@ import {
     SiTypescript,
     SiVite,
     SiWindsurf,
+    SiZod,
 } from "react-icons/si"
-import { TbBrandOpenai } from "react-icons/tb"
+import { TbBrandOpenai, TbBrandVscode } from "react-icons/tb"
 
 type TechIconEntry = {
     icon: IconType
@@ -46,6 +48,7 @@ const TECH_ICONS: Record<string, TechIconEntry> = {
     "Material UI": { icon: SiMui, color: "#007FFF" },
     "Chakra UI": { icon: SiChakraui, color: "#319795" },
     Redux: { icon: SiRedux, color: "#764ABC" },
+    "React Hook Form": { icon: SiReacthookform, color: "#EC5990" },
     "Node.js": { icon: SiNodedotjs, color: "#339933" },
     Express: { icon: SiExpress },
     MongoDB: { icon: SiMongodb, color: "#47A248" },
@@ -55,6 +58,8 @@ const TECH_ICONS: Record<string, TechIconEntry> = {
     Vite: { icon: SiVite, color: "#646CFF" },
     "React Native": { icon: SiReact, color: "#61DAFB" },
     Axios: { icon: SiAxios, color: "#5A29E4" },
+    Zod: { icon: SiZod, color: "#3E67B1" },
+    "VS Code": { icon: TbBrandVscode, color: "#007ACC" },
     Stripe: { icon: SiStripe, color: "#635BFF" },
     Razorpay: { icon: SiRazorpay, color: "#0C2451" },
     Cursor: { icon: SiCursor },
