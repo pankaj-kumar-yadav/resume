@@ -87,7 +87,7 @@ export function InterviewPrepExternal() {
             </section>
 
             {INTERVIEW_PREP_EXTERNAL.sections.map((section) => (
-                <section key={section.id} id={section.id}>
+                <section key={section.id} id={section.id} className="scroll-mt-6">
                     <SectionHeading>{section.title}</SectionHeading>
                     <p className="mb-4 text-sm text-muted-foreground">
                         {section.blurb}

@@ -3,14 +3,36 @@ export const INTERVIEW_PREP_UPDATED_AT = {
     display: "20 Aug 2026, 9:46 PM IST",
 } as const
 
+export const INTERVIEW_PREP_PATH = "/interview-prep"
+export const INTERVIEW_PREP_EXTERNAL_PATH = "/interview-prep-external"
+
+export const INTERVIEW_PREP_NAV = [
+    { id: "home", label: "Home", href: "/home" },
+    { id: "prep", label: "Interview prep", href: INTERVIEW_PREP_PATH },
+    { id: "external", label: "External", href: INTERVIEW_PREP_EXTERNAL_PATH },
+] as const
+
+export const INTERVIEW_PREP_MORE_HREF: Record<string, string> = {
+    javascript: `${INTERVIEW_PREP_EXTERNAL_PATH}#javascript`,
+    react: `${INTERVIEW_PREP_EXTERNAL_PATH}#react`,
+    next: `${INTERVIEW_PREP_EXTERNAL_PATH}#nextjs`,
+}
+
 export const INTERVIEW_PREP_UI = {
     lastUpdatedPrefix: "Last updated",
     sourcesHeading: "Sources",
+    externalLabel: "external",
+    notEnoughPrefix: "Not enough?",
+    moreBulletBefore: "If a short answer is not enough, go to ",
+    moreBulletAfter: " for the in-depth lists.",
 } as const
 
 export const INTERVIEW_PREP = {
     title: "Interview prep",
-    intro: "100 answers for this stack. Say the tradeoff, the failure mode, then the system you shipped.",
+    intro: "100 answers for this stack.",
+    bullets: [
+        "Say the tradeoff, the failure mode, then the system you shipped.",
+    ],
     sections: [
         {
             id: "javascript",

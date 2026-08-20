@@ -1,3 +1,4 @@
+import { ArrowTextLink } from "@/components/shared/arrow-text-link"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { RESUME_DATA, RESUME_PDF_URL } from "@/lib/constants/resume.constant"
 
@@ -12,15 +13,7 @@ export function Home() {
                 <p>
                     For a consolidated overview of my experience, projects, and
                     skills, see my{" "}
-                    <a
-                        href={RESUME_PDF_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline text-foreground underline-offset-[3px]"
-                    >
-                        resume
-                    </a>
-                    .
+                    <ArrowTextLink href={RESUME_PDF_URL}>resume</ArrowTextLink>.
                 </p>
             </div>
         </section>
