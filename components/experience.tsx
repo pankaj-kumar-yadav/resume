@@ -1,4 +1,4 @@
-import { FaviconSquare } from "@/components/favicon-square"
+import { FaviconSquircle } from "@/components/favicon-squircle"
 import { SectionHeading } from "@/components/section-heading"
 import { LinkableText } from "@/components/linkable-text"
 import { TechTag } from "@/components/tech-tag"
@@ -22,7 +22,7 @@ export function Experience() {
                     <article key={idx} className="space-y-3 print:space-y-1.5 print:break-inside-avoid">
                         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-3">
-                                {exp.website && <FaviconSquare href={exp.website} />}
+                                {exp.website && <FaviconSquircle href={exp.website} />}
                                 <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
                                     {exp.company}
                                 </h3>
@@ -58,7 +58,7 @@ export function Experience() {
                                         <li key={i} className="flex gap-2">
                                             <span className="text-muted-foreground shrink-0">•</span>
                                             {projectLink && (
-                                                <FaviconSquare
+                                                <FaviconSquircle
                                                     href={projectLink.url}
                                                     icon={projectLink.icon}
                                                     size="sm"

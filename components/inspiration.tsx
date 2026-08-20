@@ -3,7 +3,7 @@
 import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import { LinkPreview } from "@/components/ui/link-preview"
-import { FaviconSquare } from "@/components/favicon-square"
+import { FaviconSquircle } from "@/components/favicon-squircle"
 import { INSPIRATION_LINKS } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 
@@ -35,7 +35,7 @@ function InspirationRow({
 
     return (
         <div className={cn(rowClassName, "pr-1")}>
-            <FaviconSquare href={href} icon={icon} />
+            <FaviconSquircle href={href} icon={icon} />
             <div className="flex min-w-0 flex-1 items-center gap-2">
                 <LinkPreview url={href}>
                     <a

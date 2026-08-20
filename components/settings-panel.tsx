@@ -4,6 +4,7 @@ import { Settings } from "lucide-react"
 import { useEffect, useId, useRef, useState } from "react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { useFont } from "@/components/font-provider"
+import { ICON_BOX_BASE, ICON_BOX_TONES } from "@/lib/icon-box"
 import { cn } from "@/lib/utils"
 import type { FontId } from "@/lib/fonts"
 
@@ -12,9 +13,6 @@ const FONTS: { id: FontId; label: string; className: string }[] = [
   { id: "inter", label: "Inter", className: "[font-family:var(--font-inter)]" },
   { id: "geist", label: "Geist", className: "[font-family:var(--font-geist)]" },
 ]
-
-const triggerClassName =
-  "pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground/70 [&_svg]:size-4 print:hidden"
 
 export function SettingsPanel() {
   const { font, setFont } = useFont()
@@ -53,10 +51,19 @@ export function SettingsPanel() {
         aria-label={open ? "Close settings" : "Open settings"}
         aria-expanded={open}
         aria-controls={panelId}
-        className={triggerClassName}
+        className={cn(
+          "pressable size-8 text-white",
+          ICON_BOX_BASE,
+          "rounded-sm",
+          ICON_BOX_TONES.neutral
+        )}
         onClick={() => setOpen((value) => !value)}
       >
-        <Settings aria-hidden />
+        <Settings
+          size={16}
+          className="stroke-current drop-shadow-xl drop-shadow-black/40"
+          aria-hidden
+        />
       </button>
 
       {open ? (

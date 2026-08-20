@@ -44,7 +44,7 @@ export const RESUME_DATA = {
         },
         {
             label: "LeetCode",
-            href: "https://leetcode.com/u/pankaj9967/",
+            href: "https://leetcode.com/u/pankaj9967",
             icon: "leetcode",
         },
         {

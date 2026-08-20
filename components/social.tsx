@@ -4,10 +4,12 @@ import { ArrowUpRight, Copy } from "lucide-react"
 import type { ComponentType } from "react"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { CopyToast } from "@/components/copy-toast"
+import { IconBox } from "@/components/icon-box"
 import { SectionHeading } from "@/components/section-heading"
 import { LinkPreview } from "@/components/ui/link-preview"
 import { copyToClipboard } from "@/lib/copy-to-clipboard"
 import { RESUME_DATA } from "@/lib/constants"
+import { SOCIAL_ICON_TONES } from "@/lib/icon-box"
 import { SOCIAL_ICON_MAP } from "@/lib/social-icons"
 import { cn } from "@/lib/utils"
 
@@ -76,6 +78,7 @@ function CopyableRow({
     displayValue,
     href,
     Icon,
+    iconKey,
     onCopy,
     external = false,
     previewUrl,
@@ -84,6 +87,7 @@ function CopyableRow({
     displayValue: string
     href: string
     Icon: ComponentType<{ size?: number; className?: string }>
+    iconKey: string
     onCopy: () => void
     external?: boolean
     previewUrl?: string
@@ -103,9 +107,12 @@ function CopyableRow({
 
     return (
         <div className={cn(rowClassName, "pr-1")}>
-            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-foreground print:hidden">
-                <Icon size={15} className="stroke-current text-foreground/70" />
-            </span>
+            <IconBox tone={SOCIAL_ICON_TONES[iconKey] ?? "blue"}>
+                <Icon
+                    size={16}
+                    className="stroke-current drop-shadow-xl drop-shadow-black/40"
+                />
+            </IconBox>
             <span className={contentClassName}>
                 <dt className="text-sm font-medium text-foreground/75 print:text-xs">
                     {label}
@@ -199,6 +206,7 @@ export function Social() {
                                         displayValue={RESUME_DATA.location}
                                         href={LOCATION_MAPS_HREF}
                                         Icon={LocationIcon}
+                                        iconKey="location"
                                         external
                                         onCopy={() =>
                                             handleCopy(
@@ -229,6 +237,7 @@ export function Social() {
                                     displayValue={displayValue}
                                     href={social.href}
                                     Icon={Icon}
+                                    iconKey={social.icon}
                                     external={external}
                                     previewUrl={external ? social.href : undefined}
                                     onCopy={() =>

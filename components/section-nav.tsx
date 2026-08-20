@@ -74,7 +74,7 @@ export function SectionNav() {
     }
 
     const tabClassName =
-        "pressable hover-accent shrink-0 rounded-md px-2 py-1 text-xs font-medium sm:px-2.5 sm:py-1.5 sm:text-sm"
+        "pressable hover-accent shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium sm:px-3 sm:py-1.5 sm:text-sm"
 
     return (
         <nav
@@ -85,7 +85,7 @@ export function SectionNav() {
                 ref={containerRef}
                 className="section-nav-tabs relative min-w-0"
             >
-                <div className="flex gap-1">
+                <div className="flex gap-2">
                     {SECTIONS.map(({ id, label, href }, index) => {
                         const isActive = activeId === id
 
@@ -109,7 +109,7 @@ export function SectionNav() {
                 </div>
                 <div
                     ref={clipRef}
-                    className="section-nav-clip pointer-events-none absolute inset-0 flex gap-1"
+                    className="section-nav-clip pointer-events-none absolute inset-0 flex gap-2"
                     style={{ clipPath: "inset(0 100% 0 0)" }}
                     aria-hidden="true"
                 >
@@ -118,7 +118,7 @@ export function SectionNav() {
                             key={id}
                             className={cn(
                                 tabClassName,
-                                "text-foreground underline decoration-solid decoration-2 underline-offset-4"
+                                "bg-muted text-foreground"
                             )}
                         >
                             {label}

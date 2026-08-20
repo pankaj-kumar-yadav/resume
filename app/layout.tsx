@@ -65,7 +65,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: FONT_FOUC_SCRIPT }} />
       </head>
-      <body className="antialiased leading-relaxed">
+      <body className="antialiased leading-relaxed" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false} disableTransitionOnChange>
           <FontProvider>
             <PHProvider>

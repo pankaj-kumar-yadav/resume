@@ -6,14 +6,15 @@ import { getFaviconUrl } from "@/lib/favicon"
 import { cn } from "@/lib/utils"
 
 const SIZES = {
-    md: { wrap: "size-7", image: 16, imageClass: "size-4" },
-    sm: { wrap: "size-5", image: 12, imageClass: "size-3" },
+    md: { wrap: "size-8", image: 16, imageClass: "size-4" },
+    sm: { wrap: "size-6", image: 12, imageClass: "size-3" },
 } as const
 
 const BLUR_DATA_URL =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
-export function FaviconSquare({
+/** Neutral squircle favicon tile for work / inspiration links. */
+export function FaviconSquircle({
     href,
     icon,
     size = "md",
@@ -28,12 +29,11 @@ export function FaviconSquare({
     const [loaded, setLoaded] = useState(false)
     const src = icon ?? getFaviconUrl(href)
     const isSvg = /\.svg(?:$|\?)/i.test(src)
-    const imageClassName = cn(dimensions.imageClass, "favicon-square-image")
 
     return (
         <span
             className={cn(
-                "inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border border-input bg-background print:hidden",
+                "inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[22%] border border-input bg-background print:hidden",
                 dimensions.wrap,
                 className
             )}
@@ -46,8 +46,11 @@ export function FaviconSquare({
                 unoptimized={isSvg}
                 placeholder={isSvg ? "empty" : "blur"}
                 blurDataURL={isSvg ? undefined : BLUR_DATA_URL}
-                className={imageClassName}
-                data-loaded={loaded || undefined}
+                className={cn(
+                    dimensions.imageClass,
+                    "transition-opacity duration-150",
+                    loaded ? "opacity-100" : "opacity-70"
+                )}
                 onLoad={() => setLoaded(true)}
                 onError={(event) => {
                     event.currentTarget.hidden = true
