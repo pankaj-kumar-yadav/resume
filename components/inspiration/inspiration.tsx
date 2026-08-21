@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { LinkPreview } from "@/components/ui/link-preview"
@@ -22,7 +23,7 @@ function InspirationRow({
     icon?: string
 }) {
     const linkButton = (
-        <a
+        <Link
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -30,7 +31,7 @@ function InspirationRow({
             className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
         >
             <ArrowUpRight size={13} aria-hidden />
-        </a>
+        </Link>
     )
 
     return (
@@ -38,7 +39,7 @@ function InspirationRow({
             <FaviconSquircle href={href} icon={icon} />
             <div className="flex min-w-0 flex-1 items-center gap-2">
                 <LinkPreview url={href} className="min-w-0 flex-1">
-                    <a
+                    <Link
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -53,7 +54,7 @@ function InspirationRow({
                             </span>
                             {description}
                         </span>
-                    </a>
+                    </Link>
                 </LinkPreview>
                 {linkButton}
             </div>

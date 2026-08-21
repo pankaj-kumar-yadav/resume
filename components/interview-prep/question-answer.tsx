@@ -1,16 +1,13 @@
-import { ArrowTextLink } from "@/components/shared/arrow-text-link"
-import { INTERVIEW_PREP_UI } from "@/lib/constants/interview-prep.constant"
-
 export function QuestionAnswer({
     n,
     question,
     answer,
-    moreHref,
+    bullets,
 }: {
     n: number
     question: string
     answer: string
-    moreHref?: string
+    bullets: readonly string[]
 }) {
     return (
         <li value={n}>
@@ -23,24 +20,29 @@ export function QuestionAnswer({
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                 {answer}
             </p>
-            {moreHref ? (
-                <p className="mt-1.5 text-sm text-muted-foreground">
-                    {INTERVIEW_PREP_UI.notEnoughPrefix}{" "}
-                    <ArrowTextLink href={moreHref}>
-                        {INTERVIEW_PREP_UI.externalLabel}
-                    </ArrowTextLink>
-                </p>
-            ) : null}
+            {bullets.length > 0 && (
+                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {bullets.map((bullet, i) => (
+                        <li key={i} className="flex gap-2">
+                            <span className="shrink-0">•</span>
+                            <span>{bullet}</span>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </li>
     )
 }
 
 export function QuestionAnswerList({
     items,
-    moreHref,
 }: {
-    items: readonly { n: number; q: string; a: string }[]
-    moreHref?: string
+    items: readonly {
+        n: number
+        q: string
+        a: string
+        bullets: readonly string[]
+    }[]
 }) {
     return (
         <ol className="space-y-6">
@@ -50,7 +52,7 @@ export function QuestionAnswerList({
                     n={item.n}
                     question={item.q}
                     answer={item.a}
-                    moreHref={moreHref}
+                    bullets={item.bullets}
                 />
             ))}
         </ol>

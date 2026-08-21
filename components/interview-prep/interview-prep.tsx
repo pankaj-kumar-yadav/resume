@@ -4,7 +4,6 @@ import { QuestionAnswerList } from "@/components/interview-prep/question-answer"
 import {
     INTERVIEW_PREP,
     INTERVIEW_PREP_EXTERNAL_PATH,
-    INTERVIEW_PREP_MORE_HREF,
     INTERVIEW_PREP_UI,
     INTERVIEW_PREP_UPDATED_AT,
     getNumberedInterviewPrepSections,
@@ -49,10 +48,7 @@ export function InterviewPrep() {
             {sections.map((section) => (
                 <section key={section.id} id={section.id}>
                     <SectionHeading>{section.title}</SectionHeading>
-                    <QuestionAnswerList
-                        items={section.items}
-                        moreHref={INTERVIEW_PREP_MORE_HREF[section.id]}
-                    />
+                    <QuestionAnswerList items={section.items} />
                 </section>
             ))}
         </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ArrowUpRight, Copy } from "lucide-react"
 import type { ComponentType } from "react"
 import { useCallback, useEffect, useRef, useState } from "react"
@@ -156,7 +157,7 @@ function CopyableRow({
     previewUrl?: string
 }) {
     const linkButton = (
-        <a
+        <Link
             href={href}
             aria-label={`Open ${label.toLowerCase()}`}
             {...(external
@@ -165,7 +166,7 @@ function CopyableRow({
             className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
         >
             <ArrowUpRight size={13} aria-hidden />
-        </a>
+        </Link>
     )
 
     return (

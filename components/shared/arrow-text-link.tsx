@@ -13,33 +13,20 @@ export function ArrowTextLink({
     className?: string
 }) {
     const isExternal = /^https?:\/\//.test(href)
-    const classNames = cn(
-        "pressable inline-flex items-center gap-0.5 whitespace-nowrap text-foreground",
-        className,
-    )
-    const content = (
-        <>
-            <span className="underline underline-offset-[3px]">{children}</span>
-            <ArrowUpRight size={12} strokeWidth={2} aria-hidden />
-        </>
-    )
-
-    if (isExternal) {
-        return (
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={classNames}
-            >
-                {content}
-            </a>
-        )
-    }
 
     return (
-        <Link href={href} className={classNames}>
-            {content}
+        <Link
+            href={href}
+            {...(isExternal
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            className={cn(
+                "pressable inline-flex items-center gap-0.5 whitespace-nowrap text-foreground",
+                className,
+            )}
+        >
+            <span className="underline underline-offset-[3px]">{children}</span>
+            <ArrowUpRight size={12} strokeWidth={2} aria-hidden />
         </Link>
     )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
@@ -28,7 +29,7 @@ function PrepRow({
             <FaviconSquircle href={href} />
             <div className="flex min-w-0 flex-1 items-center gap-2">
                 <LinkPreview url={href} className="min-w-0 flex-1">
-                    <a
+                    <Link
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -40,9 +41,9 @@ function PrepRow({
                         <span className="min-w-0 break-all text-xs text-muted-foreground">
                             {description}
                         </span>
-                    </a>
+                    </Link>
                 </LinkPreview>
-                <a
+                <Link
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -50,7 +51,7 @@ function PrepRow({
                     className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground"
                 >
                     <ArrowUpRight size={13} aria-hidden />
-                </a>
+                </Link>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 "use client";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-
+import Link from "next/link";
 import { encode } from "qss";
 import React from "react";
 import {
@@ -127,8 +127,10 @@ export const LinkPreview = ({
                     x: translateX,
                   }}
                 >
-                  <a
+                  <Link
                     href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
                     style={{ fontSize: 0 }}
                   >
@@ -139,7 +141,7 @@ export const LinkPreview = ({
                       className="rounded-lg"
                       alt="preview image"
                     />
-                  </a>
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>

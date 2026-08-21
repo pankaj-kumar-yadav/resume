@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { LinkPreview } from "@/components/ui/link-preview"
 
 type ExperienceLink = {
@@ -35,14 +36,14 @@ export function LinkableText({
 
                 return (
                     <LinkPreview key={`${link.url}-${index}`} url={link.url}>
-                        <a
+                        <Link
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline underline-offset-[3px] hover:text-foreground print:no-underline"
                         >
                             {segment}
-                        </a>
+                        </Link>
                     </LinkPreview>
                 )
             })}

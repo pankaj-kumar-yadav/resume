@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { ExternalLink, Github } from "lucide-react"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { TechTag } from "@/components/skill/tech-tag"
@@ -24,7 +25,7 @@ export function Projects() {
                                 <div className="flex items-center gap-3 shrink-0 print:gap-1.5">
                                     {proj.live && (
                                         <LinkPreview url={proj.live}>
-                                            <a
+                                            <Link
                                                 href={proj.live}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -35,12 +36,12 @@ export function Projects() {
                                                 <ExternalLink size={13} className="shrink-0 print:hidden" aria-hidden />
                                                 <span className="print:hidden">Live</span>
                                                 <span className="hidden print:inline">{proj.live.replace("https://", "")}</span>
-                                            </a>
+                                            </Link>
                                         </LinkPreview>
                                     )}
                                     {proj.github && (
                                         <LinkPreview url={proj.github}>
-                                            <a
+                                            <Link
                                                 href={proj.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -51,7 +52,7 @@ export function Projects() {
                                                 <Github size={13} className="shrink-0 print:hidden" aria-hidden />
                                                 <span className="print:hidden">GitHub</span>
                                                 <span className="hidden print:inline">{proj.github.replace("https://", "")}</span>
-                                            </a>
+                                            </Link>
                                         </LinkPreview>
                                     )}
                                 </div>

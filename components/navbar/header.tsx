@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 export function Header() {
@@ -31,7 +32,7 @@ export function Header() {
                         {RESUME_DATA.socials.map((social, i) => (
                             <span key={social.label}>
                                 {i > 0 && <span className="mx-1.5">·</span>}
-                                <a href={social.href}>{social.label}</a>
+                                <Link href={social.href}>{social.label}</Link>
                             </span>
                         ))}
                     </p>
