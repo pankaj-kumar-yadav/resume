@@ -24,7 +24,19 @@ export function Experience() {
                             <div className="flex items-center gap-3">
                                 {exp.website && <FaviconSquircle href={exp.website} />}
                                 <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
-                                    {exp.company}
+                                    {exp.website ? (
+                                        <LinkableText
+                                            text={exp.company}
+                                            links={[
+                                                {
+                                                    label: exp.company,
+                                                    url: exp.website,
+                                                },
+                                            ]}
+                                        />
+                                    ) : (
+                                        exp.company
+                                    )}
                                 </h3>
                             </div>
                             <time className="text-xs text-muted-foreground whitespace-nowrap print:text-[10px]">
@@ -43,7 +55,10 @@ export function Experience() {
                         </div>
 
                         <p className="text-pretty text-sm leading-relaxed text-foreground/75 print:text-[10.5pt] print:leading-snug">
-                            {exp.description}
+                            <LinkableText
+                                text={exp.description}
+                                links={exp.links}
+                            />
                         </p>
 
                         {exp.achievements && (

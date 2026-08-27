@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "www.continuumenergy.in",
+      },
+      {
+        protocol: "https",
         hostname: "www.checklist.design",
         pathname: "/favicon.svg",
       },

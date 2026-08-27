@@ -1,15 +1,15 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { LinkPreview } from "@/components/ui/link-preview"
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
+import { MotionArrow } from "@/components/shared/motion-arrow"
 import { INSPIRATION_LINKS } from "@/lib/constants/inspiration.constant"
 import { cn } from "@/lib/utils"
 
 const rowClassName =
-    "social-link pressable hover-accent group relative flex items-center gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:mx-0 print:border-0 print:px-0 print:py-1"
+    "social-link pressable hover-accent group/arrow relative flex items-center gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:mx-0 print:border-0 print:px-0 print:py-1"
 
 function InspirationRow({
     label,
@@ -30,7 +30,7 @@ function InspirationRow({
             aria-label={`Open ${label}`}
             className="pressable hover-accent inline-flex size-7 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground print:hidden"
         >
-            <ArrowUpRight size={13} aria-hidden />
+            <MotionArrow size={13} className="size-3.25 text-inherit" />
         </Link>
     )
 

@@ -19,7 +19,9 @@ function experienceDescription(): string {
     if (!job) {
         return truncate(`${RESUME_DATA.name} — ${RESUME_DATA.title}.`)
     }
-    return truncate(`${job.role} at ${job.company}. ${job.description}`)
+    return truncate(
+        `${job.role} at ${job.company}. ${job.description.replace(/\*\*/g, "")}`,
+    )
 }
 
 function projectsDescription(): string {

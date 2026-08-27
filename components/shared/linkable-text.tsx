@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { LinkPreview } from "@/components/ui/link-preview"
+import { MotionArrow } from "@/components/shared/motion-arrow"
 
 type ExperienceLink = {
     label: string
@@ -12,6 +13,29 @@ function escapeRegExp(value: string) {
     return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 }
 
+function HighlightedText({ text }: { text: string }) {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g)
+
+    return (
+        <>
+            {parts.map((part, index) => {
+                if (part.startsWith("**") && part.endsWith("**")) {
+                    return (
+                        <strong
+                            key={index}
+                            className="font-normal text-foreground"
+                        >
+                            {part.slice(2, -2)}
+                        </strong>
+                    )
+                }
+
+                return part
+            })}
+        </>
+    )
+}
+
 export function LinkableText({
     text,
     links,
@@ -19,7 +43,7 @@ export function LinkableText({
     text: string
     links?: ExperienceLink[]
 }) {
-    if (!links?.length) return <>{text}</>
+    if (!links?.length) return <HighlightedText text={text} />
 
     const pattern = [...links]
         .sort((a, b) => b.label.length - a.label.length)
@@ -32,7 +56,9 @@ export function LinkableText({
         <>
             {segments.map((segment, index) => {
                 const link = links.find((item) => item.label === segment)
-                if (!link) return segment
+                if (!link) {
+                    return <HighlightedText key={index} text={segment} />
+                }
 
                 return (
                     <LinkPreview key={`${link.url}-${index}`} url={link.url}>
@@ -40,9 +66,10 @@ export function LinkableText({
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="underline underline-offset-[3px] hover:text-foreground print:no-underline"
+                            className="pressable group/arrow inline-flex items-center gap-0.5 hover:text-foreground"
                         >
                             {segment}
+                            <MotionArrow />
                         </Link>
                     </LinkPreview>
                 )

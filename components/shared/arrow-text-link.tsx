@@ -1,6 +1,8 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import type { ReactNode } from "react"
+import { MotionArrow } from "@/components/shared/motion-arrow"
 import { cn } from "@/lib/utils"
 
 export function ArrowTextLink({
@@ -21,12 +23,12 @@ export function ArrowTextLink({
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             className={cn(
-                "pressable inline-flex items-center gap-0.5 whitespace-nowrap text-foreground",
+                "pressable group/arrow inline-flex items-center gap-0.5 whitespace-nowrap text-foreground",
                 className,
             )}
         >
             <span className="underline underline-offset-[3px]">{children}</span>
-            <ArrowUpRight size={12} strokeWidth={2} aria-hidden />
+            <MotionArrow />
         </Link>
     )
 }
