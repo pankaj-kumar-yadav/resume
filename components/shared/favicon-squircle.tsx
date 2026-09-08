@@ -6,12 +6,9 @@ import { getFaviconUrl } from "@/lib/favicon"
 import { cn } from "@/lib/utils"
 
 const SIZES = {
-    md: { wrap: "size-8", image: 16, imageClass: "size-4" },
-    sm: { wrap: "size-6", image: 12, imageClass: "size-3" },
+    md: { wrap: "size-8", image: 32, imageClass: "size-full object-contain" },
+    sm: { wrap: "size-6", image: 24, imageClass: "size-full object-contain" },
 } as const
-
-const BLUR_DATA_URL =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
 /** Neutral squircle favicon tile for work / inspiration links. */
 export function FaviconSquircle({
@@ -44,8 +41,7 @@ export function FaviconSquircle({
                 width={dimensions.image}
                 height={dimensions.image}
                 unoptimized={isSvg}
-                placeholder={isSvg ? "empty" : "blur"}
-                blurDataURL={isSvg ? undefined : BLUR_DATA_URL}
+                placeholder="empty"
                 className={cn(
                     dimensions.imageClass,
                     "transition-opacity duration-150",

@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "www.techapsol.com",
+        pathname: "/logo/**",
+      },
+      {
+        protocol: "https",
         hostname: "www.checklist.design",
         pathname: "/favicon.svg",
       },

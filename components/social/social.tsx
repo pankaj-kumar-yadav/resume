@@ -34,7 +34,7 @@ function getDisplayValue(social: SocialEntry): string {
 function getCopyValue(social: SocialEntry): string {
     if (social.icon === "mail") return RESUME_DATA.email
     if (social.icon === "phone") return RESUME_DATA.phone
-    return getDisplayValue(social)
+    return social.href
 }
 
 function isExternalLink(icon: string): boolean {

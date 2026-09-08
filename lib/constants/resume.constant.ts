@@ -83,6 +83,7 @@ export const RESUME_DATA = {
         {
             company: "Techap Solutions",
             website: "https://techapsol.com/",
+            icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
             role: "Junior Software Engineer",
             type: "Remote",
             duration: "Mar 2024 – Present",
@@ -99,6 +100,7 @@ export const RESUME_DATA = {
                 {
                     label: "Techap Solutions Website",
                     url: "https://techapsol.com/",
+                    icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
                 },
                 {
                     label: "BotJunior (K–5 EdTech Commerce)",

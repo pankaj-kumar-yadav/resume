@@ -22,7 +22,12 @@ export function Experience() {
                     <article key={idx} className="space-y-3 print:space-y-1.5 print:break-inside-avoid">
                         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-3">
-                                {exp.website && <FaviconSquircle href={exp.website} />}
+                                {exp.website && (
+                                    <FaviconSquircle
+                                        href={exp.website}
+                                        icon={exp.icon}
+                                    />
+                                )}
                                 <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
                                     {exp.website ? (
                                         <LinkableText
