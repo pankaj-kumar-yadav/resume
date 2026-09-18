@@ -13,8 +13,10 @@ export function SectionHeading({
   className,
   hideOnScreen = false,
 }: SectionHeadingProps) {
+  const Tag = hideOnScreen ? "h1" : "h2"
+
   return (
-    <h2
+    <Tag
       className={cn(
         "text-xs font-medium uppercase tracking-widest text-muted-foreground print:text-[10px]",
         hideOnScreen
@@ -24,6 +26,6 @@ export function SectionHeading({
       )}
     >
       {children}
-    </h2>
+    </Tag>
   )
 }

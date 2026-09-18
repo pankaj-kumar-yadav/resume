@@ -1,6 +1,69 @@
 export const RESUME_PDF_URL =
     "https://drive.google.com/file/d/1nUHlDCzBWuf2vXBwHiEPEgVyasK8mEje/view?usp=sharing"
 
+export const HERO = {
+    greeting: "Hey, I'm Pankaj",
+    line: "I build production web and mobile apps — auth, payments, dashboards, and messy enterprise workflows.",
+    currentLabel: "Currently at",
+    currentName: "Techap Solutions",
+    currentHref: "https://techapsol.com/",
+    voice: "I like when complicated systems feel simple.",
+} as const
+
+export type WorkItem = {
+    name: string
+    href: string
+    icon?: string
+    outcome: string
+    summary: string
+    featured?: boolean
+}
+
+export const WORK: WorkItem[] = [
+    {
+        name: "LMS Platform",
+        href: "https://lms.learnxg.com/en",
+        icon: "https://lms.learnxg.com/icon1.png",
+        outcome: "End-to-end learning",
+        summary:
+            "SCORM, RBAC, assessments, and certificates for organizations running online learning.",
+        featured: true,
+    },
+    {
+        name: "EXG",
+        href: "https://www.exgglobal.com/",
+        outcome: "ESG reporting",
+        summary:
+            "BRSR/GRI reporting with schema-driven forms, approvals, and KPI dashboards.",
+        featured: true,
+    },
+    {
+        name: "BotJunior",
+        href: "https://www.botjunior.com/",
+        icon: "https://www.botjunior.com/img/logos/botjunior_favicon.png",
+        outcome: "EdTech commerce",
+        summary:
+            "JWT auth and Razorpay checkout for single and bundled K–5 course purchases.",
+        featured: true,
+    },
+    {
+        name: "BSafe",
+        href: "https://www.continuumenergy.in/",
+        icon: "https://www.continuumenergy.in/img/logo-fav.png",
+        outcome: "Permit-to-work",
+        summary:
+            "Reusable React Native workflows across General, Solar, Shutdown, LOTO, and Substation permits.",
+    },
+    {
+        name: "Techap website",
+        href: "https://techapsol.com/",
+        icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
+        outcome: "Company presence",
+        summary:
+            "Services, portfolio, and inquiry flows — the company's primary site for client acquisition.",
+    },
+]
+
 export const RESUME_DATA = {
     name: "Pankajkumar Yadav",
     title: "Software Engineer",
@@ -8,11 +71,7 @@ export const RESUME_DATA = {
     location: "Mumbai, India",
     email: "pankaj981966@gmail.com",
     phone: "+91 99679 17443",
-    about: [
-        "Software Engineer based in Mumbai, India, building scalable, production-grade web and mobile applications.",
-        "Build scalable web and mobile applications with Next.js, React, and TypeScript—from authentication and payments to data-heavy dashboards and role-based workflows.",
-        "Ship production software across LMS, ESG reporting, enterprise workflows, EdTech commerce, and social-health platforms, with a focus on reusable architecture, secure integrations, and maintainable interfaces.",
-    ],
+    about: [HERO.line],
     profileImage:
         "https://s09ykw6qje.ufs.sh/f/ml9JKQ59IhvzPN7amQJoyQ8w7BS2mYk1dpcNabOi9RfWVguF",
 
@@ -186,7 +245,6 @@ export const RESUME_DATA = {
                 "Engineered a privacy-first Excel-to-JSON conversion platform that performs all processing within the browser, eliminating server-side data exposure.",
             technologies: ["Next.js", "TypeScript", "Tailwind CSS", "XLSX", "Shadcn UI"],
             achievements: [
-                "Engineered a privacy-first Excel-to-JSON conversion platform that performs all processing within the browser, eliminating server-side data exposure while ensuring secure file handling.",
                 "Implemented multi-sheet parsing, intelligent data transformation, column mapping, manual value insertion, and drag-and-drop workflows, enabling flexible conversion for complex spreadsheets.",
                 "Designed conversion history and real-time preview capabilities, improving usability and allowing users to validate and manage transformed data efficiently.",
             ],
@@ -201,7 +259,6 @@ export const RESUME_DATA = {
                 "Engineered an interactive English reading assessment platform that measures WPM and comprehension through timed passages and MCQ-based testing.",
             technologies: ["Next.js (App Router)", "TypeScript", "Tailwind CSS", "Shadcn UI"],
             achievements: [
-                "Engineered an interactive English reading assessment platform with timed passages, randomized curated content, and MCQ comprehension questions, enabling users to measure reading fluency and understanding in a single session.",
                 "Implemented accurate WPM calculation with accuracy-weighted scoring and detailed performance breakdowns, ensuring results reflect both reading speed and comprehension quality.",
                 "Designed persistent result tracking with JSON-based storage and an educational results experience, helping users monitor reading progress and understand performance metrics over time.",
             ],

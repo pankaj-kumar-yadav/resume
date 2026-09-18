@@ -7,7 +7,7 @@ export const INTERVIEW_PREP_PATH = "/interview-prep"
 export const INTERVIEW_PREP_EXTERNAL_PATH = "/interview-prep-external"
 
 export const INTERVIEW_PREP_NAV = [
-    { id: "home", label: "Home", href: "/home" },
+    { id: "home", label: "Home", href: "/" },
     { id: "prep", label: "Interview prep", href: INTERVIEW_PREP_PATH },
     { id: "external", label: "External", href: INTERVIEW_PREP_EXTERNAL_PATH },
 ] as const

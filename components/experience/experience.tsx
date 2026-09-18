@@ -1,8 +1,9 @@
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { LinkableText } from "@/components/shared/linkable-text"
+import { WorkList } from "@/components/experience/work-list"
 import { TechTag } from "@/components/skill/tech-tag"
-import { RESUME_DATA } from "@/lib/constants/resume.constant"
+import { RESUME_DATA, WORK } from "@/lib/constants/resume.constant"
 
 function getAchievementProjectLink(
     achievement: string,
@@ -49,25 +50,27 @@ export function Experience() {
                             </time>
                         </div>
 
-                        <p className="text-sm font-medium text-foreground/90 print:text-xs">
+                        <p className="text-sm text-muted-foreground print:text-xs print:font-medium print:text-foreground/90">
                             {exp.role}
                         </p>
 
-                        <div className="flex flex-wrap gap-1.5 print:gap-1">
+                        <div className="hidden flex-wrap gap-1.5 print:flex print:gap-1" aria-hidden="true">
                             {exp.technologies.map((tech) => (
                                 <TechTag key={tech}>{tech}</TechTag>
                             ))}
                         </div>
 
-                        <p className="text-pretty text-sm leading-relaxed text-foreground/75 print:text-[10.5pt] print:leading-snug">
+                        <p className="hidden text-pretty text-sm leading-relaxed text-foreground/75 print:block print:text-[10.5pt] print:leading-snug" aria-hidden="true">
                             <LinkableText
                                 text={exp.description}
                                 links={exp.links}
                             />
                         </p>
 
+                        <WorkList items={WORK} />
+
                         {exp.achievements && (
-                            <ul className="space-y-1.5 text-sm leading-relaxed text-foreground/75 print:space-y-0.5 print:text-[10.5pt] print:leading-snug">
+                            <ul className="hidden space-y-1.5 text-sm leading-relaxed text-foreground/75 print:block print:space-y-0.5 print:text-[10.5pt] print:leading-snug" aria-hidden="true">
                                 {exp.achievements.map((achievement, i) => {
                                     const projectLink = getAchievementProjectLink(
                                         achievement,

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { RESUME_DATA } from "@/lib/constants/resume.constant"
+import { HERO, RESUME_DATA } from "@/lib/constants/resume.constant"
 import { SECTIONS, type SectionId } from "@/lib/constants/sections.constant"
 
 const DESCRIPTION_MAX = 160
@@ -11,7 +11,7 @@ function truncate(text: string, max = DESCRIPTION_MAX): string {
 }
 
 function homeDescription(): string {
-    return truncate(RESUME_DATA.about.join(" "))
+    return truncate(`${HERO.line} ${HERO.voice}`)
 }
 
 function experienceDescription(): string {

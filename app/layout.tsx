@@ -1,4 +1,4 @@
-import { RESUME_DATA } from "@/lib/constants/resume.constant"
+import { HERO, RESUME_DATA } from "@/lib/constants/resume.constant"
 import { FONT_FOUC_SCRIPT } from "@/lib/fonts"
 import { PHProvider } from "@/lib/providers/posthog.providers"
 import { FontProvider } from "@/lib/providers/font.providers"
@@ -28,10 +28,10 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA?.name} Resume`,
-  description: RESUME_DATA.about.join(" "),
+  description: HERO.line,
   openGraph: {
     title: `${RESUME_DATA.name} - Resume`,
-    description: RESUME_DATA.about.join(" "),
+    description: HERO.line,
     type: "profile",
     locale: "en_US",
     // images: [
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${RESUME_DATA.name} - Resume`,
-    description: RESUME_DATA.about.join(" "),
+    description: HERO.line,
     // images: ["https://cv.jarocki.me/opengraph-image"],
   },
 }

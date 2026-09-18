@@ -252,8 +252,28 @@
     display: none;
   }
 
-  .section-nav-clip {
-    transition: clip-path 200ms var(--ease-out);
+  .nav-edge-blur {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    height: 5.5rem;
+    background: color-mix(in oklab, var(--background) 58%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      transparent 100%
+    );
   }
 
   .social-row {
@@ -313,10 +333,6 @@
   }
 
   .tech-tag {
-    transition: none;
-  }
-
-  .section-nav-clip {
     transition: none;
   }
 
