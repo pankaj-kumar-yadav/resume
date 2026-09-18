@@ -15,6 +15,33 @@ export const HERO = {
     voice: "I like when complicated systems feel simple.",
 } as const
 
+export const HERO_MARKS = [
+    {
+        name: "StratXG",
+        href: "https://lms.learnxg.com/en",
+        icon: "https://lms.learnxg.com/icon1.png",
+    },
+    {
+        name: "EXG",
+        href: "https://www.exgglobal.com/",
+    },
+    {
+        name: "BotJunior",
+        href: "https://www.botjunior.com/",
+        icon: "https://www.botjunior.com/img/logos/botjunior_favicon.png",
+    },
+    {
+        name: "Continuum",
+        href: "https://www.continuumenergy.in/",
+        icon: "https://www.continuumenergy.in/img/logo-fav.png",
+    },
+    {
+        name: "Techap Solutions",
+        href: "https://techapsol.com/",
+        icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
+    },
+] as const
+
 export type WorkItem = {
     name: string
     href: string
@@ -52,12 +79,13 @@ export const WORK: WorkItem[] = [
         featured: true,
     },
     {
-        name: "BSafe",
+        name: "Continuum",
         href: "https://www.continuumenergy.in/",
         icon: "https://www.continuumenergy.in/img/logo-fav.png",
         outcome: "Permit-to-work",
         summary:
             "Reusable React Native workflows across General, Solar, Shutdown, LOTO, and Substation permits.",
+        featured: true,
     },
     {
         name: "Techap website",
@@ -288,4 +316,12 @@ export const RESUME_DATA = {
             duration: "2018 – 2020",
         },
     ],
-};
+}
+
+export const EXPERIENCE_WORK: WorkItem[] = RESUME_DATA.experience.map((exp) => ({
+    name: exp.company,
+    href: exp.website ?? "/experience",
+    icon: exp.icon,
+    summary: [exp.role, exp.type].filter(Boolean).join(" · "),
+    outcome: exp.duration,
+}));

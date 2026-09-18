@@ -61,7 +61,7 @@ const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
     experience: experienceDescription,
     projects: projectsDescription,
     inspiration: inspirationDescription,
-    social: socialDescription,
+    socials: socialDescription,
     resume: resumeDescription,
 }
 

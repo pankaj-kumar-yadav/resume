@@ -4,7 +4,7 @@ import { PHProvider } from "@/lib/providers/posthog.providers"
 import { FontProvider } from "@/lib/providers/font.providers"
 import { ThemeProvider } from "@/lib/providers/theme.providers"
 import type { Metadata } from "next"
-import { Geist, Inter, Schibsted_Grotesk } from "next/font/google"
+import { Geist, Geist_Mono, Inter, Schibsted_Grotesk } from "next/font/google"
 import type React from "react"
 import "./globals.css"
 
@@ -24,6 +24,12 @@ const geist = Geist({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-geist",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
 })
 
 export const metadata: Metadata = {
@@ -60,7 +66,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${schibsted.variable} ${inter.variable} ${geist.variable}`}
+      className={`${schibsted.variable} ${inter.variable} ${geist.variable} ${geistMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: FONT_FOUC_SCRIPT }} />

@@ -14,10 +14,10 @@ export function Skills() {
                         key={group.category}
                         className="grid grid-cols-1 gap-2 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-x-6 print:break-inside-avoid lg:grid-cols-[13rem_1fr] lg:gap-x-8"
                     >
-                        <dt className="text-sm font-medium text-foreground/75 print:text-xs lg:text-[15px]">
+                        <dt className="text-sm font-normal tracking-tight text-neutral-700 print:text-xs lg:text-[15px] dark:text-neutral-200">
                             {group.category}
                         </dt>
-                        <dd className="m-0 flex flex-wrap gap-1.5 print:gap-1 lg:gap-2">
+                        <dd className="m-0 flex flex-wrap gap-2 print:gap-1 lg:gap-2.5">
                             {group.items.map((skill) => (
                                 <TechTag key={skill}>{skill}</TechTag>
                             ))}

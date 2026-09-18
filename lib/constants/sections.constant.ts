@@ -2,12 +2,14 @@ export const SECTIONS = [
     { id: "home", label: "Home", href: "/" },
     { id: "experience", label: "Experience", href: "/experience" },
     { id: "projects", label: "Projects", href: "/projects" },
-    { id: "social", label: "Social", href: "/social" },
+    { id: "socials", label: "Socials", href: "/socials" },
     { id: "inspiration", label: "Inspiration", href: "/inspiration" },
     { id: "resume", label: "Resume", href: "/resume" },
 ] as const
 
-export const NAV_SECTIONS = SECTIONS.filter((section) => section.id !== "home")
+export const NAV_SECTIONS = SECTIONS.filter(
+    (section) => section.id !== "home" && section.id !== "inspiration",
+)
 
 export type SectionId = (typeof SECTIONS)[number]["id"]
 

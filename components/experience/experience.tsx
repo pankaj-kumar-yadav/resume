@@ -1,9 +1,9 @@
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { LinkableText } from "@/components/shared/linkable-text"
-import { WorkList } from "@/components/experience/work-list"
+import { CompanyCard } from "@/components/experience/work-list"
 import { TechTag } from "@/components/skill/tech-tag"
-import { RESUME_DATA, WORK } from "@/lib/constants/resume.constant"
+import { EXPERIENCE_WORK, RESUME_DATA, WORK } from "@/lib/constants/resume.constant"
 
 function getAchievementProjectLink(
     achievement: string,
@@ -14,6 +14,19 @@ function getAchievementProjectLink(
     return links.find((link) => link.label === label)
 }
 
+function normalizeUrl(url: string) {
+    return url.replace(/\/$/, "")
+}
+
+function workItemsForExperience(
+    exp: (typeof RESUME_DATA.experience)[number]
+) {
+    const urls = new Set(
+        (exp.links ?? []).map((link) => normalizeUrl(link.url))
+    )
+    return WORK.filter((item) => urls.has(normalizeUrl(item.href)))
+}
+
 export function Experience() {
     return (
         <section id="experience">
@@ -21,38 +34,26 @@ export function Experience() {
             <div className="space-y-10 print:space-y-5 lg:space-y-12">
                 {RESUME_DATA.experience.map((exp, idx) => (
                     <article key={idx} className="space-y-3 print:space-y-1.5 print:break-inside-avoid lg:space-y-4">
-                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="flex items-center gap-3">
-                                {exp.website && (
-                                    <FaviconSquircle
-                                        href={exp.website}
-                                        icon={exp.icon}
-                                    />
-                                )}
-                                <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm lg:text-lg">
-                                    {exp.website ? (
-                                        <LinkableText
-                                            text={exp.company}
-                                            links={[
-                                                {
-                                                    label: exp.company,
-                                                    url: exp.website,
-                                                },
-                                            ]}
-                                        />
-                                    ) : (
-                                        exp.company
-                                    )}
+                        <div className="hidden print:block">
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                                <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
+                                    {exp.company}
                                 </h3>
+                                <time className="text-xs text-muted-foreground whitespace-nowrap print:text-[10px]">
+                                    {exp.duration}
+                                </time>
                             </div>
-                            <time className="text-xs text-muted-foreground whitespace-nowrap print:text-[10px] lg:text-sm">
-                                {exp.duration}
-                            </time>
+                            <p className="text-sm text-muted-foreground print:text-xs print:font-medium print:text-foreground/90">
+                                {exp.role}
+                            </p>
                         </div>
 
-                        <p className="text-sm text-muted-foreground print:text-xs print:font-medium print:text-foreground/90 lg:text-[15px]">
-                            {exp.role}
-                        </p>
+                        {EXPERIENCE_WORK[idx] ? (
+                            <CompanyCard
+                                company={EXPERIENCE_WORK[idx]}
+                                items={workItemsForExperience(exp)}
+                            />
+                        ) : null}
 
                         <div className="hidden flex-wrap gap-1.5 print:flex print:gap-1" aria-hidden="true">
                             {exp.technologies.map((tech) => (
@@ -66,8 +67,6 @@ export function Experience() {
                                 links={exp.links}
                             />
                         </p>
-
-                        <WorkList items={WORK} />
 
                         {exp.achievements && (
                             <ul className="hidden space-y-1.5 text-sm leading-relaxed text-foreground/75 print:block print:space-y-0.5 print:text-[10.5pt] print:leading-snug" aria-hidden="true">

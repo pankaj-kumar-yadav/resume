@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { LinkPreview } from "@/components/ui/link-preview"
-import { MotionArrow } from "@/components/shared/motion-arrow"
 
 type ExperienceLink = {
     label: string
@@ -66,10 +65,9 @@ export function LinkableText({
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="pressable group/arrow inline-flex items-center gap-0.5 hover:text-foreground"
+                            className="pressable hover:text-foreground"
                         >
                             {segment}
-                            <MotionArrow />
                         </Link>
                     </LinkPreview>
                 )

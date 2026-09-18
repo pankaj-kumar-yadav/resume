@@ -18,14 +18,14 @@ export function TechTag({ children, className, showIcon = true }: TechTagProps) 
     <Badge
       variant="outline"
       className={cn(
-        "tech-tag font-mono text-xs rounded-md px-1.5 py-px font-medium text-foreground/80 print:bg-secondary print:text-secondary-foreground print:border-border/60 print:text-[9pt] print:px-1.5 print:py-0 lg:px-2 lg:text-[13px]",
+        "tech-tag font-mono text-[13px] rounded-[8px] gap-1.5 px-2 py-1 font-medium text-foreground [&>svg]:size-3.5 print:bg-secondary print:text-secondary-foreground print:border-border/60 print:text-[9pt] print:px-1.5 print:py-0 lg:gap-2 lg:px-2.5 lg:py-1 lg:text-sm lg:[&>svg]:size-4",
         className
       )}
     >
       {Icon && (
         <Icon
           className={cn(
-            "size-3 shrink-0 print:hidden lg:size-3.5",
+            "size-3.5 shrink-0 print:hidden lg:size-4",
             !techIcon.color && "dark:invert"
           )}
           style={techIcon.color ? { color: techIcon.color } : undefined}

@@ -1,26 +1,10 @@
-"use client"
-
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { ResumeSkeleton } from "@/components/resume/resume-skeleton"
-import { SectionHeading } from "@/components/shared/section-heading"
 
-const ResumePdfViewer = dynamic(
-    () =>
-        import("@/components/resume/resume-pdf-viewer").then(
-            (module) => module.ResumePdfViewer,
-        ),
-    {
-        ssr: false,
-        loading: () => <ResumeSkeleton />,
-    },
-)
-
-export function ResumeDocument() {
+export default function ResumeLoading() {
     return (
-        <section id="resume" className="print:hidden">
-            <SectionHeading hideOnScreen>Resume</SectionHeading>
+        <section>
             <Link
                 href="/"
                 className="pressable mb-5 inline-flex items-center gap-2.5 text-sm text-foreground lg:mb-6 lg:text-[15px]"
@@ -30,7 +14,7 @@ export function ResumeDocument() {
                 </span>
                 Back to home
             </Link>
-            <ResumePdfViewer />
+            <ResumeSkeleton />
         </section>
     )
 }

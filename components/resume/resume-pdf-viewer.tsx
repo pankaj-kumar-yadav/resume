@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Document, Page, pdfjs } from "react-pdf"
+import { ResumeSkeleton } from "@/components/resume/resume-skeleton"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
 
@@ -34,11 +35,7 @@ export function ResumePdfViewer() {
                 <Document
                     file="/api/resume"
                     options={options}
-                    loading={
-                        <p className="p-6 text-sm text-muted-foreground">
-                            Loading resume…
-                        </p>
-                    }
+                    loading={<ResumeSkeleton framed={false} />}
                     onLoadSuccess={({ numPages: nextNumPages }) =>
                         setNumPages(nextNumPages)
                     }
@@ -53,7 +50,9 @@ export function ResumePdfViewer() {
                         />
                     ))}
                 </Document>
-            ) : null}
+            ) : (
+                <ResumeSkeleton framed={false} />
+            )}
         </div>
     )
 }

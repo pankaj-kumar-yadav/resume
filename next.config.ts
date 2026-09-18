@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/social",
+        destination: "/socials",
+        permanent: true,
+      },
     ]
   },
   images: {

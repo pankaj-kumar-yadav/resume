@@ -5,15 +5,16 @@ import { RESUME_DATA } from "@/lib/constants/resume.constant"
 const FOOTER_LINKS = [
     RESUME_DATA.socials.find((social) => social.label === "LinkedIn"),
     RESUME_DATA.socials.find((social) => social.label === "GitHub"),
+    { label: "Inspiration", href: "/inspiration" },
     { label: "Resume", href: "/resume" },
 ].filter((link): link is { label: string; href: string } => Boolean(link))
 
 export function SiteFooter() {
     return (
         <footer className="mt-16 border-t border-border pt-8 print:hidden lg:mt-24 lg:pt-10">
-            <SectionHeading>Elsewhere</SectionHeading>
+            <SectionHeading dash={false}>Find me on</SectionHeading>
             <nav
-                aria-label="Elsewhere"
+                aria-label="Find me on"
                 className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-foreground/80 lg:text-[15px]"
             >
                 {FOOTER_LINKS.map((link) => {
