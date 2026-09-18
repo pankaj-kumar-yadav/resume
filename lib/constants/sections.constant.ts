@@ -2,8 +2,8 @@ export const SECTIONS = [
     { id: "home", label: "Home", href: "/home" },
     { id: "experience", label: "Experience", href: "/experience" },
     { id: "projects", label: "Projects", href: "/projects" },
-    { id: "inspiration", label: "Inspiration", href: "/inspiration" },
     { id: "social", label: "Social", href: "/social" },
+    { id: "inspiration", label: "Inspiration", href: "/inspiration" },
 ] as const
 
 export type SectionId = (typeof SECTIONS)[number]["id"]
