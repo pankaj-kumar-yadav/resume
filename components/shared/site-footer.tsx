@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { SectionHeading } from "@/components/shared/section-heading"
 import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 const FOOTER_LINKS = [
@@ -12,7 +11,9 @@ const FOOTER_LINKS = [
 export function SiteFooter() {
     return (
         <footer className="mt-16 border-t border-border pt-8 print:hidden lg:mt-24 lg:pt-10">
-            <SectionHeading dash={false}>Find me on</SectionHeading>
+            <p className="mb-4 font-serif text-xl leading-[1.2] tracking-[0.02em] text-foreground/70 lg:mb-5 lg:text-2xl">
+                Find me on
+            </p>
             <nav
                 aria-label="Find me on"
                 className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-foreground/80 lg:text-[15px]"
@@ -26,9 +27,9 @@ export function SiteFooter() {
                             href={link.href}
                             {...(isExternal
                                 ? {
-                                      target: "_blank",
-                                      rel: "noopener noreferrer",
-                                  }
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                }
                                 : {})}
                             className="pressable whitespace-nowrap"
                         >

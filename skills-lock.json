@@ -37,6 +37,12 @@
       "skillPath": "skills/caveman-commit/SKILL.md",
       "computedHash": "f028652defd5fdeddcce2994083cb1a7b201ee827bba8e2495546ee159fca3de"
     },
+    "create-svg-illustrations": {
+      "source": "narumiruna/skills",
+      "sourceType": "github",
+      "skillPath": "skills/optional/create-svg-illustrations/SKILL.md",
+      "computedHash": "e0cb48042d8bd52d34ce337577c164e31559a69c21827126976c40cb9e829be0"
+    },
     "emil-design-eng": {
       "source": "emilkowalski/skill",
       "sourceType": "github",

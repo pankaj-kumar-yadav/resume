@@ -78,7 +78,7 @@ export function Experience() {
 
                                     return (
                                         <li key={i} className="flex gap-2">
-                                            <span className="text-muted-foreground shrink-0">•</span>
+                                            <span className="mt-px shrink-0 text-[1.35em] leading-none text-muted-foreground">•</span>
                                             {projectLink && (
                                                 <FaviconSquircle
                                                     href={projectLink.url}

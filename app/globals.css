@@ -81,6 +81,8 @@
   --font-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
+  --font-serif:
+    var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
   --color-background: var(--background);
   --color-brand: var(--brand);
   --color-foreground: var(--foreground);
@@ -146,6 +148,21 @@
 }
 
 @layer utilities {
+  .font-serif {
+    font-optical-sizing: auto;
+    font-variation-settings:
+      "SOFT" 50,
+      "WONK" 0,
+      "wght" 400;
+  }
+
+  .font-serif.font-extralight {
+    font-variation-settings:
+      "SOFT" 50,
+      "WONK" 0,
+      "wght" 200;
+  }
+
   .pressable {
     transition: transform 160ms var(--ease-out);
   }
@@ -268,6 +285,68 @@
     .hero-voice:hover .hero-marks img,
     .hero-voice:focus-within .hero-marks img {
       filter: grayscale(0);
+    }
+  }
+
+  .hero-iso {
+    --iso-stroke: color-mix(in oklab, var(--foreground) 28%, transparent);
+    --iso-stroke-width: 1.25;
+    justify-self: end;
+    transform-origin: 50% 85%;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition:
+      opacity 500ms var(--ease-out),
+      transform 500ms var(--ease-out);
+  }
+
+  @starting-style {
+    .hero-iso {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0) scale(0.97);
+    }
+  }
+
+  .iso-top {
+    fill: color-mix(in oklab, var(--background) 72%, var(--foreground) 28%);
+  }
+
+  .iso-right {
+    fill: color-mix(in oklab, var(--background) 58%, var(--foreground) 42%);
+  }
+
+  .iso-left {
+    fill: color-mix(in oklab, var(--background) 40%, var(--foreground) 60%);
+  }
+
+  .iso-accent {
+    fill: var(--brand);
+  }
+
+  .iso-mark-fill {
+    fill: color-mix(in oklab, var(--foreground) 22%, var(--background));
+  }
+
+  .iso-stroke {
+    fill: none;
+    pointer-events: none;
+    stroke: var(--iso-stroke);
+    stroke-width: var(--iso-stroke-width);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .iso-shadow {
+    fill: color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+
+  @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+    .hero-iso-shape {
+      transition: filter 200ms var(--ease-out);
+    }
+
+    .hero-iso:hover .hero-iso-shape {
+      filter: brightness(1.04);
     }
   }
 
@@ -496,6 +575,16 @@
   .hero-marks img {
     filter: none;
     transition: none;
+  }
+
+  .hero-iso {
+    transition: opacity 200ms ease;
+    transform: none;
+  }
+
+  .hero-iso-shape {
+    transition: none;
+    filter: none;
   }
 
   .icon-crossfade {

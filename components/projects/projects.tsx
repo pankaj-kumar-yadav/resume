@@ -67,7 +67,7 @@ export function Projects() {
                             <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-foreground/75 print:space-y-0.5 print:text-[10.5pt] print:leading-snug lg:text-[15px]">
                                 {proj.achievements.map((achievement, i) => (
                                     <li key={i} className="flex gap-2">
-                                        <span className="text-muted-foreground shrink-0">•</span>
+                                        <span className="mt-px shrink-0 text-[1.35em] leading-none text-muted-foreground">•</span>
                                         <span className="text-pretty">
                                             {achievement.includes(":") ? (
                                                 <>

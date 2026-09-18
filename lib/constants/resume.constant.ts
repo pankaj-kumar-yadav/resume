@@ -88,6 +88,13 @@ export const WORK: WorkItem[] = [
         featured: true,
     },
     {
+        name: "Omooma",
+        href: "https://omooma.com/en/",
+        outcome: "Stripe subscriptions",
+        summary:
+            "Social networking and health-tracking with Stripe billing and role-based premium access.",
+    },
+    {
         name: "Techap website",
         href: "https://techapsol.com/",
         icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
@@ -204,6 +211,10 @@ export const RESUME_DATA = {
                     url: "https://www.continuumenergy.in/",
                     icon: "https://www.continuumenergy.in/img/logo-fav.png",
                 },
+                {
+                    label: "Omooma",
+                    url: "https://omooma.com/en/",
+                },
             ],
             technologies: [
                 "Next.js",
@@ -240,7 +251,7 @@ export const RESUME_DATA = {
             items: ["JavaScript", "TypeScript", "HTML", "CSS"],
         },
         {
-            category: "Frameworks & libraries",
+            category: "Frontend",
             items: [
                 "React.js",
                 "Next.js",
@@ -248,26 +259,34 @@ export const RESUME_DATA = {
                 "Shadcn UI",
                 "Material UI",
                 "Chakra UI",
-                "Redux",
-                "Express",
                 "React Hook Form",
-                "Axios",
-                "Zod",
+                "Redux",
                 "Zustand",
                 "Easy-Peasy",
+                "Axios",
+                "Zod",
             ],
         },
         {
-            category: "Technology",
-            items: ["Node.js", "MongoDB"],
+            category: "Backend",
+            items: ["Node.js", "Express"],
         },
         {
-            category: "Developer Tools",
-            items: ["Git", "GitHub", "VS Code"],
+            category: "Database",
+            items: ["MongoDB", "PostgreSQL", "MySQL"],
         },
         {
-            category: "AI Tools",
-            items: ["Cursor", "Claude", "GitHub Copilot", "Windsurf", "ChatGPT"],
+            category: "Tools",
+            items: [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "Cursor",
+                "Claude",
+                "GitHub Copilot",
+                "Windsurf",
+                "ChatGPT",
+            ],
         },
     ],
 

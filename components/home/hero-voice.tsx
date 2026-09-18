@@ -37,7 +37,7 @@ export function HeroVoice() {
                 }
             }}
         >
-            <p className="mt-4 overflow-hidden text-sm text-muted-foreground lg:mt-6 lg:text-base">
+            <p className="mt-4 overflow-hidden font-serif text-base font-extralight tracking-[0.02em] text-muted-foreground lg:mt-6 lg:text-xl">
                 <motion.span
                     className="inline-block"
                     initial={false}
