@@ -18,10 +18,10 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "text-xs font-medium uppercase tracking-widest text-muted-foreground print:text-[10px]",
+        "text-xs font-medium uppercase tracking-widest text-muted-foreground print:text-[10px] lg:text-[13px]",
         hideOnScreen
           ? "sr-only print:not-sr-only print:mb-2"
-          : "mb-5 print:mb-2",
+          : "mb-5 print:mb-2 lg:mb-6",
         className
       )}
     >

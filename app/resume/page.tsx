@@ -1,6 +1,8 @@
-import { redirect } from "next/navigation"
-import { RESUME_PDF_URL } from "@/lib/constants/resume.constant"
+import { ResumeDocument } from "@/components/resume/resume-document"
+import { getSectionMetadata } from "@/lib/metadata"
+
+export const metadata = getSectionMetadata("resume")
 
 export default function ResumePage() {
-    redirect(RESUME_PDF_URL)
+    return <ResumeDocument />
 }

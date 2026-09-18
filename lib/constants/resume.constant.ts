@@ -1,5 +1,10 @@
+export const RESUME_PDF_FILE_ID = "1nUHlDCzBWuf2vXBwHiEPEgVyasK8mEje"
+
 export const RESUME_PDF_URL =
-    "https://drive.google.com/file/d/1nUHlDCzBWuf2vXBwHiEPEgVyasK8mEje/view?usp=sharing"
+    `https://drive.google.com/file/d/${RESUME_PDF_FILE_ID}/view?usp=sharing`
+
+export const RESUME_PDF_DOWNLOAD_URL =
+    `https://drive.google.com/uc?export=download&id=${RESUME_PDF_FILE_ID}`
 
 export const HERO = {
     greeting: "Hey, I'm Pankaj",

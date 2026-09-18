@@ -51,10 +51,10 @@ function isExternalLink(icon: string): boolean {
 }
 
 const rowClassName =
-    "social-link pressable hover-accent group relative flex items-center gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:mx-0 print:border-0 print:px-0 print:py-1"
+    "social-link pressable hover-accent group relative flex items-center gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:mx-0 print:border-0 print:px-0 print:py-1 lg:gap-4 lg:px-2.5 lg:py-3"
 
 const contentClassName =
-    "grid min-w-0 flex-1 grid-cols-1 gap-0.5 sm:grid-cols-[7rem_1fr] sm:items-center sm:gap-4"
+    "grid min-w-0 flex-1 grid-cols-1 gap-0.5 sm:grid-cols-[7rem_1fr] sm:items-center sm:gap-4 lg:grid-cols-[8.5rem_1fr] lg:gap-6"
 
 const SOCIAL_GROUP_DEFS: {
     id: SocialGroupId
@@ -178,7 +178,7 @@ function CopyableRow({
                 />
             </IconBox>
             <span className={contentClassName}>
-                <dt className="text-sm font-medium text-foreground/75 print:text-xs">
+                <dt className="text-sm font-medium text-foreground/75 print:text-xs lg:text-[15px]">
                     {label}
                 </dt>
                 <dd className="m-0 flex min-w-0 items-center gap-1.5">
@@ -186,7 +186,7 @@ function CopyableRow({
                         type="button"
                         onClick={onCopy}
                         aria-label={`Copy ${label.toLowerCase()} to clipboard`}
-                        className="pressable inline-flex min-w-0 flex-1 items-center gap-1.5 truncate text-left text-sm text-foreground hover:underline hover:underline-offset-[3px] print:text-xs"
+                        className="pressable inline-flex min-w-0 flex-1 items-center gap-1.5 truncate text-left text-sm text-foreground hover:underline hover:underline-offset-[3px] print:text-xs lg:text-[15px]"
                     >
                         <span className="truncate">{displayValue}</span>
                         <Copy

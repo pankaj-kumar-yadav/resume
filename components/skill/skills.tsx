@@ -8,16 +8,16 @@ export function Skills() {
     return (
         <section id="skills">
             <SectionHeading>Skills</SectionHeading>
-            <dl className="space-y-4 print:space-y-2.5">
+            <dl className="space-y-4 print:space-y-2.5 lg:space-y-5">
                 {SKILL_GROUPS.map((group) => (
                     <div
                         key={group.category}
-                        className="grid grid-cols-1 gap-2 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-x-6 print:break-inside-avoid"
+                        className="grid grid-cols-1 gap-2 sm:grid-cols-[11rem_1fr] sm:items-start sm:gap-x-6 print:break-inside-avoid lg:grid-cols-[13rem_1fr] lg:gap-x-8"
                     >
-                        <dt className="text-sm font-medium text-foreground/75 print:text-xs">
+                        <dt className="text-sm font-medium text-foreground/75 print:text-xs lg:text-[15px]">
                             {group.category}
                         </dt>
-                        <dd className="m-0 flex flex-wrap gap-1.5 print:gap-1">
+                        <dd className="m-0 flex flex-wrap gap-1.5 print:gap-1 lg:gap-2">
                             {group.items.map((skill) => (
                                 <TechTag key={skill}>{skill}</TechTag>
                             ))}

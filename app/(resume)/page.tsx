@@ -12,19 +12,19 @@ const featuredWork = WORK.filter((item) => item.featured)
 
 export default function HomePage() {
     return (
-        <div className="flex flex-col gap-12 print:gap-5">
+        <div className="flex flex-col gap-12 print:gap-5 lg:gap-16">
             <Home />
             <section id="selected-work" className="print:hidden">
-                <SectionHeading>Selected work</SectionHeading>
-                <WorkList items={featuredWork} />
-                <p className="mt-4 text-sm">
+                <div className="mb-5 flex items-baseline justify-between gap-4 lg:mb-6">
+                    <SectionHeading className="mb-0 lg:mb-0">Selected work</SectionHeading>
                     <Link
                         href="/experience"
-                        className="pressable underline underline-offset-[3px]"
+                        className="pressable shrink-0 text-sm underline underline-offset-[3px] lg:text-[15px]"
                     >
-                        All experience
+                        View all
                     </Link>
-                </p>
+                </div>
+                <WorkList items={featuredWork} variant="card" />
             </section>
             <Skills />
         </div>

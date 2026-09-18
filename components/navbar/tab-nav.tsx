@@ -60,7 +60,7 @@ export function TabNav({
             aria-label={ariaLabel}
             className="section-nav-tabs min-w-0 flex-1"
         >
-            <div className="flex gap-1 sm:gap-2">
+            <div className="flex w-full justify-end gap-3 sm:gap-5 lg:gap-8">
                 {items.map(({ id, label, href }, index) => {
                     const isActive = activeId === id
 
@@ -76,10 +76,10 @@ export function TabNav({
                             aria-current={isActive ? "page" : undefined}
                             onKeyDown={(e) => handleKeyDown(e, index)}
                             className={cn(
-                                "pressable shrink-0 rounded-full px-2 py-1 text-xs sm:px-2.5 sm:text-sm",
+                                "pressable shrink-0 rounded-full px-1 py-1 text-xs sm:px-1.5 sm:text-sm lg:px-2 lg:py-1 lg:text-[15px]",
                                 isActive
-                                    ? "font-semibold text-foreground"
-                                    : "font-medium text-muted-foreground",
+                                    ? "font-medium text-foreground"
+                                    : "font-normal text-muted-foreground",
                             )}
                         >
                             {label}

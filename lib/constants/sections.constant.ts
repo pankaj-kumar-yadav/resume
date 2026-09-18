@@ -4,6 +4,7 @@ export const SECTIONS = [
     { id: "projects", label: "Projects", href: "/projects" },
     { id: "social", label: "Social", href: "/social" },
     { id: "inspiration", label: "Inspiration", href: "/inspiration" },
+    { id: "resume", label: "Resume", href: "/resume" },
 ] as const
 
 export const NAV_SECTIONS = SECTIONS.filter((section) => section.id !== "home")

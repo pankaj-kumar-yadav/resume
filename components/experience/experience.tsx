@@ -18,9 +18,9 @@ export function Experience() {
     return (
         <section id="experience">
             <SectionHeading hideOnScreen>Experience</SectionHeading>
-            <div className="space-y-10 print:space-y-5">
+            <div className="space-y-10 print:space-y-5 lg:space-y-12">
                 {RESUME_DATA.experience.map((exp, idx) => (
-                    <article key={idx} className="space-y-3 print:space-y-1.5 print:break-inside-avoid">
+                    <article key={idx} className="space-y-3 print:space-y-1.5 print:break-inside-avoid lg:space-y-4">
                         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-3">
                                 {exp.website && (
@@ -29,7 +29,7 @@ export function Experience() {
                                         icon={exp.icon}
                                     />
                                 )}
-                                <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
+                                <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm lg:text-lg">
                                     {exp.website ? (
                                         <LinkableText
                                             text={exp.company}
@@ -45,12 +45,12 @@ export function Experience() {
                                     )}
                                 </h3>
                             </div>
-                            <time className="text-xs text-muted-foreground whitespace-nowrap print:text-[10px]">
+                            <time className="text-xs text-muted-foreground whitespace-nowrap print:text-[10px] lg:text-sm">
                                 {exp.duration}
                             </time>
                         </div>
 
-                        <p className="text-sm text-muted-foreground print:text-xs print:font-medium print:text-foreground/90">
+                        <p className="text-sm text-muted-foreground print:text-xs print:font-medium print:text-foreground/90 lg:text-[15px]">
                             {exp.role}
                         </p>
 

@@ -15,10 +15,10 @@ export function Projects() {
                 {featuredProjects.map((proj, idx) => (
                     <article
                         key={idx}
-                        className="py-6 first:pt-0 last:pb-0 print:py-3 print:break-inside-avoid"
+                        className="py-6 first:pt-0 last:pb-0 print:py-3 print:break-inside-avoid lg:py-8"
                     >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between print:gap-1">
-                            <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm">
+                            <h3 className="text-base font-semibold tracking-tight text-foreground print:text-sm lg:text-lg">
                                 {proj.name}
                             </h3>
                             {(proj.live || proj.github) && (
@@ -30,7 +30,7 @@ export function Projects() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 aria-label={`View ${proj.name} live`}
-                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px] lg:text-sm"
                                                 style={{ transitionTimingFunction: "var(--ease-out)" }}
                                             >
                                                 <ExternalLink size={13} className="shrink-0 print:hidden" aria-hidden />
@@ -46,7 +46,7 @@ export function Projects() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 aria-label={`View ${proj.name} on GitHub`}
-                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px]"
+                                                className="project-link pressable inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 print:text-[10px] lg:text-sm"
                                                 style={{ transitionTimingFunction: "var(--ease-out)" }}
                                             >
                                                 <Github size={13} className="shrink-0 print:hidden" aria-hidden />
@@ -59,12 +59,12 @@ export function Projects() {
                             )}
                         </div>
 
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/75 print:mt-1 print:text-[10.5pt] print:leading-snug">
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/75 print:mt-1 print:text-[10.5pt] print:leading-snug lg:mt-3 lg:text-[15px]">
                             {proj.description}
                         </p>
 
                         {"achievements" in proj && proj.achievements && (
-                            <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-foreground/75 print:space-y-0.5 print:text-[10.5pt] print:leading-snug">
+                            <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-foreground/75 print:space-y-0.5 print:text-[10.5pt] print:leading-snug lg:text-[15px]">
                                 {proj.achievements.map((achievement, i) => (
                                     <li key={i} className="flex gap-2">
                                         <span className="text-muted-foreground shrink-0">•</span>
@@ -85,7 +85,7 @@ export function Projects() {
                             </ul>
                         )}
 
-                        <div className="mt-3 flex flex-wrap gap-1.5">
+                        <div className="mt-3 flex flex-wrap gap-1.5 lg:mt-4 lg:gap-2">
                             {proj.technologies.map((tech) => (
                                 <TechTag key={tech}>{tech}</TechTag>
                             ))}

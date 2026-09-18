@@ -26,7 +26,7 @@ export function SocialGroup({
         >
             <h3
                 id={headingId}
-                className="social-row mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground print:mb-1.5 print:text-[10px]"
+                className="social-row mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground print:mb-1.5 print:text-[10px] lg:mb-3 lg:text-[13px]"
                 style={{ animationDelay: `${headingDelayMs}ms` }}
             >
                 {title}

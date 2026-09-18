@@ -50,12 +50,19 @@ function inspirationDescription(): string {
     )
 }
 
+function resumeDescription(): string {
+    return truncate(
+        `${RESUME_DATA.name} — ${RESUME_DATA.title}. View the resume.`,
+    )
+}
+
 const DESCRIPTION_BY_SECTION: Record<SectionId, () => string> = {
     home: homeDescription,
     experience: experienceDescription,
     projects: projectsDescription,
     inspiration: inspirationDescription,
     social: socialDescription,
+    resume: resumeDescription,
 }
 
 export function getSectionMetadata(sectionId: SectionId): Metadata {
