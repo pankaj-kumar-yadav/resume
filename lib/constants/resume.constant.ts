@@ -104,6 +104,42 @@ export const WORK: WorkItem[] = [
     },
 ]
 
+export type PersonQuote = {
+    name: string
+    role: string
+    company: string
+    href: string
+    quote: string
+    image?: string
+}
+
+export const PEOPLE_SAY: PersonQuote[] = [
+    {
+        name: "Sushant Ipte",
+        role: "Lead Software Engineer",
+        company: "Mitr Learning & Media",
+        href: "https://www.linkedin.com/in/sushant-ipte-291513139/",
+        image: "/people/sushant-ipte.jpg",
+        quote: "Pankaj picks up **messy product surfaces** and **ships** them. On the LMS work he owned the hard parts — **roles, progress, certificates** — without waiting to be told twice.",
+    },
+    {
+        name: "Deepak Sethi",
+        role: "Chief Center of Excellence",
+        company: "StratXG",
+        href: "https://www.linkedin.com/in/deepak-s-b646b9135/",
+        image: "/people/deepak-sethi.jpg",
+        quote: "He treats **enterprise workflows** as a **product**, not a ticket dump. Delivery stayed clear, and what he left behind was a **system** the next person could actually use.",
+    },
+    {
+        name: "Raj Chauhan",
+        role: "Project Manager",
+        company: "StratXG",
+        href: "https://www.linkedin.com/in/raj-chauhan-023a4316b/",
+        image: "/people/raj-chauhan.jpg",
+        quote: "On the LMS work, **what he marked done was done**. Tickets came back with the **edge cases already handled** — QA wasn't chasing ghosts.",
+    },
+]
+
 export const RESUME_DATA = {
     name: "Pankajkumar Yadav",
     title: "Software Engineer",
@@ -291,6 +327,19 @@ export const RESUME_DATA = {
     ],
 
     projects: [
+        {
+            name: "Relay – Self-hosted Project Management",
+            description:
+                "Engineered a self-hosted, multi-tenant project management platform for teams — issues, cycles, inbox, and org-scoped data — with a Linear-inspired UI wired to a first-party Express API.",
+            technologies: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma"],
+            achievements: [
+                "Implemented organization-scoped workspaces with invite-based membership, issues (status, priority, assignees, comments, attachments), teams, cycles, saved views, and in-app inbox notifications.",
+                "Designed a Docker Compose self-hosting stack for web, API, Postgres, and MinIO, with S3-compatible file storage, session auth, and email invites.",
+            ],
+            additionalTech: ["Turborepo", "TanStack Query"],
+            github: "https://github.com/pankaj-kumar-yadav/relay",
+            featured: true,
+        },
         {
             name: "Convert Desk – XLSX to JSON Converter",
             description:

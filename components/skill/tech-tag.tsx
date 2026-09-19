@@ -18,7 +18,7 @@ export function TechTag({ children, className, showIcon = true }: TechTagProps) 
     <Badge
       variant="outline"
       className={cn(
-        "tech-tag font-mono text-[13px] rounded-[8px] gap-1.5 px-2 py-1 font-medium text-foreground [&>svg]:size-3.5 print:bg-secondary print:text-secondary-foreground print:border-border/60 print:text-[9pt] print:px-1.5 print:py-0 lg:gap-2 lg:px-2.5 lg:py-1 lg:text-sm lg:[&>svg]:size-4",
+        "tech-tag pressable cursor-pointer font-mono text-[13px] rounded-[8px] gap-1.5 px-2 py-1 font-medium text-foreground [&>svg]:size-3.5 print:bg-secondary print:text-secondary-foreground print:border-border/60 print:text-[9pt] print:px-1.5 print:py-0 lg:gap-2 lg:px-2.5 lg:py-1 lg:text-sm lg:[&>svg]:size-4",
         className
       )}
     >

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -185,9 +186,17 @@
       box-shadow 150ms var(--ease-out);
   }
 
-  .company-card {
+  .company-card,
+  .people-say-card {
     border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
     background-color: var(--background);
+  }
+
+
+  .company-card-well,
+  .people-say-well {
+    background-color: rgb(246 246 246);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.05);
   }
 
   .company-card-well {
@@ -196,13 +205,98 @@
     margin-top: 16px;
     padding: 8px;
     border-radius: 14px;
-    background-color: rgb(246 246 246);
-    box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.05);
   }
 
-  .dark .company-card-well {
+  .people-say-well {
+    padding: 10px 12px 12px;
+    box-shadow: none;
+    border-top: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  }
+
+  .people-say-in {
+    transition: filter 150ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .people-say-avatar img,
+    .people-say-in {
+      filter: grayscale(1);
+    }
+
+    .people-say-avatar img {
+      transition: filter 150ms var(--ease-out);
+    }
+
+    .people-say-card:hover .people-say-avatar img,
+    .people-say-card:focus-within .people-say-avatar img,
+    .people-say-card:hover .people-say-in,
+    .people-say-card:focus-within .people-say-in,
+    .people-say-in:hover,
+    .people-say-in:focus-visible {
+      filter: grayscale(0);
+    }
+
+    .people-say-slide:hover,
+    .people-say-slide:focus-within {
+      box-shadow: 0 12px 10px -10px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark .people-say-slide:hover,
+    .dark .people-say-slide:focus-within {
+      box-shadow: 0 12px 10px -10px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .people-say-well {
+      padding: 12px 14px 14px;
+    }
+  }
+
+  .people-say-viewport {
+    container-type: inline-size;
+    overflow: hidden;
+    padding-bottom: 14px;
+  }
+
+  .people-say-track {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    animation: people-say-marquee 16s linear infinite;
+  }
+
+  .people-say-slide {
+    flex: 0 0 calc((100cqi - 1rem) / 1.25);
+    min-width: 0;
+    border-radius: 12px;
+    transition: box-shadow 150ms var(--ease-out);
+  }
+
+  @container (min-width: 44rem) {
+    .people-say-slide {
+      flex: 0 0 calc((100cqi - 2rem) / 2.5);
+    }
+  }
+
+  @keyframes people-say-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .dark .company-card-well,
+  .dark .people-say-well {
     background-color: rgb(255 255 255 / 0.045);
     box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+  }
+
+  .dark .people-say-well {
+    box-shadow: none;
+    border-top-color: color-mix(in oklab, var(--foreground) 12%, transparent);
   }
 
   .company-card-well .work-card {
@@ -422,7 +516,8 @@
     border-color: color-mix(in oklab, var(--foreground) 18%, transparent);
     transition:
       border-color 150ms var(--ease-out),
-      color 150ms var(--ease-out);
+      color 150ms var(--ease-out),
+      transform 160ms var(--ease-out);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -561,6 +656,25 @@
 
   .work-card {
     transition: none;
+  }
+
+  .people-say-viewport {
+    mask-image: none;
+  }
+
+  .people-say-track {
+    animation: none;
+    width: auto;
+    flex-direction: column;
+  }
+
+  .people-say-slide {
+    flex: none;
+    width: 100%;
+  }
+
+  .people-say-track > :nth-child(n + 4) {
+    display: none;
   }
 
   .resume-skeleton::after {

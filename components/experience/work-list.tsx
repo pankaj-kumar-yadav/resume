@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Dot } from "@/components/shared/dot"
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
 import { MotionArrow } from "@/components/shared/motion-arrow"
 import { LinkPreview } from "@/components/ui/link-preview"
@@ -9,6 +10,15 @@ import { cn } from "@/lib/utils"
 
 const rowClassName =
     "social-link pressable hover-accent group/arrow relative flex items-start gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:hidden lg:gap-4 lg:px-2.5 lg:py-3"
+
+function SummaryWithDot({ text }: { text: string }) {
+    return text.split(" · ").map((part, i) => (
+        <span key={i}>
+            {i > 0 && <Dot />}
+            {part}
+        </span>
+    ))
+}
 
 function WorkRow({
     item,
@@ -97,7 +107,7 @@ function WorkCard({
                             {item.name}
                         </span>
                         <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
-                            {item.summary}
+                            <SummaryWithDot text={item.summary} />
                         </p>
                     </div>
                 </div>
@@ -136,7 +146,7 @@ export function CompanyCard({
                             {company.name}
                         </span>
                         <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
-                            {company.summary}
+                            <SummaryWithDot text={company.summary} />
                         </p>
                     </div>
                 </div>

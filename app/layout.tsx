@@ -2,6 +2,7 @@ import { HERO, RESUME_DATA } from "@/lib/constants/resume.constant"
 import { FONT_FOUC_SCRIPT } from "@/lib/fonts"
 import { PHProvider } from "@/lib/providers/posthog.providers"
 import { FontProvider } from "@/lib/providers/font.providers"
+import { SmoothScrollProvider } from "@/lib/providers/smooth-scroll.providers"
 import { ThemeProvider } from "@/lib/providers/theme.providers"
 import type { Metadata } from "next"
 import { Fraunces, Geist, Geist_Mono, Inter, Schibsted_Grotesk } from "next/font/google"
@@ -79,13 +80,15 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: FONT_FOUC_SCRIPT }} />
       </head>
       <body className="antialiased leading-relaxed" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false} disableTransitionOnChange>
-          <FontProvider>
-            <PHProvider>
-              {children}
-            </PHProvider>
-          </FontProvider>
-        </ThemeProvider>
+        <SmoothScrollProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false} disableTransitionOnChange>
+            <FontProvider>
+              <PHProvider>
+                {children}
+              </PHProvider>
+            </FontProvider>
+          </ThemeProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   )

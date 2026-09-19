@@ -1,4 +1,5 @@
 import { Home } from "@/components/home/home"
+import { PeopleSay } from "@/components/home/people-say"
 import { WorkList } from "@/components/experience/work-list"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { Skills } from "@/components/skill/skills"
@@ -26,7 +27,6 @@ export default function HomePage() {
                 </div>
                 <WorkList items={EXPERIENCE_WORK} variant="card" raised logoShape="circle" />
             </section>
-            <Skills />
             <section id="selected-work" className="print:hidden">
                 <div className="mb-5 flex items-baseline justify-between gap-4 lg:mb-6">
                     <SectionHeading className="mb-0 lg:mb-0">Selected work</SectionHeading>
@@ -39,6 +39,8 @@ export default function HomePage() {
                 </div>
                 <WorkList items={featuredWork} variant="card" />
             </section>
+            <PeopleSay />
+            <Skills />
         </div>
     )
 }

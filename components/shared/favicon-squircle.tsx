@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { Globe } from "lucide-react"
 import { getFaviconUrl } from "@/lib/favicon"
 import { cn } from "@/lib/utils"
 
@@ -28,8 +29,10 @@ export function FaviconSquircle({
 }) {
     const dimensions = SIZES[size]
     const [loaded, setLoaded] = useState(false)
+    const [failed, setFailed] = useState(false)
     const src = icon ?? getFaviconUrl(href)
-    const isSvg = /\.svg(?:$|\?)/i.test(src)
+    const showFallback = failed || !src
+    const isSvg = src ? /\.svg(?:$|\?)/i.test(src) : false
     const isCircle = shape === "circle"
 
     return (
@@ -44,23 +47,29 @@ export function FaviconSquircle({
                 className
             )}
         >
-            <Image
-                src={src}
-                alt=""
-                width={dimensions.image}
-                height={dimensions.image}
-                unoptimized={isSvg}
-                placeholder="empty"
-                className={cn(
-                    dimensions.imageClass,
-                    "transition-opacity duration-150",
-                    loaded ? "opacity-100" : "opacity-70"
-                )}
-                onLoad={() => setLoaded(true)}
-                onError={(event) => {
-                    event.currentTarget.hidden = true
-                }}
-            />
+            {showFallback ? (
+                <Globe
+                    aria-hidden
+                    strokeWidth={1.75}
+                    className="size-[55%] text-muted-foreground"
+                />
+            ) : (
+                <Image
+                    src={src}
+                    alt=""
+                    width={dimensions.image}
+                    height={dimensions.image}
+                    unoptimized={isSvg}
+                    placeholder="empty"
+                    className={cn(
+                        dimensions.imageClass,
+                        "transition-opacity duration-150",
+                        loaded ? "opacity-100" : "opacity-70"
+                    )}
+                    onLoad={() => setLoaded(true)}
+                    onError={() => setFailed(true)}
+                />
+            )}
         </span>
     )
 }
