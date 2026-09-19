@@ -9,10 +9,12 @@ export const RESUME_PDF_DOWNLOAD_URL =
 export const HERO = {
     greeting: "Hey, I'm Pankaj",
     line: "I build production web and mobile apps — auth, payments, dashboards, and messy enterprise workflows.",
-    currentLabel: "Currently at",
+    currentLabel: "Building at",
     currentName: "Techap Solutions",
     currentHref: "https://techapsol.com/",
     voice: "I like when complicated systems feel simple.",
+    cta: "Say hello",
+    ctaHref: "/socials",
 } as const
 
 export const HERO_MARKS = [
@@ -44,7 +46,7 @@ export const HERO_MARKS = [
 
 export type WorkItem = {
     name: string
-    href: string
+    href?: string
     icon?: string
     outcome: string
     summary: string
@@ -120,7 +122,7 @@ export const PEOPLE_SAY: PersonQuote[] = [
         company: "Mitr Learning & Media",
         href: "https://www.linkedin.com/in/sushant-ipte-291513139/",
         image: "/people/sushant-ipte.jpg",
-        quote: "Pankaj picks up **messy product surfaces** and **ships** them. On the LMS work he owned the hard parts — **roles, progress, certificates** — without waiting to be told twice.",
+        quote: "Pankaj takes **complex product surfaces** through to **production**. On the LMS, he independently owned **roles, progress tracking, and certificates**.",
     },
     {
         name: "Deepak Sethi",
@@ -128,7 +130,7 @@ export const PEOPLE_SAY: PersonQuote[] = [
         company: "StratXG",
         href: "https://www.linkedin.com/in/deepak-s-b646b9135/",
         image: "/people/deepak-sethi.jpg",
-        quote: "He treats **enterprise workflows** as a **product**, not a ticket dump. Delivery stayed clear, and what he left behind was a **system** the next person could actually use.",
+        quote: "He treats **enterprise workflows** as a **product**, not a backlog of tickets. Delivery remained clear, and he left a **system** the next engineer could maintain.",
     },
     {
         name: "Raj Chauhan",
@@ -136,7 +138,7 @@ export const PEOPLE_SAY: PersonQuote[] = [
         company: "StratXG",
         href: "https://www.linkedin.com/in/raj-chauhan-023a4316b/",
         image: "/people/raj-chauhan.jpg",
-        quote: "On the LMS work, **what he marked done was done**. Tickets came back with the **edge cases already handled** — QA wasn't chasing ghosts.",
+        quote: "On the LMS, work he marked complete **passed review without rework**. Tickets included **edge cases already addressed**, which reduced the QA cycle.",
     },
 ]
 
@@ -388,7 +390,6 @@ export const RESUME_DATA = {
 
 export const EXPERIENCE_WORK: WorkItem[] = RESUME_DATA.experience.map((exp) => ({
     name: exp.company,
-    href: exp.website ?? "/experience",
     icon: exp.icon,
     summary: [exp.role, exp.type].filter(Boolean).join(" · "),
     outcome: exp.duration,

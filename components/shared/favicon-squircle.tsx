@@ -21,7 +21,7 @@ export function FaviconSquircle({
     shape = "squircle",
     className,
 }: {
-    href: string
+    href?: string
     icon?: string
     size?: keyof typeof SIZES
     shape?: "squircle" | "circle"
@@ -30,7 +30,7 @@ export function FaviconSquircle({
     const dimensions = SIZES[size]
     const [loaded, setLoaded] = useState(false)
     const [failed, setFailed] = useState(false)
-    const src = icon ?? getFaviconUrl(href)
+    const src = icon ?? (href ? getFaviconUrl(href) : null)
     const showFallback = failed || !src
     const isSvg = src ? /\.svg(?:$|\?)/i.test(src) : false
     const isCircle = shape === "circle"

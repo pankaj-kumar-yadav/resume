@@ -1,9 +1,10 @@
+import { HeroCta } from "@/components/home/hero-cta"
 import { HeroVoice } from "@/components/home/hero-voice"
 import { HERO } from "@/lib/constants/resume.constant"
 
 export function Home() {
     return (
-        <section id="home">
+        <section id="home" className="hero-screen">
             <p className="font-mono text-xs font-medium uppercase tracking-widest text-brand lg:text-[13px]">
                 {HERO.currentLabel} {HERO.currentName}
             </p>
@@ -13,6 +14,7 @@ export function Home() {
             <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-foreground/80 sm:text-[15px] lg:mt-5 lg:max-w-2xl lg:text-lg">
                 {HERO.line}
             </p>
+            <HeroCta />
             <HeroVoice />
         </section>
     )

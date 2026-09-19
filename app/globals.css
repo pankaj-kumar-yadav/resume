@@ -40,6 +40,19 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --brand: oklch(0.78 0.18 98);
+  --nav-rest-inset: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-rest-inset: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-rest-inset: 2rem;
+  }
 }
 
 .dark {
@@ -83,7 +96,7 @@
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
   --font-serif:
-    var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+    var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
   --color-background: var(--background);
   --color-brand: var(--brand);
   --color-foreground: var(--foreground);
@@ -150,18 +163,9 @@
 
 @layer utilities {
   .font-serif {
+    font-style: normal;
     font-optical-sizing: auto;
-    font-variation-settings:
-      "SOFT" 50,
-      "WONK" 0,
-      "wght" 400;
-  }
-
-  .font-serif.font-extralight {
-    font-variation-settings:
-      "SOFT" 50,
-      "WONK" 0,
-      "wght" 200;
+    font-synthesis: none;
   }
 
   .pressable {
@@ -170,6 +174,65 @@
 
   .pressable:active {
     transform: scale(0.97);
+  }
+
+  .nav-rest-inset {
+    height: var(--nav-rest-inset);
+    flex-shrink: 0;
+  }
+
+  .hero-screen {
+    --nav-offset: calc(5.5rem + var(--nav-rest-inset));
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100svh - var(--nav-offset));
+    padding-bottom: 1.25rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    align-self: start;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    padding: 0.625rem 0.9rem 0.625rem 1.05rem;
+    border-radius: var(--radius);
+    background-color: var(--foreground);
+    color: var(--background);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition:
+      transform 160ms var(--ease-out),
+      filter 150ms ease;
+  }
+
+  .hero-cta:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 640px) {
+    .hero-screen {
+      --nav-offset: calc(6rem + var(--nav-rest-inset));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-screen {
+      --nav-offset: calc(7.25rem + var(--nav-rest-inset));
+    }
+
+    .hero-cta {
+      margin-top: 1.75rem;
+      font-size: 0.9375rem;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-cta:hover {
+      filter: brightness(1.12);
+    }
   }
 
   .work-card {
@@ -654,6 +717,11 @@
     transform: none;
   }
 
+  .hero-cta {
+    transition: none;
+    filter: none;
+  }
+
   .work-card {
     transition: none;
   }
@@ -805,6 +873,12 @@
   main {
     min-height: auto !important;
     background: white !important;
+  }
+
+  .hero-screen {
+    min-height: 0 !important;
+    display: block;
+    padding-bottom: 0;
   }
 
   a {

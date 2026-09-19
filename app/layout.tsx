@@ -5,7 +5,7 @@ import { FontProvider } from "@/lib/providers/font.providers"
 import { SmoothScrollProvider } from "@/lib/providers/smooth-scroll.providers"
 import { ThemeProvider } from "@/lib/providers/theme.providers"
 import type { Metadata } from "next"
-import { Fraunces, Geist, Geist_Mono, Inter, Schibsted_Grotesk } from "next/font/google"
+import { Geist, Geist_Mono, Inter, Newsreader, Schibsted_Grotesk } from "next/font/google"
 import type React from "react"
 import "./globals.css"
 
@@ -15,11 +15,11 @@ const schibsted = Schibsted_Grotesk({
   variable: "--font-schibsted",
 })
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-fraunces",
-  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-newsreader",
+  axes: ["opsz"],
 })
 
 const inter = Inter({
@@ -74,7 +74,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${schibsted.variable} ${inter.variable} ${geist.variable} ${geistMono.variable} ${fraunces.variable}`}
+      className={`${schibsted.variable} ${inter.variable} ${geist.variable} ${geistMono.variable} ${newsreader.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: FONT_FOUC_SCRIPT }} />

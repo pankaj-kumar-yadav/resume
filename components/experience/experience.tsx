@@ -24,7 +24,9 @@ function workItemsForExperience(
     const urls = new Set(
         (exp.links ?? []).map((link) => normalizeUrl(link.url))
     )
-    return WORK.filter((item) => urls.has(normalizeUrl(item.href)))
+    return WORK.filter(
+        (item) => item.href && urls.has(normalizeUrl(item.href))
+    )
 }
 
 export function Experience() {

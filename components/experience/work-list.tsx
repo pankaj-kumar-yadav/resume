@@ -11,6 +11,12 @@ import { cn } from "@/lib/utils"
 const rowClassName =
     "social-link pressable hover-accent group/arrow relative flex items-start gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:hidden lg:gap-4 lg:px-2.5 lg:py-3"
 
+function externalLinkProps(href: string) {
+    return /^https?:\/\//.test(href)
+        ? { target: "_blank" as const, rel: "noopener noreferrer" }
+        : {}
+}
+
 function SummaryWithDot({ text }: { text: string }) {
     return text.split(" · ").map((part, i) => (
         <span key={i}>
@@ -27,12 +33,12 @@ function WorkRow({
     item: WorkItem
     delayMs: number
 }) {
+    if (!item.href) return null
+
     const link = (
             <Link
                 href={item.href}
-                {...(/^https?:\/\//.test(item.href)
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+                {...externalLinkProps(item.href)}
                 className="pressable flex min-w-0 w-full flex-col text-left"
             >
             <span className="inline-flex min-w-0 flex-wrap items-baseline gap-x-2">
@@ -80,41 +86,50 @@ function WorkCard({
     raised?: boolean
     logoShape?: "squircle" | "circle"
 }) {
+    const className = cn(
+        "work-card flex flex-col gap-3 rounded-[12px] px-5 py-4.5 sm:flex-row sm:items-center sm:gap-5 sm:px-6",
+        raised && "work-card-raised",
+    )
+    const body = (
+        <>
+            <div className="flex min-w-0 flex-1 items-center gap-4">
+                <FaviconSquircle
+                    href={item.href}
+                    icon={item.icon}
+                    size="lg"
+                    shape={logoShape}
+                />
+                <div className="min-w-0 flex-1">
+                    <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
+                        {item.name}
+                    </span>
+                    <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
+                        <SummaryWithDot text={item.summary} />
+                    </p>
+                </div>
+            </div>
+            <span className="shrink-0 pl-16 text-sm text-neutral-500 sm:pl-0 sm:text-right dark:text-neutral-400">
+                {item.outcome}
+            </span>
+        </>
+    )
+
     return (
         <div
             className="social-row"
             style={{ animationDelay: `${delayMs}ms` }}
         >
-            <Link
-                href={item.href}
-                {...(/^https?:\/\//.test(item.href)
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                className={cn(
-                    "work-card flex flex-col gap-3 rounded-[12px] px-5 py-4.5 sm:flex-row sm:items-center sm:gap-5 sm:px-6",
-                    raised && "work-card-raised",
-                )}
-            >
-                <div className="flex min-w-0 flex-1 items-center gap-4">
-                    <FaviconSquircle
-                        href={item.href}
-                        icon={item.icon}
-                        size="lg"
-                        shape={logoShape}
-                    />
-                    <div className="min-w-0 flex-1">
-                        <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
-                            {item.name}
-                        </span>
-                        <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
-                            <SummaryWithDot text={item.summary} />
-                        </p>
-                    </div>
-                </div>
-                <span className="shrink-0 pl-16 text-sm text-neutral-500 sm:pl-0 sm:text-right dark:text-neutral-400">
-                    {item.outcome}
-                </span>
-            </Link>
+            {item.href ? (
+                <Link
+                    href={item.href}
+                    {...externalLinkProps(item.href)}
+                    className={className}
+                >
+                    {body}
+                </Link>
+            ) : (
+                <div className={className}>{body}</div>
+            )}
         </div>
     )
 }
@@ -128,13 +143,7 @@ export function CompanyCard({
 }) {
     return (
         <article className="company-card rounded-[12px] px-5 py-4.5 print:hidden sm:px-6 sm:py-5">
-            <Link
-                href={company.href}
-                {...(/^https?:\/\//.test(company.href)
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                className="pressable flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5"
-            >
+            <div className="pressable flex cursor-pointer flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
                 <div className="flex min-w-0 flex-1 items-center gap-4">
                     <FaviconSquircle
                         href={company.href}
@@ -153,7 +162,7 @@ export function CompanyCard({
                 <span className="shrink-0 pl-16 text-sm text-neutral-500 sm:pl-0 sm:text-right dark:text-neutral-400">
                     {company.outcome}
                 </span>
-            </Link>
+            </div>
             {items.length > 0 ? (
                 <div className="company-card-well">
                     <WorkList
