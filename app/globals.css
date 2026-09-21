@@ -182,11 +182,8 @@
   }
 
   .hero-screen {
-    --nav-offset: calc(5.5rem + var(--nav-rest-inset));
     display: flex;
     flex-direction: column;
-    min-height: calc(100svh - var(--nav-offset));
-    padding-bottom: 1.25rem;
   }
 
   .hero-cta {
@@ -212,17 +209,7 @@
     outline-offset: 3px;
   }
 
-  @media (min-width: 640px) {
-    .hero-screen {
-      --nav-offset: calc(6rem + var(--nav-rest-inset));
-    }
-  }
-
   @media (min-width: 1024px) {
-    .hero-screen {
-      --nav-offset: calc(7.25rem + var(--nav-rest-inset));
-    }
-
     .hero-cta {
       margin-top: 1.75rem;
       font-size: 0.9375rem;
@@ -255,7 +242,6 @@
     background-color: var(--background);
   }
 
-
   .company-card-well,
   .people-say-well {
     background-color: rgb(246 246 246);
@@ -273,7 +259,8 @@
   .people-say-well {
     padding: 10px 12px 12px;
     box-shadow: none;
-    border-top: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    border-top: 1px solid
+      color-mix(in oklab, var(--foreground) 10%, transparent);
   }
 
   .people-say-in {
@@ -699,6 +686,14 @@
       transform: translate3d(0, 0, 0);
       transition-duration: 200ms;
     }
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-screen {
+    --nav-offset: calc(7.25rem + var(--nav-rest-inset));
+    min-height: calc(100svh - var(--nav-offset));
+    padding-bottom: 1.25rem;
   }
 }
 
