@@ -1,0 +1,12 @@
+---
+description: Do not use Try Browser / browser tools (too many tokens)
+alwaysApply: true
+---
+
+# No browser tools for agents
+
+Do **not** use Cursor browser tools (Try Browser, `cursor-ide-browser`, `browser_navigate`, `browser_snapshot`, `browser_click`, `browser_take_screenshot`, CDP, or any other browser MCP). They burn too many tokens.
+
+- Verify UI and flows with tests, `curl`/fetch against a running server, or by describing what the user should check locally.
+- Do not open, lock, snapshot, or screenshot pages as part of implementation or "verification."
+- Only use the browser if the user **explicitly** asks to open or drive the browser in that message.

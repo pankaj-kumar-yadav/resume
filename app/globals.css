@@ -611,13 +611,6 @@
     transform: translate(-50%, 0);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .project-link:hover {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-  }
-
   .section-nav-tabs {
     overflow-x: auto;
     scrollbar-width: none;
