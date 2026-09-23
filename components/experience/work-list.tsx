@@ -7,6 +7,7 @@ import { MotionArrow } from "@/components/shared/motion-arrow"
 import { LinkPreview } from "@/components/ui/link-preview"
 import type { WorkItem } from "@/lib/constants/resume.constant"
 import { cn } from "@/lib/utils"
+import { ExternalLink } from "lucide-react"
 
 const rowClassName =
     "social-link pressable hover-accent group/arrow relative flex items-start gap-3 overflow-hidden rounded-md border border-transparent px-2 py-2.5 -mx-2 print:hidden lg:gap-4 lg:px-2.5 lg:py-3"
@@ -35,12 +36,8 @@ function WorkRow({
 }) {
     if (!item.href) return null
 
-    const link = (
-            <Link
-                href={item.href}
-                {...externalLinkProps(item.href)}
-                className="pressable flex min-w-0 w-full flex-col text-left"
-            >
+    const content = (
+        <div className="flex min-w-0 flex-1 flex-col text-left">
             <span className="inline-flex min-w-0 flex-wrap items-baseline gap-x-2">
                 <span className="text-sm font-medium text-foreground lg:text-[15px]">
                     {item.name}
@@ -48,12 +45,11 @@ function WorkRow({
                 <span className="text-xs text-muted-foreground lg:text-sm">
                     {item.outcome}
                 </span>
-                <MotionArrow />
             </span>
             <span className="mt-0.5 text-pretty text-sm leading-relaxed text-foreground/70 lg:mt-1 lg:text-[15px]">
                 {item.summary}
             </span>
-        </Link>
+        </div>
     )
 
     return (
@@ -67,9 +63,17 @@ function WorkRow({
                     icon={item.icon}
                     className="mt-0.5"
                 />
-                <LinkPreview url={item.href} className="min-w-0 flex-1">
-                    {link}
-                </LinkPreview>
+                <div className="min-w-0 flex-1">
+                    {content}
+                </div>
+                <Link
+                    href={item.href}
+                    {...externalLinkProps(item.href)}
+                    className="ml-2 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    aria-label={`Visit ${item.name}`}
+                >
+                    <ExternalLink size={18} />
+                </Link>
             </div>
         </div>
     )
@@ -108,9 +112,21 @@ function WorkCard({
                     </p>
                 </div>
             </div>
-            <span className="shrink-0 pl-16 text-sm text-neutral-500 sm:pl-0 sm:text-right dark:text-neutral-400">
-                {item.outcome}
-            </span>
+            <div className="flex items-center gap-3 pl-16 sm:pl-0">
+                <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
+                    {item.outcome}
+                </span>
+                {item.href && (
+                    <Link
+                        href={item.href}
+                        {...externalLinkProps(item.href)}
+                        className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                        aria-label={`Visit ${item.name}`}
+                    >
+                        <ExternalLink size={18} />
+                    </Link>
+                )}
+            </div>
         </>
     )
 
@@ -119,17 +135,7 @@ function WorkCard({
             className="social-row"
             style={{ animationDelay: `${delayMs}ms` }}
         >
-            {item.href ? (
-                <Link
-                    href={item.href}
-                    {...externalLinkProps(item.href)}
-                    className={className}
-                >
-                    {body}
-                </Link>
-            ) : (
-                <div className={className}>{body}</div>
-            )}
+            <div className={className}>{body}</div>
         </div>
     )
 }
@@ -143,7 +149,7 @@ export function CompanyCard({
 }) {
     return (
         <article className="company-card rounded-[12px] px-5 py-4.5 print:hidden sm:px-6 sm:py-5">
-            <div className="pressable flex cursor-pointer flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
                 <div className="flex min-w-0 flex-1 items-center gap-4">
                     <FaviconSquircle
                         href={company.href}
@@ -159,9 +165,21 @@ export function CompanyCard({
                         </p>
                     </div>
                 </div>
-                <span className="shrink-0 pl-16 text-sm text-neutral-500 sm:pl-0 sm:text-right dark:text-neutral-400">
-                    {company.outcome}
-                </span>
+                <div className="flex items-center gap-3 pl-16 sm:pl-0">
+                    <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
+                        {company.outcome}
+                    </span>
+                    {company.href && (
+                        <Link
+                            href={company.href}
+                            {...externalLinkProps(company.href)}
+                            className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                            aria-label={`Visit ${company.name}`}
+                        >
+                            <ExternalLink size={18} />
+                        </Link>
+                    )}
+                </div>
             </div>
             {items.length > 0 ? (
                 <div className="company-card-well">

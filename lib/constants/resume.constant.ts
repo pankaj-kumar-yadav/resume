@@ -332,7 +332,7 @@ export const RESUME_DATA = {
         {
             name: "Relay – Self-hosted Project Management",
             description:
-                "Engineered a self-hosted, multi-tenant project management platform for teams — issues, cycles, inbox, and org-scoped data — with a Linear-inspired UI wired to a first-party Express API.",
+                "Self-hosted project management platform with issues, cycles, and org-scoped data — Linear-inspired UI with Express API.",
             technologies: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma"],
             achievements: [
                 "Implemented organization-scoped workspaces with invite-based membership, issues (status, priority, assignees, comments, attachments), teams, cycles, saved views, and in-app inbox notifications.",
@@ -340,6 +340,7 @@ export const RESUME_DATA = {
             ],
             additionalTech: ["Turborepo", "TanStack Query"],
             github: "https://github.com/pankaj-kumar-yadav/relay",
+            live: "https://relay-web-1.vercel.app",
             featured: true,
         },
         {

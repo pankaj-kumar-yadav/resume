@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { RESUME_DATA } from "@/lib/constants/resume.constant"
+import { RESUME_DATA, RESUME_PDF_URL } from "@/lib/constants/resume.constant"
 
 const FOOTER_LINKS = [
     RESUME_DATA.socials.find((social) => social.label === "LinkedIn"),
     RESUME_DATA.socials.find((social) => social.label === "GitHub"),
     { label: "Inspiration", href: "/inspiration" },
-    { label: "Resume", href: "/resume" },
+    { label: "Resume", href: RESUME_PDF_URL },
 ].filter((link): link is { label: string; href: string } => Boolean(link))
 
 export function SiteFooter() {

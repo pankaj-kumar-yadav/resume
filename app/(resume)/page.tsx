@@ -3,13 +3,15 @@ import { PeopleSay } from "@/components/home/people-say"
 import { WorkList } from "@/components/experience/work-list"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { Skills } from "@/components/skill/skills"
-import { EXPERIENCE_WORK, WORK } from "@/lib/constants/resume.constant"
+import { EXPERIENCE_WORK, WORK, RESUME_DATA } from "@/lib/constants/resume.constant"
 import { getSectionMetadata } from "@/lib/metadata"
 import Link from "next/link"
+import { FeaturedProjectCard } from "@/components/home/featured-project-card"
 
 export const metadata = getSectionMetadata("home")
 
 const featuredWork = WORK.filter((item) => item.featured)
+const featuredProject = RESUME_DATA.projects.find((p) => p.featured)
 
 export default function HomePage() {
     return (
@@ -39,6 +41,20 @@ export default function HomePage() {
                 </div>
                 <WorkList items={featuredWork} variant="card" />
             </section>
+            {featuredProject && (
+                <section id="featured-project" className="print:hidden">
+                    <div className="mb-5 flex items-baseline justify-between gap-4 lg:mb-6">
+                        <SectionHeading className="mb-0 lg:mb-0">Featured project</SectionHeading>
+                        <Link
+                            href="/projects"
+                            className="pressable shrink-0 text-sm underline underline-offset-[3px] lg:text-[15px]"
+                        >
+                            View all
+                        </Link>
+                    </div>
+                    <FeaturedProjectCard project={featuredProject} />
+                </section>
+            )}
             <PeopleSay />
             <Skills />
         </div>

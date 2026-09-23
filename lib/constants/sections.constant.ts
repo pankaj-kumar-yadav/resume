@@ -1,10 +1,12 @@
+import { RESUME_PDF_URL } from "@/lib/constants/resume.constant"
+
 export const SECTIONS = [
     { id: "home", label: "Home", href: "/" },
     { id: "experience", label: "Experience", href: "/experience" },
     { id: "projects", label: "Projects", href: "/projects" },
     { id: "socials", label: "Socials", href: "/socials" },
     { id: "inspiration", label: "Inspiration", href: "/inspiration" },
-    { id: "resume", label: "Resume", href: "/resume" },
+    { id: "resume", label: "Resume", href: RESUME_PDF_URL },
 ] as const
 
 export const NAV_SECTIONS = SECTIONS.filter(

@@ -52,7 +52,12 @@ export function TabNav({
         const next = items[nextIndex]
         if (!next) return
         tabRefs.current.get(next.id)?.focus()
-        router.push(next.href)
+        const isExternal = /^https?:\/\//.test(next.href)
+        if (isExternal) {
+            window.open(next.href, "_blank", "noopener,noreferrer")
+        } else {
+            router.push(next.href)
+        }
     }
 
     return (
@@ -63,6 +68,7 @@ export function TabNav({
             <div className="flex w-full justify-end gap-3 sm:gap-5 lg:gap-8">
                 {items.map(({ id, label, href }, index) => {
                     const isActive = activeId === id
+                    const isExternal = /^https?:\/\//.test(href)
 
                     return (
                         <Link
@@ -71,8 +77,13 @@ export function TabNav({
                                 if (el) tabRefs.current.set(id, el)
                             }}
                             href={href}
-                            prefetch
-                            scroll={scroll}
+                            {...(!isExternal ? { prefetch: true, scroll } : {})}
+                            {...(isExternal
+                                ? {
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                }
+                                : {})}
                             aria-current={isActive ? "page" : undefined}
                             onKeyDown={(e) => handleKeyDown(e, index)}
                             className={cn(
