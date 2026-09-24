@@ -1,0 +1,13 @@
+---
+description: User commits and pushes — agent never does
+alwaysApply: true
+---
+
+# User owns git commit and push
+
+The user commits and pushes themselves. Do **not** run `git commit`, `git push`, or stage files for committing (`git add` / `git add -A` / etc.).
+
+- Do not execute commit or push steps from plans, skills, or checklists
+- Do not offer to commit or push unless the user explicitly asks in that message
+- Read-only git is fine when needed (`status`, `diff`, `log`, `branch`)
+- Specs/plans under `docs/superpowers/` stay untracked (see `no-commit-superpowers-docs`)
