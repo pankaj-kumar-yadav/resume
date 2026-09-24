@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/shared/section-heading"
-import { TechTag } from "@/components/skill/tech-tag"
+import { SkillLogoGrid } from "@/components/skill/skill-logo-grid"
 import { RESUME_DATA } from "@/lib/constants/resume.constant"
 
 const SKILL_GROUPS = RESUME_DATA.skills.filter((group) => group.items.length > 0)
@@ -17,10 +17,8 @@ export function Skills() {
                         <dt className="text-sm font-normal tracking-tight text-neutral-700 print:text-xs lg:text-[15px] dark:text-neutral-200">
                             {group.category}
                         </dt>
-                        <dd className="m-0 flex flex-wrap gap-2 print:gap-1 lg:gap-2.5">
-                            {group.items.map((skill) => (
-                                <TechTag key={skill}>{skill}</TechTag>
-                            ))}
+                        <dd className="m-0 min-w-0">
+                            <SkillLogoGrid items={group.items} />
                         </dd>
                     </div>
                 ))}

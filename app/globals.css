@@ -600,6 +600,76 @@
     }
   }
 
+  .skill-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 12px;
+    background-color: var(--background);
+  }
+
+  @media (min-width: 640px) {
+    .skill-logo-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .skill-logo-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  .skill-logo-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 4.25rem;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    outline: none;
+    box-shadow:
+      1px 0 0 0 color-mix(in oklab, var(--foreground) 10%, transparent),
+      0 1px 0 0 color-mix(in oklab, var(--foreground) 10%, transparent);
+  }
+
+  .skill-logo-cell-label {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1.25;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  @media (min-width: 1024px) {
+    .skill-logo-cell {
+      min-height: 4.75rem;
+      padding: 0.85rem 0.55rem;
+    }
+
+    .skill-logo-cell-label {
+      font-size: 12px;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .skill-logo-cell-icon {
+      filter: grayscale(1);
+      transition: filter 150ms var(--ease-out);
+    }
+
+    .skill-logo-cell:hover .skill-logo-cell-icon,
+    .skill-logo-cell:focus-visible .skill-logo-cell-icon {
+      filter: grayscale(0);
+    }
+  }
+
   .social-link::before {
     content: "";
     position: absolute;
@@ -863,6 +933,23 @@
     background-color: var(--secondary);
     border-color: color-mix(in oklab, var(--border) 60%, transparent);
     color: var(--secondary-foreground);
+  }
+
+  .skill-logo-grid {
+    border-color: color-mix(in oklab, var(--foreground) 25%, transparent);
+    border-radius: 0;
+  }
+
+  .skill-logo-cell {
+    min-height: 0;
+    padding: 0.35rem 0.25rem;
+    box-shadow:
+      1px 0 0 0 color-mix(in oklab, var(--foreground) 18%, transparent),
+      0 1px 0 0 color-mix(in oklab, var(--foreground) 18%, transparent);
+  }
+
+  .skill-logo-cell-label {
+    font-size: 9pt;
   }
 
   .section-enter {
