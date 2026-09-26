@@ -29,9 +29,9 @@ export default function HomePage() {
                 </div>
                 <WorkList items={EXPERIENCE_WORK} variant="card" raised logoShape="circle" />
             </section>
-            <section id="selected-work" className="print:hidden">
+            <section id="shipped-at-work" className="print:hidden">
                 <div className="mb-5 flex items-baseline justify-between gap-4 lg:mb-6">
-                    <SectionHeading className="mb-0 lg:mb-0">Selected work</SectionHeading>
+                    <SectionHeading className="mb-0 lg:mb-0">Shipped at work</SectionHeading>
                     <Link
                         href="/experience"
                         className="pressable shrink-0 text-sm underline underline-offset-[3px] lg:text-[15px]"

@@ -18,7 +18,7 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
 
     return (
         <div className="social-row print:hidden">
-            <article className="company-card rounded-[12px] px-5 py-4.5 sm:px-6 sm:py-5">
+            <article className="work-card rounded-[12px] px-5 py-4.5 sm:px-6 sm:py-5">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
                     <div className="flex min-w-0 flex-1 items-center gap-4">
                         <FaviconSquircle href={faviconHref} size="lg" />
