@@ -8,7 +8,7 @@ export default function ResumeLayout({
     children: React.ReactNode
 }>) {
     return (
-        <main className="min-h-screen bg-background">
+        <main className="min-h-screen overflow-x-clip bg-background">
             <div className="relative mx-auto flex max-w-2xl flex-col px-5 pb-6 pt-0 sm:px-8 sm:pb-10 lg:max-w-[1000px] lg:pb-14">
                 <PrintHeader />
                 <SectionNav />

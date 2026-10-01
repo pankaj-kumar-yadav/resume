@@ -3,6 +3,123 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Outside @layer utilities so Tailwind v4 does not strip these rules */
+/* Hidden on mobile via `hidden md:block` on the element */
+
+/* Tablet: bias right, left reading gutter */
+@media (min-width: 768px) {
+  .hero-bg-layer {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 35%,
+      #000 62%,
+      #000 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 35%,
+      #000 62%,
+      #000 92%,
+      transparent 100%
+    );
+    opacity: 0.42;
+  }
+
+  .dark .hero-bg-layer {
+    opacity: 0.34;
+  }
+}
+
+/* Large: circuit on the right, left clear for text */
+@media (min-width: 1024px) {
+  .hero-bg-layer {
+    -webkit-mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 48%,
+        rgba(0, 0, 0, 0.35) 58%,
+        #000 72%,
+        #000 94%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 88%,
+        transparent 100%
+      );
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 48%,
+        rgba(0, 0, 0, 0.35) 58%,
+        #000 72%,
+        #000 94%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 88%,
+        transparent 100%
+      );
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    opacity: 0.55;
+  }
+
+  .dark .hero-bg-layer {
+    opacity: 0.42;
+  }
+}
+
+/* XL: slightly wider clear zone for large serif H1 */
+@media (min-width: 1280px) {
+  .hero-bg-layer {
+    -webkit-mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 52%,
+        rgba(0, 0, 0, 0.35) 62%,
+        #000 74%,
+        #000 94%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 88%,
+        transparent 100%
+      );
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 52%,
+        rgba(0, 0, 0, 0.35) 62%,
+        #000 74%,
+        #000 94%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 88%,
+        transparent 100%
+      );
+  }
+}
+
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
