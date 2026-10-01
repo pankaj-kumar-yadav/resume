@@ -3,8 +3,6 @@
 import Link from "next/link"
 import { Dot } from "@/components/shared/dot"
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
-import { MotionArrow } from "@/components/shared/motion-arrow"
-import { LinkPreview } from "@/components/ui/link-preview"
 import type { WorkItem } from "@/lib/constants/resume.constant"
 import { cn } from "@/lib/utils"
 import { ExternalLink } from "lucide-react"
@@ -16,6 +14,22 @@ function externalLinkProps(href: string) {
     return /^https?:\/\//.test(href)
         ? { target: "_blank" as const, rel: "noopener noreferrer" }
         : {}
+}
+
+const workExternalLinkClassName =
+    "inline-flex shrink-0 items-center text-muted-foreground transition-colors hover:text-foreground"
+
+function WorkExternalLink({ href, name }: { href: string; name: string }) {
+    return (
+        <Link
+            href={href}
+            {...externalLinkProps(href)}
+            className={workExternalLinkClassName}
+            aria-label={`Visit ${name}`}
+        >
+            <ExternalLink size={14} aria-hidden />
+        </Link>
+    )
 }
 
 function SummaryWithDot({ text }: { text: string }) {
@@ -39,8 +53,11 @@ function WorkRow({
     const content = (
         <div className="flex min-w-0 flex-1 flex-col text-left">
             <span className="inline-flex min-w-0 flex-wrap items-baseline gap-x-2">
-                <span className="text-sm font-medium text-foreground lg:text-[15px]">
-                    {item.name}
+                <span className="inline-flex min-w-0 items-baseline gap-1.5">
+                    <span className="text-sm font-medium text-foreground lg:text-[15px]">
+                        {item.name}
+                    </span>
+                    <WorkExternalLink href={item.href} name={item.name} />
                 </span>
                 <span className="text-xs text-muted-foreground lg:text-sm">
                     {item.outcome}
@@ -63,17 +80,7 @@ function WorkRow({
                     icon={item.icon}
                     className="mt-0.5"
                 />
-                <div className="min-w-0 flex-1">
-                    {content}
-                </div>
-                <Link
-                    href={item.href}
-                    {...externalLinkProps(item.href)}
-                    className="ml-2 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                    aria-label={`Visit ${item.name}`}
-                >
-                    <ExternalLink size={18} />
-                </Link>
+                <div className="min-w-0 flex-1">{content}</div>
             </div>
         </div>
     )
@@ -104,8 +111,13 @@ function WorkCard({
                     shape={logoShape}
                 />
                 <div className="min-w-0 flex-1">
-                    <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
-                        {item.name}
+                    <span className="inline-flex items-baseline gap-1.5">
+                        <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
+                            {item.name}
+                        </span>
+                        {item.href ? (
+                            <WorkExternalLink href={item.href} name={item.name} />
+                        ) : null}
                     </span>
                     <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
                         <SummaryWithDot text={item.summary} />
@@ -116,16 +128,6 @@ function WorkCard({
                 <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
                     {item.outcome}
                 </span>
-                {item.href && (
-                    <Link
-                        href={item.href}
-                        {...externalLinkProps(item.href)}
-                        className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                        aria-label={`Visit ${item.name}`}
-                    >
-                        <ExternalLink size={18} />
-                    </Link>
-                )}
             </div>
         </>
     )
@@ -157,8 +159,16 @@ export function CompanyCard({
                         size="lg"
                     />
                     <div className="min-w-0 flex-1">
-                        <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
-                            {company.name}
+                        <span className="inline-flex items-baseline gap-1.5">
+                            <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
+                                {company.name}
+                            </span>
+                            {company.href ? (
+                                <WorkExternalLink
+                                    href={company.href}
+                                    name={company.name}
+                                />
+                            ) : null}
                         </span>
                         <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-neutral-500 dark:text-neutral-400">
                             <SummaryWithDot text={company.summary} />
@@ -169,16 +179,6 @@ export function CompanyCard({
                     <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
                         {company.outcome}
                     </span>
-                    {company.href && (
-                        <Link
-                            href={company.href}
-                            {...externalLinkProps(company.href)}
-                            className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-                            aria-label={`Visit ${company.name}`}
-                        >
-                            <ExternalLink size={18} />
-                        </Link>
-                    )}
                 </div>
             </div>
             {items.length > 0 ? (
