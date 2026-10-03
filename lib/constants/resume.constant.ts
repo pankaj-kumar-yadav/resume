@@ -51,6 +51,7 @@ export type WorkItem = {
     outcome: string
     summary: string
     featured?: boolean
+    caseStudyHref?: string
 }
 
 export const WORK: WorkItem[] = [
@@ -62,6 +63,7 @@ export const WORK: WorkItem[] = [
         summary:
             "SCORM, RBAC, assessments, and certificates for organizations running online learning.",
         featured: true,
+        caseStudyHref: "/case-studies/lms",
     },
     {
         name: "EXG",
@@ -70,6 +72,7 @@ export const WORK: WorkItem[] = [
         summary:
             "BRSR/GRI reporting with schema-driven forms, approvals, and KPI dashboards.",
         featured: true,
+        caseStudyHref: "/case-studies/exg",
     },
     {
         name: "BotJunior",

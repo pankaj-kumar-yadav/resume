@@ -54,9 +54,19 @@ function WorkRow({
         <div className="flex min-w-0 flex-1 flex-col text-left">
             <span className="inline-flex min-w-0 flex-wrap items-baseline gap-x-2">
                 <span className="inline-flex min-w-0 items-baseline gap-1.5">
-                    <span className="text-sm font-medium text-foreground lg:text-[15px]">
-                        {item.name}
-                    </span>
+                    {item.caseStudyHref ? (
+                        <Link
+                            href={item.caseStudyHref}
+                            className="text-sm font-medium text-foreground transition-colors hover:text-foreground/80 lg:text-[15px]"
+                            aria-label={`${item.name} case study`}
+                        >
+                            {item.name}
+                        </Link>
+                    ) : (
+                        <span className="text-sm font-medium text-foreground lg:text-[15px]">
+                            {item.name}
+                        </span>
+                    )}
                     <WorkExternalLink href={item.href} name={item.name} />
                 </span>
                 <span className="text-xs text-muted-foreground lg:text-sm">
@@ -112,9 +122,19 @@ function WorkCard({
                 />
                 <div className="min-w-0 flex-1">
                     <span className="inline-flex items-baseline gap-1.5">
-                        <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
-                            {item.name}
-                        </span>
+                        {item.caseStudyHref ? (
+                            <Link
+                                href={item.caseStudyHref}
+                                className="text-base font-semibold tracking-tight text-neutral-700 transition-colors hover:text-foreground dark:text-neutral-200"
+                                aria-label={`${item.name} case study`}
+                            >
+                                {item.name}
+                            </Link>
+                        ) : (
+                            <span className="text-base font-semibold tracking-tight text-neutral-700 dark:text-neutral-200">
+                                {item.name}
+                            </span>
+                        )}
                         {item.href ? (
                             <WorkExternalLink href={item.href} name={item.name} />
                         ) : null}
