@@ -1,7 +1,7 @@
-import Image from "next/image"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
 import type { CaseStudy } from "@/lib/constants/case-studies.constant"
+import { CaseStudyFigureView } from "@/components/case-studies/case-study-figure"
 import { BackLink } from "@/components/shared/back-link"
 import { FaviconSquircle } from "@/components/shared/favicon-squircle"
 
@@ -127,32 +127,15 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
                         </li>
                     ))}
                 </ul>
-                {study.figures.length > 0 ? (
-                    <div className="grid gap-6 pt-2 sm:grid-cols-1">
-                        {study.figures.map((figure) => (
-                            <figure key={figure.src} className="space-y-2">
-                                <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted/40">
-                                    <Image
-                                        src={figure.src}
-                                        alt={figure.alt}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, 700px"
-                                    />
-                                    {figure.placeholder ? (
-                                        <span className="absolute bottom-2 right-2 rounded bg-background/90 px-2 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
-                                            Placeholder
-                                        </span>
-                                    ) : null}
-                                </div>
-                                <figcaption className="text-xs text-muted-foreground lg:text-sm">
-                                    {figure.caption}
-                                </figcaption>
-                            </figure>
-                        ))}
-                    </div>
-                ) : null}
             </Section>
+
+            {study.figures.length > 0 ? (
+                <div className="space-y-10 lg:space-y-14">
+                    {study.figures.map((figure) => (
+                        <CaseStudyFigureView key={figure.src} figure={figure} />
+                    ))}
+                </div>
+            ) : null}
 
             <Section title="Outcome">
                 <p>{study.outcomeDetail}</p>

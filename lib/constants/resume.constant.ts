@@ -106,6 +106,7 @@ export const WORK: WorkItem[] = [
         outcome: "Company presence",
         summary:
             "Services, portfolio, and inquiry flows — the company's primary site for client acquisition.",
+        caseStudyHref: "/case-studies/techap",
     },
 ]
 

@@ -1,4 +1,4 @@
-export type CaseStudySlug = "lms" | "exg"
+export type CaseStudySlug = "lms" | "exg" | "techap"
 
 export type CaseStudyFigure = {
     src: string
@@ -228,6 +228,95 @@ const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
             "RBAC plus resource attributes for multi-site orgs",
         ],
     },
+    techap: {
+        slug: "techap",
+        name: "Techap website",
+        outcome: "Company presence for client acquisition",
+        role: "Frontend engineer — end-to-end company site: services, solutions, portfolio, social proof, and inquiry flows",
+        company: "Techap Solutions",
+        contextLabel: "Marketing & company presence",
+        liveUrl: "https://techapsol.com/",
+        liveLabel: "Open techapsol.com",
+        icon: "https://www.techapsol.com/logo/android-chrome-512x512.png",
+        stack: [
+            "Next.js",
+            "TypeScript",
+            "Marketing pages",
+            "Project portfolio",
+            "Inquiry workflows",
+        ],
+        impact: [
+            "Shipped the end-to-end company website as Techap’s primary digital presence",
+            "Covered services, solutions, project portfolio, testimonials, FAQ, and inquiry flows",
+            "Gave enterprise prospects a clear path from capability story to contact",
+        ],
+        context:
+            "Techap needed a public site that could sell capability — services and solutions — show real project work, and convert interest into inquiries. The site is the company’s front door for enterprise client acquisition, not a brochure afterthought.",
+        problem:
+            "Agency and product studios often ship marketing sites that look polished but fail the buyer journey: weak portfolio structure, buried contact, or pages that fight SEO and performance. The constraint was to ship a coherent presence that still felt fast and maintainable in the same Next.js stack used on client products.",
+        owned:
+            "Engineered the end-to-end company website spanning services, solutions, project portfolio, testimonials, FAQ, and inquiry workflows.",
+        notOwned:
+            "Brand identity and long-form sales content strategy sat with the business; this study focuses on the frontend product that carries that story.",
+        approach: [
+            {
+                title: "Route-per-intent marketing structure",
+                body: "Organized the site around buyer questions — what we do, what we’ve shipped, proof, and how to reach us — instead of a single scrolling dump. Project pages (including LMS and EXG) sit in a clear portfolio model.",
+            },
+            {
+                title: "Static-friendly performance defaults",
+                body: "Treated marketing surfaces as mostly static where possible so imagery and content load predictably. Local assets and sensible image handling matter more here than on authenticated product dashboards.",
+            },
+            {
+                title: "Inquiry as a first-class flow",
+                body: "Kept contact and inquiry paths obvious from the main journeys so the site ends in a conversation, not a dead-end about page.",
+            },
+        ],
+        highlights: [
+            {
+                title: "Services and solutions narrative",
+                body: "Structured capability pages so prospects can scan offerings without hunting through product jargon.",
+            },
+            {
+                title: "Project portfolio that mirrors real work",
+                body: "Surfaced shipped products like LMS and EXG in a portfolio format that supports credibility in enterprise sales conversations.",
+            },
+            {
+                title: "Social proof and FAQ near conversion",
+                body: "Paired testimonials and FAQ with inquiry so common objections and trust signals sit next to the ask.",
+            },
+        ],
+        figures: [
+            {
+                src: "/case-studies/techap/home.svg",
+                alt: "Placeholder for Techap home UI",
+                caption: "Home — enterprise positioning and primary CTAs",
+                placeholder: true,
+            },
+            {
+                src: "/case-studies/techap/portfolio.svg",
+                alt: "Placeholder for Techap portfolio UI",
+                caption: "Projects — portfolio of shipped client work",
+                placeholder: true,
+            },
+            {
+                src: "/case-studies/techap/inquiry.svg",
+                alt: "Placeholder for Techap inquiry UI",
+                caption: "Contact — inquiry flow for client acquisition",
+                placeholder: true,
+            },
+        ],
+        outcomeDetail:
+            "Techap has a production marketing site that carries services, portfolio, and inquiry — the primary digital presence used for enterprise client acquisition.",
+        reflection:
+            "Marketing sites earn trust when structure matches the sales conversation. I would invest even earlier in measurable CTA paths and content that stays easy for non-engineers to update.",
+        talkTracks: [
+            "SSG vs dynamic for marketing vs product apps",
+            "Portfolio IA for agency / product studios",
+            "Inquiry UX and conversion paths",
+            "Image and performance defaults on marketing Next.js sites",
+        ],
+    },
 }
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
@@ -236,5 +325,5 @@ export function getCaseStudy(slug: string): CaseStudy | undefined {
 }
 
 export function getCaseStudySlugs(): CaseStudySlug[] {
-    return ["lms", "exg"]
+    return ["lms", "exg", "techap"]
 }
