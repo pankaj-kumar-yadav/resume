@@ -351,15 +351,18 @@
     isolation: isolate;
     overflow: hidden;
     border-block: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
-    background-color: #031c26;
+    background-color: #ffffff;
   }
 
   .case-study-figure--cover {
     border-radius: 0;
   }
 
-  .case-study-figure-shader-layer {
+  .case-study-figure-bg-layer {
+    position: absolute;
+    inset: 0;
     z-index: 0;
+    pointer-events: none;
   }
 
   .case-study-figure-frame {
@@ -380,10 +383,6 @@
   }
 
   @media print {
-    .case-study-figure-shader-layer {
-      display: none !important;
-    }
-
     .case-study-figure-frame--cover {
       min-height: 18rem;
       height: auto;

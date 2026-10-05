@@ -1,8 +1,7 @@
-"use client"
-
 import Image from "next/image"
 import type { CaseStudyFigure } from "@/lib/constants/case-studies.constant"
-import { BueDrift } from "@/components/ui/bue-drift"
+
+const FIGURE_BG = "/case-studies/figure-dots.webp"
 
 export function CaseStudyFigureView({ figure }: { figure: CaseStudyFigure }) {
     return (
@@ -11,7 +10,16 @@ export function CaseStudyFigureView({ figure }: { figure: CaseStudyFigure }) {
                 {figure.caption}
             </figcaption>
             <div className="case-study-figure case-study-figure--cover">
-                <BueDrift className="case-study-figure-shader-layer" />
+                <div className="case-study-figure-bg-layer" aria-hidden>
+                    <Image
+                        src={FIGURE_BG}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                        priority={false}
+                    />
+                </div>
                 <div className="case-study-figure-frame case-study-figure-frame--cover">
                     <div className="relative h-full w-full">
                         <Image
