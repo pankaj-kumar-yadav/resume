@@ -1,13 +1,17 @@
 ---
-description: User commits and pushes — agent never does
+description: User owns git — no commit/push/branch from agent
 alwaysApply: true
 ---
 
-# User owns git commit and push
+# User owns git workflow
 
-The user commits and pushes themselves. Do **not** run `git commit`, `git push`, or stage files for committing (`git add` / `git add -A` / etc.).
+This is a single-developer portfolio site. Do **not** create branches, worktrees, commits, or pushes unless the user explicitly asks in that message.
 
-- Do not execute commit or push steps from plans, skills, or checklists
-- Do not offer to commit or push unless the user explicitly asks in that message
-- Read-only git is fine when needed (`status`, `diff`, `log`, `branch`)
+- Do **not** run `git checkout -b`, `git switch -c`, `git branch`, or create feature/fix branches
+- Do **not** set up git worktrees for isolated feature work
+- Work on the **current branch** (usually `main`); implement features and fixes in place
+- Do **not** run `git commit`, `git push`, or stage files (`git add` / `git add -A` / etc.)
+- Do not execute commit, push, or branch steps from plans, skills, or checklists
+- Do not offer to commit, push, or branch unless the user explicitly asks in that message
+- Read-only git is fine when needed (`status`, `diff`, `log`, `branch -a` for inspection)
 - Specs/plans under `docs/superpowers/` stay untracked (see `no-commit-superpowers-docs`)
