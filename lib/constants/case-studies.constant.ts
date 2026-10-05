@@ -18,6 +18,11 @@ export type CaseStudyHighlight = {
     body: string
 }
 
+export type CaseStudyProblem = {
+    title: string
+    points: string[]
+}
+
 export type CaseStudy = {
     slug: CaseStudySlug
     name: string
@@ -32,7 +37,7 @@ export type CaseStudy = {
     stack: string[]
     impact: string[]
     context: string
-    problem: string
+    problem: CaseStudyProblem[]
     owned: string
     notOwned?: string
     approach: CaseStudyDecision[]
@@ -51,7 +56,7 @@ const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
         outcome: "End-to-end learning workflows",
         role: "Frontend engineer — owned roles, progress tracking, and certificates on the learning product surface",
         company: "Techap Solutions",
-        contextLabel: "Enterprise / institutional LMS (LearnXG)",
+        contextLabel: "Enterprise / institutional LMS",
         liveUrl: "https://lms.learnxg.com/en",
         liveLabel: "Open LearnXG",
         icon: "https://lms.learnxg.com/icon1.png",
@@ -69,9 +74,26 @@ const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
             "Tickets marked done passed review without rework — edge cases handled before QA",
         ],
         context:
-            "Institutions and corporate training teams needed one place to assign courses, let learners complete SCORM and native content, assess progress, and issue trusted certificates. The product had to support multiple roles without turning every screen into a permission special-case.",
-        problem:
-            "Learning products fail when roles leak, progress lies, or credentials cannot be trusted. Constraints included industry SCORM packages (legacy runtime behavior), multi-role access across admin/author/learner surfaces, and certificate UX that had to feel automatic without being opaque when generation failed.",
+            "LearnXG is an enterprise learning platform that helps institutions and corporate training teams assign courses, track progress across SCORM and native content, and issue certificates.",
+        problem: [
+            {
+                title: "Roles that leak",
+                points: [
+                    "Multi-role access spans admin, author, and learner surfaces",
+                    "UI-only hiding turns every screen into a permission special-case",
+                    "Forbidden areas must fail closed on routes and server responses",
+                ],
+            },
+            {
+                title: "Progress and credentials that break trust",
+                points: [
+                    "Industry SCORM packages bring legacy resume and completion quirks",
+                    "Dashboards disagree with what learners actually finished",
+                    "Certificate UX had to feel automatic without going opaque on failure",
+                    "Retries must not mint duplicates — ops should not print certificates",
+                ],
+            },
+        ],
         owned:
             "Independently owned the product surfaces for roles (RBAC), learner progress tracking, and certificate generation/verification flows — taking them through to production.",
         notOwned:
@@ -162,9 +184,26 @@ const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
             "Integrated TanStack Table for large compliance datasets without melting the UI",
         ],
         context:
-            "Companies must collect environmental, social, and governance data across sites and produce framework-aligned reports. EXG turns that lifecycle into dashboards, structured data entry, approvals, and exportable reports.",
-        problem:
-            "Regulatory schemas change, tables get huge, and approval is a real state machine — not a boolean. One-off form pages and naive tables collapse under BRSR/GRI volume and year-to-year definition drift.",
+            "EXG is an ESG reporting platform that helps companies collect environmental, social, and governance data across sites and produce framework-aligned reports such as BRSR and GRI.",
+        problem: [
+            {
+                title: "Schemas and tables that don't scale",
+                points: [
+                    "BRSR/GRI definitions shift year to year",
+                    "One-off form pages collapse under framework updates",
+                    "Compliance grids get wide and dense as row counts grow",
+                    "Naive tables stop being usable for auditors and analysts",
+                ],
+            },
+            {
+                title: "Approval as a boolean",
+                points: [
+                    "Submit, approve, reject, and resubmit is a real state machine",
+                    "A single flag hides the loop contributors and reviewers need",
+                    "Rejection must be actionable without side channels",
+                ],
+            },
+        ],
         owned:
             "Developed enterprise BRSR/GRI reporting modules: schema-driven forms, approval workflows, KPI dashboards, and TanStack Table integrations for large-scale data management.",
         notOwned:
@@ -251,9 +290,26 @@ const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
             "Gave enterprise prospects a clear path from capability story to contact",
         ],
         context:
-            "Techap needed a public site that could sell capability — services and solutions — show real project work, and convert interest into inquiries. The site is the company’s front door for enterprise client acquisition, not a brochure afterthought.",
-        problem:
-            "Agency and product studios often ship marketing sites that look polished but fail the buyer journey: weak portfolio structure, buried contact, or pages that fight SEO and performance. The constraint was to ship a coherent presence that still felt fast and maintainable in the same Next.js stack used on client products.",
+            "The Techap website is the company’s public site that helps enterprise prospects understand services and solutions, review shipped work, and start an inquiry.",
+        problem: [
+            {
+                title: "Buyer journey that dead-ends",
+                points: [
+                    "Polished marketing often fails the path from story to contact",
+                    "Weak portfolio structure buries proof of shipped work",
+                    "Inquiry paths get lost behind capability pages",
+                ],
+            },
+            {
+                title: "Marketing that fights the product stack",
+                points: [
+                    "Heavy surfaces undermine SEO, discovery, and load speed",
+                    "Enterprise prospects notice slow marketing immediately",
+                    "Site had to stay fast and maintainable in the same Next.js stack",
+                    "Marketing defaults differ from authenticated product dashboards",
+                ],
+            },
+        ],
         owned:
             "Engineered the end-to-end company website spanning services, solutions, project portfolio, testimonials, FAQ, and inquiry workflows.",
         notOwned:
