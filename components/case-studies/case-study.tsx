@@ -103,18 +103,40 @@ export function CaseStudyView({ study }: { study: CaseStudy }) {
                 ) : null}
             </Section>
 
-            <Section title="Approach">
-                <ol className="list-decimal space-y-3 pl-5">
-                    {study.approach.map((item) => (
-                        <li key={item.title}>
-                            <span className="font-medium text-foreground">
-                                {item.title}.
-                            </span>{" "}
-                            {item.body}
+            <section
+                aria-labelledby="case-study-approach"
+                className="case-study-approach-card"
+            >
+                <h2
+                    id="case-study-approach"
+                    className="case-study-approach-card-label"
+                >
+                    Approach
+                </h2>
+                <ol className="case-study-approach-stack">
+                    {study.approach.map((item, index) => (
+                        <li
+                            key={item.title}
+                            className="case-study-approach-item"
+                        >
+                            <div className="case-study-approach-heading">
+                                <span
+                                    className="case-study-approach-index"
+                                    aria-hidden
+                                >
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <p className="case-study-approach-title">
+                                    {item.title}
+                                </p>
+                            </div>
+                            <p className="case-study-approach-body">
+                                {item.body}
+                            </p>
                         </li>
                     ))}
                 </ol>
-            </Section>
+            </section>
 
             <Section title="Build highlights">
                 <ul className="space-y-3">
